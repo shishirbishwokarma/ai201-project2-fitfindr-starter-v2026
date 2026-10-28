@@ -86,8 +86,9 @@ session into `suggest_outfit`, so nothing should be able to change it.
      be turned into a number. -->
 
 Given a query that matches at least one listing, the fit card states the
-selected item's price (e.g. "$18") and names no brand unless the listing's
-`brand` field has one — in at least 4 of 5 tries.
+selected item's price (e.g. "$18") and mentions no brand name from
+`data/listings.json` other than the selected item's own `brand` (none at all if
+its `brand` is None) — in at least 4 of 5 tries.
 
 **Why this target:**
 Some clothes don't have a brand, so the model might make one up to fill the
