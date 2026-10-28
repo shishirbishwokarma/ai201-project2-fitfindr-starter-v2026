@@ -42,9 +42,9 @@ Given a query that matches no listings, the agent stops before calling
 **Why this target:**
 <!-- Why is 5 of 5 reasonable here when criterion 1 isn't? What's different
      about this path? -->
-Stopping is the right thing to do when nothing matches. If the search comes
-back empty, the loop stops right there and doesn't call the other tools. No
-model is involved in that check, so it should happen every time.
+If the search comes back empty, the loop stops right there and doesn't call
+the other tools. No model is involved in that check, so it should happen every
+time. And stopping is the right thing to do when nothing matches.
 
 ---
 
@@ -65,9 +65,9 @@ Given a query that matches at least one listing, the `id` in
 actually received — in 5 of 5 tries.
 
 **Why this target:**
-The outfit has to be about the item the search actually found for that query,
-so it needs to be consistent every time. The item goes straight from the
-session into `suggest_outfit`, so nothing should be able to change it.
+The item goes straight from the session into `suggest_outfit`, so nothing
+should be able to change it on the way. That matters because the outfit has to
+be about the item the search actually found for that query, every time.
 
 
 ---
