@@ -129,19 +129,40 @@ $ python app.py ask '...'
 **The three tools, tested one at a time**
 
 ```
-$ python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
+$ python -c "from tools import search_listings; print([(x['id'], x['title'], x['price'], x['size']) for x in search_listings('graphic tee', max_price=30)])"
+[('lst_002', 'Y2K Baby Tee — Butterfly Print', 18.0, 'S/M'), ('lst_006', 'Graphic Tee — 2003 Tour Bootleg Style', 24.0, 'L'), ('lst_017', 'Mesh Long-Sleeve Top — Black', 15.0, 'S/M'), ('lst_033', 'Vintage Band Tee — Faded Grey', 19.0, 'L'), ('lst_011', 'Low-Rise Cargo Pants — Khaki', 27.0, 'W29'), ('lst_015', 'Vintage Graphic Hoodie — Faded Black', 26.0, 'L')]
 
+$ python -c "from tools import search_listings; print(search_listings('designer ballgown', size='XXS', max_price=5))"
+[]
 ```
 
-```
-$ python -c "from tools import suggest_outfit; ..."
+Everything's under $30, and the empty case is `[]`. One thing I noticed: cargo pants show up for "graphic tee". That's because the search counts shared words, and the listing's text shares a word with the query. It's a plain keyword match, so it doesn't know the user wanted a top.
 
 ```
+$ python -c "from tools import suggest_outfit; from utils.data_loader import get_example_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_example_wardrobe()))"
+Outfit 1: Pair the Vintage Levi's 501 Jeans with the White ribbed tank top, the Black cropped zip hoodie worn unzipped on top, and finish the look with the Chunky white sneakers and the Black crossbody bag for an easy, casual streetwear vibe. 
+
+Outfit 2: Combine the Vintage Levi's 501 Jeans with the Oversized grey crewneck sweatshirt, add the Brown leather belt at the waist, and step into the Black combat boots. Layer the Vintage black denim jacket over the top for a cool, double-denim monochrome look.
+
+$ python -c "from tools import suggest_outfit; from utils.data_loader import get_empty_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_empty_wardrobe()))"
+These vintage Levi's 501s are a versatile wardrobe staple that easily bridges casual and smart-casual looks. For an effortless weekend outfit, pair them with a boxy white crewneck t-shirt, a classic black leather belt, and retro canvas sneakers in white or black. Layer a distressed oversized cardigan in oatmeal or forest green over top for texture and warmth. [...]
+```
+
+With a wardrobe, it names real pieces from it (white ribbed tank top, chunky white sneakers). With an empty wardrobe, it falls back to general advice, not an error.
 
 ```
-$ python -c "from tools import create_fit_card; ..."
+$ AI201_CACHE=0 python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[0]))"   # run 3 times
+Scored these vintage Levi's on Depop for just $38 and I'm literally never taking them off. Paired them with my go-to white sneakers for that effortless 90s off-duty look. Such a classic staple find that goes with literally everything.
+---
+Found these vintage Levi's on depop for just $38 and they instantly became my daily go-to. Paired them with crisp white sneakers for that effortlessly chill, classic 90s streetwear look. Honestly, nothing beats a broken-in pair of denim that actually fits right.
+---
+Scored these vintage Levi's on depop for just $38 and they honestly fit like a dream. Paired them with crisp white sneakers for that effortless, casual 90s look that never misses. Can't beat finding the perfect wash without spending a fortune.
 
+$ python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(repr(create_fit_card('   ', load_listings()[0])))"
+"Can't write a fit card without an outfit suggestion."
 ```
+
+I ran the fit card three times with the cache off. The three captions are worded differently, and each one has the price and platform. Two of them open with "Scored these", which is something to watch in Unit 4.
 
 ---
 
