@@ -122,9 +122,32 @@
 **One full query**
 
 ```
-$ python app.py ask '...'
+$ python app.py ask 'vintage graphic tee under $30, size M'
+
+  Found:    Y2K Baby Tee — Butterfly Print — $18.0 on depop
+
+  Outfit:   Outfit 1: Pair the Y2K Baby Tee with the baggy straight-leg jeans for a classic, balanced Y2K silhouette. Add the chunky white sneakers for a casual, everyday footwear choice, and accessorize with the black crossbody bag to complete the look. 
+
+Outfit 2: Tuck the Y2K Baby Tee into the wide-leg khaki trousers for a subtle mix of Y2K and cottagecore aesthetics. Layer the vintage black denim jacket over top for added warmth and edge, and finish the outfit with the black combat boots and the brown leather belt.
+
+  Fit card: Score this butterfly baby tee for just $18 on depop and I'm honestly obsessed with how cute it is. I've been living in these baggy jeans and chunky sneakers for that ultimate effortless Y2K vibe. It's giving major early 2000s nostalgia without trying too hard.
+```
+
+And the same loop with a query nothing can match (`python agent.py`, which runs `agent.py::run_agent`):
 
 ```
+=== A query it can't ===
+  stopped: No listings matched "designer ballgown", size XXS, under $5. Try one change at a time: drop the size XXS filter; or raise the $5 limit (listings start at $12); or use fewer or more common words, like a category (tee, jeans, jacket, dress, sneakers) or a style (vintage, y2k, 90s).
+  fit_card is None — it should still be None here
+```
+
+To check the state handoff, I wrapped `suggest_outfit` so it recorded the `id` of the item it was actually given, then compared that to the session:
+
+```
+selected_item: lst_002 | reached suggest_outfit: lst_002 | same: True
+```
+
+On the empty path, the session ends with `search_results: []`, and `selected_item`, `outfit_suggestion` and `fit_card` all stay `None`.
 
 **The three tools, tested one at a time**
 
