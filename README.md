@@ -43,6 +43,8 @@
 
 <!-- Three or four sentences: what a user asks for, and what they get back. -->
 
+You type what you're hunting for in plain words, like `vintage graphic tee under $30, size M`, and FitFindr searches 40 secondhand listings from Depop, thredUp and Poshmark for something that fits the description, the size and the budget. If it finds one, it takes the best match, works out one or two outfits with clothes you already own (or general styling ideas if your wardrobe is empty), and writes a short caption you could post with the fit. If nothing matches, it stops right there and tells you which filter to loosen, without making anything up.
+
 
 
 ---
@@ -200,15 +202,15 @@ I ran the fit card three times with the cache off. The three captions are worded
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* How `search_listings` should match sizes, after reading that the size field mixes `M`, `S/M`, `M/L`, `XL (oversized)`, `W30 L30`, `US 8.5` and `One Size`.
+- *What came back:* Claude suggested splitting the listing's size on anything that isn't a letter, digit or dot, and matching only whole parts, so `"s" in "us 9"` and `"l" in "xl"` (the two traps the starter warns about) can't happen. It asked me whether `S/M` and `M/L` should count as a match for M.
+- *What I changed:* I decided they should, since someone asking for M would want to see an S/M tee, and I made `One Size` match any size. Before it went into the spec, we ran the rule against all 22 sizes in the data: M → `M, M/L, S/M`, L → `L, L/XL, M/L`, 8 → `US 8` only.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I had Claude write the three tools and the loop in `tools.py` and `agent.py` from the Tool Inventory and branch rule in this README.
+- *What came back:* Working code. Running the tools one at a time showed two things I wouldn't have guessed. Cargo pants come back for "graphic tee", because a plain keyword search only counts shared words. And two of the three fit cards for the same jeans opened with "Scored these".
+- *What I changed:* I didn't just trust that the loop passed the right item along, so I wrapped `suggest_outfit` to record the `id` it actually received and checked it against `session["selected_item"]` (both `lst_002`). I left the cargo-pants and "Scored these" results as they are and wrote them down, because those are the kinds of things my criteria should catch in Unit 4.
 
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
