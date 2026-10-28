@@ -28,6 +28,9 @@ tool calls and returns a fit card — in at least 4 of 5 tries.
 <!-- Why 4 of 5 and not 5 of 5? Something about your search, probably —
      "my search is a plain keyword match and some phrasings will miss" is a
      real answer. -->
+Sometimes it will say it didn't find anything even when a matching listing
+exists, because my search only matches exact words, and a different wording
+can miss. So I'm not expecting 5 of 5.
 
 ---
 
@@ -39,6 +42,9 @@ Given a query that matches no listings, the agent stops before calling
 **Why this target:**
 <!-- Why is 5 of 5 reasonable here when criterion 1 isn't? What's different
      about this path? -->
+Stopping is the right thing to do when nothing matches. If the search comes
+back empty, the loop stops right there and doesn't call the other tools. No
+model is involved in that check, so it should happen every time.
 
 ---
 
@@ -54,10 +60,14 @@ Given a query that matches no listings, the agent stops before calling
      compares session["selected_item"] against what actually reached
      suggest_outfit is the shape you're after. -->
 
-
+Given a query that matches at least one listing, the `id` in
+`session["selected_item"]` is the same `id` as the item `suggest_outfit`
+actually received — in 5 of 5 tries.
 
 **Why this target:**
-
+The outfit has to be about the item the search actually found for that query,
+so it needs to be consistent every time. The item goes straight from the
+session into `suggest_outfit`, so nothing should be able to change it.
 
 
 ---
@@ -75,10 +85,14 @@ Given a query that matches no listings, the agent stops before calling
      sentence? A card longer than a caption anyone would post? Any of those can
      be turned into a number. -->
 
-
+Given a query that matches at least one listing, the fit card states the
+selected item's price (e.g. "$18") and names no brand unless the listing's
+`brand` field has one — in at least 4 of 5 tries.
 
 **Why this target:**
-
+Some clothes don't have a brand, so the model might make one up to fill the
+gap, or forget the price. The caption is written by a model, not by code, so I
+allow one miss out of five.
 
 
 ---
@@ -92,10 +106,14 @@ Given a query that matches no listings, the agent stops before calling
      search respects a price ceiling — anything, as long as it names a number
      or an observable outcome. -->
 
-
+Given a query with a price limit (e.g. "under $30"), every listing in
+`session["search_results"]` has a `price` at or below that limit — in 5 of 5
+tries.
 
 **Why this target:**
-
+The whole point is staying within budget, so a result over the limit is
+useless. The price check is a plain comparison in my code, not the model's
+judgment, so it should hold every time.
 
 
 ---
