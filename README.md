@@ -478,6 +478,10 @@ Two things I'd be careful about. It's five tries, and the miss was 2 in 5 before
 
 ---
 
+## Stretch — Retry With Looser Constraints
+
+**Declared before building.** When `search_listings` comes back empty and the query had a size, `agent.py::run_agent` will retry the search once without the size filter. If the retry finds something, the run carries on with that item, and the session and final output say plainly that the size was dropped (e.g. "Nothing in size MEDIUM, so I searched without the size filter"). If the retry is empty too, or there was no size to drop, the loop stops with the same "No listings matched…" message as before. It never retries more than once and never loosens the price. Why: in `notes_for_unit4.md`, `size medium hoodie` came back with nothing, even though hoodies are in the data. I'll show it in the trace and in a run log with a scenario that triggers the retry.
+
 ## What's Still Broken
 
 <!-- For each criterion still missed: what you'd do, and why you stopped where
