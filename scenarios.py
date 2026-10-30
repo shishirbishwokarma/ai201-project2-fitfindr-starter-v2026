@@ -29,24 +29,36 @@ SCENARIOS = [
         "criterion": 2,
     },
     {
+        # Criterion 3: the id in session["selected_item"] is the id that
+        # actually reached suggest_outfit. Any normal query works.
+        "name": "selected item reaches suggest_outfit",
+        "query": "flannel shirt under $25",
+        "wardrobe": "example",
+        "criterion": 3,
+    },
+    {
+        # Criterion 4: fit card states the price and names no other brand from
+        # the data. This item HAS a brand (Champion), so the card is allowed
+        # that one and no other.
+        "name": "fit card has price, no stray brand",
+        "query": "90s track jacket in size M",
+        "wardrobe": "example",
+        "criterion": 4,
+    },
+    {
+        # Criterion 5: every result is at or under the price limit.
+        "name": "results stay under the price limit",
+        "query": "denim jacket under $50",
+        "wardrobe": "example",
+        "criterion": 5,
+    },
+    {
         # A user with nothing saved. One of unit 4's three failure modes.
         "name": "empty wardrobe",
         "query": "denim jacket under $50",
         "wardrobe": "empty",
         "criterion": None,
     },
-    # TODO: add what your criteria 3, 4 and 5 need.
-    #
-    # Set "criterion" to the number in criteria.md that the scenario tests.
-    # "criterion": None means a diagnostic run — useful to have, but it isn't
-    # one of your five, and run_eval.py marks it as such in the table.
-    #
-    # For a state criterion, any normal query works — what you're checking is
-    # what ends up in the session, not what the user typed.
-    #
-    # For a fit-card criterion, you probably want the SAME query listed more
-    # than once, or several different items, depending on what your criterion
-    # actually says.
 ]
 
 WARDROBES = ("example", "empty")

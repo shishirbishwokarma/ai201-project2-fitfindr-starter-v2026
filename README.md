@@ -232,18 +232,62 @@ I ran the fit card three times with the cache off. The three captions are worded
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 1. Matching query completes all three tools | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. Impossible query stops before `suggest_outfit` | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. `selected_item` id = id `suggest_outfit` received | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. Fit card states the price, no stray brand (tee query) | 4 of 5 | FAIL | PASS | PASS | FAIL | PASS | MISSED (3/5) |
+| 5. Every result at or under the price limit | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
 
-**Real output from one try**, pasted as text, naming the file and function
-that produced it:
+Full log: `results/run_2026-10-30_0007_before.md`, written by `run_eval.py::main` (five tries per scenario, cache off, temperature 0.9). The queries are in `scenarios.py`. `run_eval.py` leaves PASS/FAIL blank, so I wrote `score_runs.py`, which runs `run_eval.py` unchanged and checks each try against `criteria.md` as worded. It also wraps `suggest_outfit` to record the `id` it actually received, which criterion 3 needs. The wrapper only records the argument and then calls the real function, so it doesn't change how the agent behaves.
 
+**About criterion 4's row.** The scenario I tagged for criterion 4 was `90s track jacket in size M` ($45, Champion), and that came out 5/5. But the criterion says *any* query that matches, and when I read every fit card from the run, the tee query from criterion 1 (`vintage graphic tee under $30`, the $18 Y2K Baby Tee) wrote the price as words twice. So the row above is the tee's five tries. Across all the matching-query scenarios, it held 5/5 on the jacket, the flannel and the denim jacket, and 3/5 on the tee.
+
+**Real output from one try per criterion:**
+
+Criterion 1, `run_eval.py::main`, scenario "matching query completes", try 2:
+```
+- stopped early: no
+- selected_item: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+- search_results: 6
+
+Fit card:
+Score this little butterfly baby tee for just $18 on Depop and I'm obsessed with how versatile it is. I've been living in it paired with baggy jeans and chunky sneakers for that ultimate early 2000s look, but it's also so cute dressed down with khaki trousers and combat boots. It's giving major nostalgic vibes and I already know I'm going to wear it with everything.
 ```
 
+Criterion 2, `run_eval.py::main`, scenario "impossible query stops early", try 1 (`score_runs.py`: `suggest_outfit calls: 0`):
 ```
+- stopped early: yes — No listings matched "designer ballgown", size XXS, under $5. Try one change at a time: drop the size XXS filter; or raise the $5 limit (listings start at $12); or use fewer or more common words, like a category (tee, jeans, jacket, dress, sneakers) or a style (vintage, y2k, 90s).
+- selected_item: (none)
+- search_results: 0
+```
+
+Criterion 3, `score_runs.py` over `agent.py::run_agent`, scenario "selected item reaches suggest_outfit", all five tries:
+```
+try 1: selected_item lst_003 / suggest_outfit got ['lst_003']
+try 2: selected_item lst_003 / suggest_outfit got ['lst_003']
+try 3: selected_item lst_003 / suggest_outfit got ['lst_003']
+try 4: selected_item lst_003 / suggest_outfit got ['lst_003']
+try 5: selected_item lst_003 / suggest_outfit got ['lst_003']
+```
+
+Criterion 4, `tools.py::create_fit_card`, tee query, try 1 (FAIL: the price is written as "eighteen bucks", not "$18") and try 4 (FAIL, same):
+```
+scored this butterfly baby tee on depop for just eighteen bucks and honestly it's giving the ultimate y2k streetwear energy. been living in it layered under my baggy denim and zip hoodie for that effortless everyday look.
+```
+```
+Score this butterfly baby tee on depop for just eighteen bucks and I'm honestly obsessed with how cute it is. I'm leaning into total 2000s mall-goth energy today by pairing it with baggy dark-wash jeans, a cropped zip hoodie, and chunky white sneakers. [...]
+```
+
+Criterion 5, `score_runs.py` over `agent.py::run_agent`, scenario "results stay under the price limit", all five tries:
+```
+try 1: limit $50, 7 results, max $45, over: none
+try 2: limit $50, 7 results, max $45, over: none
+try 3: limit $50, 7 results, max $45, over: none
+try 4: limit $50, 7 results, max $45, over: none
+try 5: limit $50, 7 results, max $45, over: none
+```
+
+The five tries really are five different answers, not the cache: every fit card in the log is worded differently.
 
 ---
 
