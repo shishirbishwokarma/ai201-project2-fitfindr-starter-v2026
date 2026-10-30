@@ -53,6 +53,14 @@ SCENARIOS = [
         "criterion": 5,
     },
     {
+        # Stretch: an empty search with a size retries once without it.
+        # "medium" isn't read as M, so the first search finds nothing.
+        "name": "retry without the size filter",
+        "query": "size medium hoodie",
+        "wardrobe": "example",
+        "criterion": None,
+    },
+    {
         # A user with nothing saved. One of unit 4's three failure modes.
         "name": "empty wardrobe",
         "query": "denim jacket under $50",

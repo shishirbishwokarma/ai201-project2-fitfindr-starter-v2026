@@ -47,6 +47,7 @@ def new_session(query: str, wardrobe: dict) -> dict:
         "outfit_suggestion": None,   # what suggest_outfit returned
         "fit_card": None,            # what create_fit_card returned
         "error": None,               # set when the run ended early
+        "dropped": None,             # stretch: the filter the retry left out, e.g. "size M"
     }
 
 
@@ -128,8 +129,12 @@ def run_agent(query: str, wardrobe: dict) -> dict:
                     "max_price": p["max_price"],
                 }
                 session["search_results"] = call_tool("search_listings", args)
-                # The branch: nothing found means stop here, before any model call.
-                if not session["search_results"]:
+                # The branch: nothing found means stop here, before any model
+                # call — unless there's a size to drop, in which case retry once.
+                if not session["search_results"] and p["size"]:
+                    next_step = "retry_without_size"
+                    note = f"branch: empty, but size {p['size']} was set, retrying once without it"
+                elif not session["search_results"]:
                     session["error"] = _no_results_message(p)
                     next_step = "done"
                     note = "branch: empty search, stopping before suggest_outfit"
@@ -138,6 +143,26 @@ def run_agent(query: str, wardrobe: dict) -> dict:
                     next_step = "outfit"
                     note = f"branch: {len(session['search_results'])} found, selected_item = first ({session['selected_item']['id']})"
                 trace.step("search_listings (via MCP)", inputs=f"call_tool('search_listings', {args})",
+                           returned=session["search_results"], note=note)
+
+            elif next_step == "retry_without_size":
+                p = session["parsed"]
+                session["dropped"] = f"size {p['size']}"
+                args = {"description": p["description"], "size": None, "max_price": p["max_price"]}
+                session["search_results"] = call_tool("search_listings", args)
+                if not session["search_results"]:
+                    session["error"] = (
+                        _no_results_message(p)
+                        + f" (I also tried again without the size {p['size']} filter and still found nothing.)"
+                    )
+                    next_step = "done"
+                    note = f"retry dropped {session['dropped']}: still empty, stopping before suggest_outfit"
+                else:
+                    session["selected_item"] = session["search_results"][0]
+                    next_step = "outfit"
+                    note = (f"retry dropped {session['dropped']}: {len(session['search_results'])} found, "
+                            f"selected_item = first ({session['selected_item']['id']}, size {session['selected_item']['size']})")
+                trace.step("search_listings (via MCP, retry)", inputs=f"call_tool('search_listings', {args})",
                            returned=session["search_results"], note=note)
 
             elif next_step == "outfit":
