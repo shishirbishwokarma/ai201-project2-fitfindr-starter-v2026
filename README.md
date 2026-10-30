@@ -294,14 +294,60 @@ that produced it:
 **Happy path**
 
 ```
-
+$ python app.py ask 'flannel shirt under $25' --trace
+[1] parse_query
+      in:  'flannel shirt under $25'
+      out: {'description': 'flannel shirt', 'size': None, 'max_price': 25.0}
+[2] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'flannel shirt', 'size': None, 'max_price': 25.0})
+      out: 2 items: Oversized Flannel Shirt — Plaid Red/Black, Vintage Polo Shirt — Forest Green
+      →    branch: 2 found, selected_item = first (lst_003)
+[3] suggest_outfit
+      in:  new_item=lst_003 (session['selected_item']), wardrobe=10 items
+      out: Outfit one: Layer the Oversized Flannel Shirt — Plaid Red/Black over the White ribbed tank top, paired with th…
+[4] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_003
+      out: Score this vintage Woolrich flannel on thredUp for just $22 and I am never taking it off. I've been living in …
 ```
 
 **Empty search**
 
 ```
+$ python app.py ask 'designer ballgown size XXS under $5' --trace
+[1] parse_query
+      in:  'designer ballgown size XXS under $5'
+      out: {'description': 'designer ballgown', 'size': 'XXS', 'max_price': 5.0}
+[2] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'designer ballgown', 'size': 'XXS', 'max_price': 5.0})
+      out: [] (empty)
+      →    branch: empty search, stopping before suggest_outfit
+
+  No listings matched "designer ballgown", size XXS, under $5. Try one change at a time: drop the size XXS filter; or raise the $5 limit (listings start at $12); or use fewer or more common words, like a category (tee, jeans, jacket, dress, sneakers) or a style (vintage, y2k, 90s).
+```
+
+The empty one stops after step 2, two steps shorter than the happy path, which is the branch doing its job. The trace calls are in `agent.py::run_agent`, one per step, and the MCP call is labelled `search_listings (via MCP)`.
+
+**The three failure modes, triggered on purpose**
+
+| Failure | How I triggered it | What the agent said | Handler |
+|---|---|---|---|
+| Empty search | `designer ballgown size XXS under $5` | The "No listings matched…" message above: it names the filters it used and what to loosen. | Already there from Unit 3: the branch in `run_agent` |
+| Empty wardrobe | `python app.py ask 'denim jacket under $50' --empty-wardrobe` | Found the Denim Jacket ($42, poshmark), then general advice: *"Pair this light wash cropped Wrangler jacket with a fitted black ribbed turtleneck, high-waisted wide-leg trousers in beige or olive green, and chunky white sneakers…"*, and a fit card. No crash, no empty string. | Already there: `tools.py::suggest_outfit` switches prompts when `wardrobe["items"]` is empty |
+| Model unavailable | Changed one character of `GEMINI_API_KEY` in `.env`, ran with `AI201_CACHE=0` so it couldn't answer from the cache, then put the key back | See below | **New this unit** |
+
+Before I added a handler, a bad key only got caught by `app.py`'s catch-all, which printed `ModelUnavailable: The model rejected your API key…`. No stack trace, but the agent lost its session and the message didn't say which step broke or that the search had worked. So I added `except ModelUnavailable` (and `except MCPError` for the search) inside `run_agent`, which puts a message in `session["error"]` and stops:
 
 ```
+[2] search_listings (via MCP)
+      ...
+      →    branch: 10 found, selected_item = first (lst_003)
+[3] suggest_outfit
+      →    ModelUnavailable, stopping: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.
+
+  The search worked and found Oversized Flannel Shirt — Plaid Red/Black ($22 on thredUp), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.
+```
+
+One thing I tripped over: my first bad-key run used a query that matched nothing, so it never reached the model, and the second one picked an item whose prompts were already cached. The model is only actually called with the cache off.
 
 **On the MCP move:** <!-- what changed in your code, and whether anything
 behaved differently afterwards. If the rewire didn't work, say exactly where it

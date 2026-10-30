@@ -17,7 +17,7 @@ import re
 
 import config
 import trace
-from mcp_client import call_tool
+from mcp_client import MCPError, call_tool
 from tools import suggest_outfit, create_fit_card
 from generate import ModelUnavailable
 
@@ -110,6 +110,7 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     """
     session = new_session(query, wardrobe)
     session["parsed"] = parse_query(query)
+    trace.step("parse_query", inputs=repr(query), returned=str(session["parsed"]))
 
     next_step = "search"
     count = 0
@@ -117,32 +118,71 @@ def run_agent(query: str, wardrobe: dict) -> dict:
         count += 1
         trace.check_iterations(count)
 
-        if next_step == "search":
-            p = session["parsed"]
-            # Unit 4: search_listings now runs on the MCP server (mcp_server.py).
-            session["search_results"] = call_tool("search_listings", {
-                "description": p["description"],
-                "size": p["size"],
-                "max_price": p["max_price"],
-            })
-            # The branch: nothing found means stop here, before any model call.
-            if not session["search_results"]:
-                session["error"] = _no_results_message(p)
+        try:
+            if next_step == "search":
+                p = session["parsed"]
+                # Unit 4: search_listings now runs on the MCP server (mcp_server.py).
+                args = {
+                    "description": p["description"],
+                    "size": p["size"],
+                    "max_price": p["max_price"],
+                }
+                session["search_results"] = call_tool("search_listings", args)
+                # The branch: nothing found means stop here, before any model call.
+                if not session["search_results"]:
+                    session["error"] = _no_results_message(p)
+                    next_step = "done"
+                    note = "branch: empty search, stopping before suggest_outfit"
+                else:
+                    session["selected_item"] = session["search_results"][0]
+                    next_step = "outfit"
+                    note = f"branch: {len(session['search_results'])} found, selected_item = first ({session['selected_item']['id']})"
+                trace.step("search_listings (via MCP)", inputs=f"call_tool('search_listings', {args})",
+                           returned=session["search_results"], note=note)
+
+            elif next_step == "outfit":
+                items = session["wardrobe"].get("items") or []
+                session["outfit_suggestion"] = suggest_outfit(
+                    session["selected_item"], session["wardrobe"]
+                )
+                trace.step(
+                    "suggest_outfit",
+                    inputs=f"new_item={session['selected_item']['id']} (session['selected_item']), wardrobe={len(items)} items",
+                    returned=session["outfit_suggestion"],
+                    note="empty wardrobe, general advice" if not items else "",
+                )
+                next_step = "fit_card"
+
+            elif next_step == "fit_card":
+                session["fit_card"] = create_fit_card(
+                    session["outfit_suggestion"], session["selected_item"]
+                )
+                trace.step(
+                    "create_fit_card",
+                    inputs=f"outfit=session['outfit_suggestion'], new_item={session['selected_item']['id']}",
+                    returned=session["fit_card"],
+                )
                 next_step = "done"
-            else:
-                session["selected_item"] = session["search_results"][0]
-                next_step = "outfit"
 
-        elif next_step == "outfit":
-            session["outfit_suggestion"] = suggest_outfit(
-                session["selected_item"], session["wardrobe"]
+        except ModelUnavailable as exc:
+            tool = "suggest_outfit" if next_step == "outfit" else "create_fit_card"
+            found = session["selected_item"]
+            session["error"] = (
+                f"The search worked and found {found['title']} (${found['price']:.0f} on "
+                f"{found['platform']}), but the AI model couldn't be reached for {tool}, "
+                f"so there's no outfit or fit card. The model said: {exc} "
+                "Fix the key in .env (or check your internet), then ask again."
             )
-            next_step = "fit_card"
+            trace.step(tool, note=f"ModelUnavailable, stopping: {exc}")
+            next_step = "done"
 
-        elif next_step == "fit_card":
-            session["fit_card"] = create_fit_card(
-                session["outfit_suggestion"], session["selected_item"]
+        except MCPError as exc:
+            session["error"] = (
+                "The listing search couldn't run, because the MCP server didn't answer. "
+                "Check that `python mcp_server.py` starts without an error, then ask again. "
+                f"Details: {str(exc).splitlines()[0]}"
             )
+            trace.step("search_listings (via MCP)", note="MCPError, stopping")
             next_step = "done"
 
     return session
