@@ -311,13 +311,17 @@ The five tries really are five different answers, not the cache: every fit card 
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Matching query completes all three tools | 4 of 5 | MET (5/5) | All five tries ended with a fit card and no error. Not close. |
+| 2 | Impossible query stops before `suggest_outfit` | 5 of 5 | MET (5/5) | All five stopped after the search, `suggest_outfit` was called 0 times, `fit_card` stayed `None`, and every message said what to drop or raise. |
+| 3 | Same `id` reaches `suggest_outfit` | 5 of 5 | MET (5/5) | The recorded argument was `lst_003` all five times, the same as `session["selected_item"]`. |
+| 4 | Fit card states the price, no stray brand | 4 of 5 | **MISSED (3/5)** | On the tee query, two cards said "eighteen bucks" and not "$18". My criterion gives "$18" as the example of stating the price, so I counted words as a fail. No card named a wrong brand. This was the closest call: the jacket scenario I'd tagged for criterion 4 passed 5/5, and I could have scored only that. But the criterion covers any matching query, and on this one it held 3 of 5, which is under 4. |
+| 5 | Every result at or under the price limit | 5 of 5 | MET (5/5) | All five tries returned 7 results, the most expensive $45 against a $50 limit. |
 
 **Diagnoses**
+
+**Criterion 4 — the model's output, in `tools.py::create_fit_card`.** The tool worked: it was called with the right item, and the card came back. What went wrong is in the prompt. It says *"casual, first person, like a real person posting their outfit"* and *"Mention the price ($18)"*, but nothing says the price has to be written as a dollar figure. Both misses were on the cheapest item in the run, the $18 tee. The jacket ($45), the flannel ($22) and the denim jacket ($42) came out as digits in all 20 of their cards. So it's one problem, not two: a casual voice plus a small, round number makes the model say it the way a person would out loud ("eighteen bucks"). Try 1 also lost its capital letters ("scored this butterfly baby tee…"), which is the same casual voice going a step further. The fix belongs in the prompt, not the loop or the session.
+
+**The four I met, honestly.** Criteria 2, 3 and 5 don't involve the model at all. The branch is an `if not results` check, the state is a dictionary read back out, and the price limit is a `>` comparison inside `search_listings`. So 5 of 5 was close to guaranteed, and they mostly prove the plumbing works. Criterion 1 is the one I set too easy, because of the query I picked to test it, not because of the target. `vintage graphic tee under $30` uses the same words as the listings. In `notes_for_unit4.md`, I found real listings that my agent can't find when you word the query like a person: `Levis jeans size 30` gets nothing, even though Levi's 501s in `W30 L30` are in the data, and `size medium hoodie` gets nothing because "medium" isn't read as `M`. If I ran criterion 1 on queries like those, I'd expect it to miss. That's the criterion I'd tighten: same 4 of 5, but tested on five different phrasings of items that are in the data, not one phrasing that copies the listing's words.
 
 
 
