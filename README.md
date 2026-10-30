@@ -308,6 +308,10 @@ behaved differently afterwards. If the rewire didn't work, say exactly where it
 broke — the error text and the last thing that worked. That earns the point in
 full. -->
 
+I moved `search_listings` onto MCP, because it's the one tool that doesn't call the model. In `mcp_server.py` it's registered under the same name with typed inputs (`description: str`, `size: str | None`, `max_price: float | None`), matching my Tool Inventory, plus a description written for someone who can't see my code, including the empty case. In `agent.py::run_agent`, the direct `search_listings(...)` call became `call_tool("search_listings", {...})` from `mcp_client.py`. `suggest_outfit` and `create_fit_card` are still called directly.
+
+Nothing behaved differently afterwards. I compared the two directly: `call_tool('search_listings', {'description': 'graphic tee', 'size': None, 'max_price': 30})` returns the same 6 listing dicts as calling the function (`same as direct: True`), and the impossible query still comes back as `[]`, so the branch still works. The one difference you can feel is speed: every call now starts the server, asks, and shuts it down again.
+
 
 
 ---
