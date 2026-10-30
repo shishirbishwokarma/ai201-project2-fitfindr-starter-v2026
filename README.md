@@ -212,6 +212,18 @@ I ran the fit card three times with the cache off. The three captions are worded
 - *What came back:* Working code. Running the tools one at a time showed two things I wouldn't have guessed. Cargo pants come back for "graphic tee", because a plain keyword search only counts shared words. And two of the three fit cards for the same jeans opened with "Scored these".
 - *What I changed:* I didn't just trust that the loop passed the right item along, so I wrapped `suggest_outfit` to record the `id` it actually received and checked it against `session["selected_item"]` (both `lst_002`). I left the cargo-pants and "Scored these" results as they are and wrote them down, because those are the kinds of things my criteria should catch in Unit 4.
 
+**Unit 4 — Moment 3**
+
+- *What I asked for:* For Claude to run my five criteria five times each and score every try.
+- *What came back:* `run_eval.py` leaves PASS/FAIL blank, so Claude wrote `score_runs.py` to check each try against `criteria.md` as worded. It said every criterion was 5/5. Then it read all 25 fit cards and pointed out that two cards for the $18 tee said "eighteen bucks". The script had passed criterion 4 only because I'd tagged the $45 Champion jacket scenario for it.
+- *What I changed:* I had to decide whether that counted. I chose MISSED (3/5), because my criterion says *any* query that matches, not only the scenario I happened to tag, and the brief warns against the generous reading. I had the script check criterion 4 on the tee's tries too, so the after run would be scored the same way. That miss became my diagnosis and my one improvement.
+
+**Unit 4 — Moment 4**
+
+- *What I asked for:* The MCP move, the three failure modes, and a trace, built by Claude.
+- *What came back:* `search_listings` on MCP, returning exactly what the direct call did (`same as direct: True`), plus a `ModelUnavailable` handler and `trace.step()` calls in `run_agent`. The first two bad-key tests didn't actually test anything. One query matched nothing, so it never reached the model. The other picked an item whose prompts were already cached.
+- *What I changed:* We re-ran the bad-key test with `AI201_CACHE=0` and a query that matches, so the model really was called and the handler really fired. I also had the trace show the actual call and values, not `dict with keys: …`, because the first version hid exactly the thing a trace is for.
+
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 3.
@@ -471,6 +483,16 @@ Two things I'd be careful about. It's five tries, and the miss was 2 in 5 before
 <!-- For each criterion still missed: what you'd do, and why you stopped where
      you did. "I ran out of time" is fine if it's true. Pretending nothing is
      left is not. -->
+
+After the fix, none of my five criteria are missed. But that's partly because four of them test plumbing that was always going to work, and the problems I know about are ones my criteria don't reach:
+
+**The search can't find things that are really there.** From `notes_for_unit4.md`: `Levis jeans size 30` returns nothing, even though Levi's 501s in `W30 L30` are in the data. `size medium hoodie` returns nothing, because "medium" never becomes `M`. `black boots` returns a flannel shirt, because a color word counts as much as the item. These sit in two places: `agent.py::parse_query` only takes sizes in the data's exact format, and `tools.py::search_listings` scores every shared word the same and compares whole words exactly. I'd fix the size first, mapping "small/medium/large" to S/M/L and a bare number to `W30` for jeans, because that one turns a real match into "no results". I stopped because the unit allows one improvement, and the measured miss was criterion 4. My criterion 1 test query copied the listing's own words, so it never caught these. Testing criterion 1 on five real phrasings would.
+
+**The fit card prompt fix has a side effect.** One of the five tee cards after the change says "Outfit one… outfit two…", copying the outfit text into the caption. It passes criterion 4, but it reads like a summary, not a post. I'd add a line telling the model not to refer to the outfits by number, then run five tries again. I didn't, because that would be a second change in a unit that asks for one, and I'd lose the clean before/after.
+
+**Criterion 4 only checks the brand against six names.** The check passes as long as none of Champion, Demonia, Levi's, Ralph Lauren, Woolrich or Wrangler appears where it shouldn't. A model that made up a brand that isn't in the data, like "Nike", would still pass. No card did that in 50, but my test couldn't have caught it.
+
+**Model unavailable still costs a full search first.** With a bad key, the agent runs the search and only finds out at `suggest_outfit`. The message is clear about that, but checking the key before searching would save the user a step. I left it, because the handler does what this unit asks.
 
 
 
