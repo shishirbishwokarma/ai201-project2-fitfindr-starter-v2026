@@ -417,24 +417,50 @@ Nothing behaved differently afterwards. I compared the two directly: `call_tool(
 
      `python run_eval.py --label after` -->
 
-**What I changed:**
+**What I changed:** One sentence of the prompt in `tools.py::create_fit_card`. Before, it said:
 
-**Which failure it was meant to fix:**
+```
+Mention the price ($18) and the platform (depop) once each.
+```
+
+Now it says:
+
+```
+Mention the price once, written exactly as $18 with the dollar sign and digits, never spelled out in words. Mention the platform (depop) once.
+```
+
+Nothing else changed: same scenarios, same scoring script, same temperature (0.9), cache off.
+
+**Which failure it was meant to fix:** Criterion 4's miss. The casual-voice prompt let the model write the $18 tee's price as "eighteen bucks" in 2 of 5 cards, because it was told to mention the price but not how to write it.
 
 ### Run Log — After
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 1. Matching query completes all three tools | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. Impossible query stops before `suggest_outfit` | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. `selected_item` id = id `suggest_outfit` received | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. Fit card states the price, no stray brand (tee query) | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. Every result at or under the price limit | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+
+Full log: `results/run_2026-10-30_0016_after.md` (`run_eval.py::main`), scored with `score_runs.py`. Criterion 4's row is the tee again, same as before. The jacket scenario was 5/5 again too.
+
+Criterion 4, tee query, try 1 and try 4 after the change (the two tries that failed before):
+```
+scored this butterfly baby tee on depop for $18 and I am so obsessed with the nostalgic Y2K vibe. Outfit one leans into that casual everyday look with baggy denim and chunky sneakers, while outfit two mixes in my black denim jacket and wide-leg trousers for a slightly tougher edge. [...]
+```
+```
+Still obsessed with this butterfly baby tee I found on depop for only $18. I've been styling it with everything from baggy jeans for that ultimate early 2000s look to wide-leg trousers for a softer, vintage vibe. [...]
+```
 
 **Did it help, and how do I know:**
 
 <!-- If it made things worse, say that. Honestly reported, that earns full
      credit and is more interesting than one that worked. -->
+
+Yes, for the thing it was aimed at. Criterion 4 on the tee went from **3/5 (MISSED) to 5/5 (MET)**, and across all 25 fit cards in the after run, none writes the price in words. Before, 2 of the 5 tee cards did. The other four criteria stayed at 5/5, which is what I'd expect, since the change only touches the fit card prompt.
+
+Two things I'd be careful about. It's five tries, and the miss was 2 in 5 before, so a clean 5/5 is good evidence but not proof it can never happen again. And the casual voice is mostly still there, but tee try 1 now says *"Outfit one leans into… while outfit two mixes in…"*, which copies the outfit suggestion's wording into the caption. It passes my criterion, but it reads less like something a person would post. The stricter prompt may have pushed the model toward following the input more literally. That one didn't happen before the change.
 
 
 

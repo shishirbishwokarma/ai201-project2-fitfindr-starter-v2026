@@ -245,8 +245,9 @@ def create_fit_card(outfit: str, new_item: dict) -> str:
         f"How they plan to wear it:\n{outfit}\n\n"
         "Write a caption for a social post about this thrift find. Two to four "
         "sentences, casual, first person, like a real person posting their "
-        f"outfit, not a product description. Mention the price (${new_item['price']:.0f}) "
-        f"and the platform ({new_item['platform']}) once each. {brand_rule} "
+        f"outfit, not a product description. Mention the price once, written "
+        f"exactly as ${new_item['price']:.0f} with the dollar sign and digits, never "
+        f"spelled out in words. Mention the platform ({new_item['platform']}) once. {brand_rule} "
         "Be specific about the vibe of the outfit. No hashtags. Return only the caption."
     )
     return generate(prompt).strip()
