@@ -963,7 +963,7 @@ RUNLOG {"ts": "2026-11-18T06:41:43.892+00:00", "request_id": "fa4bf525", "route"
 | | Local (Path B) | Hosted (Render free) |
 |---|---|---|
 | Status codes | all correct | all correct in all three sessions (10 × 200 fit card, 1 × 200 no results, 2 × 400) |
-| Normal query, client time, median | about 2–7 s (varies with the model) | 11.0 s, 17.1 s, 6.5 s in sessions 1–3 |
+| Normal query, client time, median | about 2–7 s (varies with the model) | 10.8 s, 16.9 s, 6.5 s in sessions 1–3 |
 | Impossible query (search only, no model) | 0.46 s | 10.5, 10.6, 10.8 s |
 | `search` stage | ~250 ms | **4,814 ms** in the record above |
 | Bad input (400, never reaches the agent) | < 0.01 s | 0.14–0.29 s, which is just the network round trip |
