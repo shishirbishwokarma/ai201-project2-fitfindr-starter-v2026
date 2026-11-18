@@ -612,6 +612,10 @@ Out of scope, on purpose:
 
 **Stretch (declared before building): latency breakdown.** Each log record will also carry how long each stage took (`parse`, `search` over MCP, `suggest_outfit`, `create_fit_card`), so I can say where the time in one run actually goes, measured rather than guessed.
 
+**Stretch (declared before building, added after the criteria were committed and while the before run was going): a second measured improvement and a load observation.**
+- *Second improvement:* after the first improvement and its after run, a second change aimed at a different miss. Expected: criterion 4, which I already know fails, since a broken key comes back as HTTP 200. The change would make `serve.py` return 503 when the agent stopped on `model_unavailable`. Then a third run log, three trials, the same table.
+- *Load observation:* my normal rate is one request at a time, each sent after the last one answers. At ten times that, 10 matching requests are sent at once. I'll report what changed against a one-at-a-time batch: end-to-end latency, time spent queued for the lock (`wait_ms`), errors, and tokens per run, all from the log.
+
 **Running It**
 
 Path B, local with logs. One command, from the repo root: `AI201_CACHE=0 PORT=5055 .venv/bin/python serve.py`, then `POST /ask` with `{"query": "..."}`. Everything else (Python version, the pinned `requirements-lock.txt`, the key, measured memory, and a note from cloning it into an empty folder and following my own instructions) is in [RUNNING.md](RUNNING.md), under *Capstone run path*. I didn't try a host: FitFindr starts `mcp_server.py` as a second Python process on every search, and I'd rather spend the time on the test half.
