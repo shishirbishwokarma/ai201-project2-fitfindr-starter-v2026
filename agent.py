@@ -14,6 +14,7 @@ Build and test your three tools in `tools.py` first. Then come here.
 """
 
 import re
+import time
 
 import config
 import trace
@@ -48,6 +49,8 @@ def new_session(query: str, wardrobe: dict) -> dict:
         "fit_card": None,            # what create_fit_card returned
         "error": None,               # set when the run ended early
         "dropped": None,             # stretch: the filter the retry left out, e.g. "size M"
+        "error_kind": None,          # capstone: no_results / model_unavailable / mcp_error
+        "timings_ms": {},            # capstone: how long each stage took, for the log
     }
 
 
@@ -110,7 +113,9 @@ def run_agent(query: str, wardrobe: dict) -> dict:
         than a stack trace. The import is already at the top of this file.
     """
     session = new_session(query, wardrobe)
+    t0 = time.perf_counter()
     session["parsed"] = parse_query(query)
+    session["timings_ms"]["parse"] = round((time.perf_counter() - t0) * 1000, 1)
     trace.step("parse_query", inputs=repr(query), returned=str(session["parsed"]))
 
     next_step = "search"
@@ -119,6 +124,8 @@ def run_agent(query: str, wardrobe: dict) -> dict:
         count += 1
         trace.check_iterations(count)
 
+        stage = next_step
+        t_stage = time.perf_counter()
         try:
             if next_step == "search":
                 p = session["parsed"]
@@ -136,6 +143,7 @@ def run_agent(query: str, wardrobe: dict) -> dict:
                     note = f"branch: empty, but size {p['size']} was set, retrying once without it"
                 elif not session["search_results"]:
                     session["error"] = _no_results_message(p)
+                    session["error_kind"] = "no_results"
                     next_step = "done"
                     note = "branch: empty search, stopping before suggest_outfit"
                 else:
@@ -155,6 +163,7 @@ def run_agent(query: str, wardrobe: dict) -> dict:
                         _no_results_message(p)
                         + f" (I also tried again without the size {p['size']} filter and still found nothing.)"
                     )
+                    session["error_kind"] = "no_results"
                     next_step = "done"
                     note = f"retry dropped {session['dropped']}: still empty, stopping before suggest_outfit"
                 else:
@@ -198,6 +207,7 @@ def run_agent(query: str, wardrobe: dict) -> dict:
                 f"so there's no outfit or fit card. The model said: {exc} "
                 "Fix the key in .env (or check your internet), then ask again."
             )
+            session["error_kind"] = "model_unavailable"
             trace.step(tool, note=f"ModelUnavailable, stopping: {exc}")
             next_step = "done"
 
@@ -207,8 +217,15 @@ def run_agent(query: str, wardrobe: dict) -> dict:
                 "Check that `python mcp_server.py` starts without an error, then ask again. "
                 f"Details: {str(exc).splitlines()[0]}"
             )
+            session["error_kind"] = "mcp_error"
             trace.step("search_listings (via MCP)", note="MCPError, stopping")
             next_step = "done"
+
+        finally:
+            # Capstone: time per stage. A stage that raised still took time.
+            ms = (time.perf_counter() - t_stage) * 1000
+            timings = session["timings_ms"]
+            timings[stage] = round(timings.get(stage, 0.0) + ms, 1)
 
     return session
 
