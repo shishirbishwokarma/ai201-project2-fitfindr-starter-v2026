@@ -169,11 +169,15 @@ def ask():
         # else moves them, so before/after is exactly this request's usage.
         calls0, hits0 = generate.call_count(), generate.cache_hit_count()
         tokens0 = generate.token_counts()
+        waits0 = generate.wait_totals()
         try:
             session = run_agent(query, wardrobe)
         except Exception as exc:  # noqa: BLE001 — a 500 with a sentence beats a hang
             failure = f"{type(exc).__name__}: {exc}"
         tokens1 = generate.token_counts()
+        waits1 = generate.wait_totals()
+        record["rate_limit_wait_ms"] = round((waits1["limiter_s"] - waits0["limiter_s"]) * 1000, 1)
+        record["model_wait_ms"] = round((waits1["model_s"] - waits0["model_s"]) * 1000, 1)
         record["model_calls"] = generate.call_count() - calls0
         record["cache_hits"] = generate.cache_hit_count() - hits0
         record["prompt_tokens"] = tokens1["prompt"] - tokens0["prompt"]

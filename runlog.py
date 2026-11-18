@@ -24,6 +24,9 @@ Fields (every record has all of them; ones that don't apply are null):
     error           the message the user got, or null
     duration_ms     arrival → response built, end to end, including any wait
     wait_ms         time spent queued behind another request (the lock)
+    rate_limit_wait_ms  time generate.py slept for the rate limiter (own
+                    pacing + 429 backoff) during this request   [improvement]
+    model_wait_ms   time spent inside the model API call itself [improvement]
     stages_ms       {parse, search, retry_without_size, outfit, fit_card}
     model_calls     real calls made to the model during this request
     cache_hits      answers served from .cache instead of the model
@@ -47,7 +50,8 @@ LOG_PATH = Path(os.getenv("AI201_LOG", config.ROOT / "logs" / "requests.jsonl"))
 FIELDS = (
     "ts", "request_id", "route", "status", "outcome", "query", "parsed",
     "wardrobe_items", "selected_id", "selected_price", "dropped", "fit_card",
-    "error", "duration_ms", "wait_ms", "stages_ms", "model_calls", "cache_hits",
+    "error", "duration_ms", "wait_ms", "rate_limit_wait_ms", "model_wait_ms",
+    "stages_ms", "model_calls", "cache_hits",
     "prompt_tokens", "output_tokens", "total_tokens", "model",
 )
 

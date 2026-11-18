@@ -43,6 +43,9 @@ _prompt_tokens = 0
 _output_tokens = 0
 _client = None
 _budget_warned = False
+# Capstone improvement: where a model call's time goes. Seconds, session totals.
+_limiter_wait_s = 0.0   # slept in _wait_for_slot or in a 429 backoff
+_model_s = 0.0          # inside client.models.generate_content
 
 
 class QuotaGuard(Exception):
@@ -118,6 +121,8 @@ def _wait_for_slot() -> None:
                 file=sys.stderr,
                 flush=True,
             )
+        global _limiter_wait_s
+        _limiter_wait_s += sleep_for
         time.sleep(sleep_for)
         _call_times[:] = [t for t in _call_times if time.monotonic() - t < 60.0]
 
@@ -154,6 +159,16 @@ def usage() -> str:
 
 def call_count() -> int:
     return _session_calls
+
+
+def wait_totals() -> dict:
+    """
+    Capstone improvement: seconds this session spent waiting on the rate
+    limiter (our own pacing plus 429 backoff) versus inside the API call.
+    serve.py differences these per request, so a slow request's log record
+    says which of the two it was.
+    """
+    return {"limiter_s": _limiter_wait_s, "model_s": _model_s}
 
 
 def cache_hit_count() -> int:
@@ -317,7 +332,12 @@ def generate(
                 "config": call_config,
             }
 
-            response = client.models.generate_content(**kwargs)
+            global _model_s
+            t_model = time.perf_counter()
+            try:
+                response = client.models.generate_content(**kwargs)
+            finally:
+                _model_s += time.perf_counter() - t_model
             _record_tokens(response)
             text = (response.text or "").strip()
 
@@ -343,6 +363,8 @@ def generate(
                 file=sys.stderr,
                 flush=True,
             )
+            global _limiter_wait_s
+            _limiter_wait_s += backoff
             time.sleep(backoff)
 
     raise RuntimeError(
