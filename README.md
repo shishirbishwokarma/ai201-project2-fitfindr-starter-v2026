@@ -947,3 +947,28 @@ I used Claude (in VS Code, through Claude Code) for most of the building and tes
 **Moment 2: pushing for more passes, and what I didn't change.** After the before run, four of five were missed, and I asked Claude to fix criterion 3 and then criterion 5 so I'd have more than one pass. Claude said the honest way to do that was to fix the system, not the targets: lowering criterion 2's 5 s to whatever I got would be the kind of revision the brief says doesn't count. It pointed out that 4 and 5 had the same cause in my diagnosis (`serve.py` only deciding the status by whether the agent raised), so one change could address both. So I made the first improvement for criterion 3 and the second for 4 and 5, and left criterion 2 missed. The first improvement also corrected Claude's first diagnosis: it had blamed the rate limiter for criterion 2 based on the terminal output, and once the log recorded model time separately, 23 of 27 slow requests turned out to be the model. I kept both diagnoses in this README instead of rewriting the first one, because the change is the evidence that the log works.
 
 **What I checked myself:** that criteria.md was committed before any results (`git log` shows `4adfaf7` before `d814f19`), that the pasted log lines are real lines from the files named, and that the verdicts follow from my own targets.
+
+**Also Hosted — Render (not declared as a stretch in advance)**
+
+After submitting the local Path B, I also deployed FitFindr to Render: https://ai201-project2-fitfindr-starter-v2026-7uyk.onrender.com. How it got there is in [RUNNING.md](RUNNING.md), under *Also hosted — Render*. I'm being clear that this **wasn't declared as a stretch before I built it**. I wrote `render.yaml` before the README said I'd host it, so I'm not claiming the "both run paths" stretch. It's here as a second run record and a note on what differed.
+
+Three hosted sessions, each the same 13 requests (10 matching, 1 impossible, 2 bad inputs). The client side (status, seconds, `X-Request-Id`) is in `results/capstone/hosted/client.txt`, `client2.txt` and `client3.txt`. A server-side record from session 3, copied from Render's log stream (`runlog.py::write` with `AI201_LOG_STDOUT=1`):
+
+```
+RUNLOG {"ts": "2026-11-18T06:41:43.892+00:00", "request_id": "fa4bf525", "route": "/ask", "status": 200, "outcome": "fit_card", "query": "platform sneakers size 8", "parsed": {"description": "platform sneakers", "size": "8", "max_price": null}, "wardrobe_items": 10, "selected_id": "lst_019", "selected_price": 48.0, "dropped": null, "fit_card": "Score these chunky white platform sneakers on Poshmark for just $48 and I've already worn them nonstop. They give the ultimate 90s streetwear vibe when I pair them with baggy jeans and a vintage denim jacket. Such an easy way to elevate a casual fit without trying too hard.", "error": null, "duration_ms": 6316.8, "wait_ms": 0.0, "rate_limit_wait_ms": 0.0, "model_wait_ms": 1501.6, "stages_ms": {"parse": 0.0, "search": 4813.8, "outfit": 805.6, "fit_card": 697.0}, "model_calls": 2, "cache_hits": 0, "prompt_tokens": 508, "output_tokens": 160, "total_tokens": 668, "model": "gemini-3.5-flash-lite"}
+```
+
+**What differed between local and hosted:**
+
+| | Local (Path B) | Hosted (Render free) |
+|---|---|---|
+| Status codes | all correct | all correct in all three sessions (10 × 200 fit card, 1 × 200 no results, 2 × 400) |
+| Normal query, client time, median | about 2–7 s (varies with the model) | 11.0 s, 17.1 s, 6.5 s in sessions 1–3 |
+| Impossible query (search only, no model) | 0.46 s | 10.5, 10.6, 10.8 s |
+| `search` stage | ~250 ms | **4,814 ms** in the record above |
+| Bad input (400, never reaches the agent) | < 0.01 s | 0.14–0.29 s, which is just the network round trip |
+| Python / dependencies | 3.13.16, `requirements-lock.txt` | 3.14.10 and `requirements.txt`, because my Render settings didn't take |
+| Where the log survives | `logs/requests.jsonl` | only the `RUNLOG` lines in Render's log stream; the file is wiped when the instance sleeps |
+| Setup time | one command after cloning | about 30 minutes, mostly getting the environment variables and the redeploy right |
+
+**The main difference is the search, not the model.** In the hosted record the two model calls took 806 and 697 ms, normal for this model, but `search` took 4.8 s, about 19 times longer than on my laptop. The impossible query (search only, twice, with the size retry) took over 10 s every time. The cause is what `serve.py`'s comments warned about: `mcp_client.call_tool` starts `mcp_server.py` as a brand-new Python process on every search, and on the free instance's small share of CPU, starting Python and importing the MCP SDK takes seconds. On a host, keeping one MCP server process alive across requests would matter more than anything I did to the model calls.

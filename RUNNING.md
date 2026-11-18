@@ -1,5 +1,38 @@
 # Running FitFindr
 
+## Also hosted — Render (Path A)
+
+**URL:** https://ai201-project2-fitfindr-starter-v2026-7uyk.onrender.com
+(`GET /health`, `POST /ask`. `/` itself is a 404 on purpose: there's no page there.)
+
+**Platform:** Render, free web service, created by hand from this GitHub repo
+(Render dashboard → New → Web Service → this repo, branch `main`):
+
+| Setting | Value |
+|---|---|
+| Start command | `gunicorn serve:app --workers 1 --timeout 120 --bind 0.0.0.0:$PORT` |
+| Build command | `pip install -r requirements.txt` (what actually ran; `requirements-lock.txt` is what `render.yaml` asks for) |
+| Environment | `GEMINI_API_KEY` (pasted into Render, never committed), `AI201_CACHE=0`, `AI201_LOG_STDOUT=1` |
+| Python | **3.14.10**, Render's default. `PYTHON_VERSION=3.13.16` didn't take effect in the deploys I checked |
+
+`render.yaml` in the repo has the same settings as a Blueprint. `AI201_LOG_STDOUT=1`
+makes `runlog.py` also print each record as a `RUNLOG {...}` line, because the
+free instance's disk (and `logs/requests.jsonl` on it) is wiped when it sleeps.
+The Logs tab is where the records survive, so search it for `RUNLOG`.
+
+Ask it something:
+
+```bash
+curl -s -X POST https://ai201-project2-fitfindr-starter-v2026-7uyk.onrender.com/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "vintage graphic tee under $30"}'
+```
+
+The first request after about 15 minutes of nobody using it wakes the instance,
+which takes about a minute.
+
+---
+
 ## Capstone run path — Path B, local with logs
 
 FitFindr runs as a local HTTP server. **One command starts it** (from the repo
