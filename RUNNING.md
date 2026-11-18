@@ -1,5 +1,93 @@
 # Running FitFindr
 
+FitFindr takes a plain-English request for a secondhand clothing item (what,
+size, budget) and returns the best matching listing, an outfit built from a
+sample wardrobe, and a short social-media caption, as JSON.
+
+## Try it — start here
+
+### Fastest: the hosted version (no setup, no key)
+
+It's live on Render. If nobody has used it for 15 minutes, the **first request
+takes about a minute** while it wakes up; after that, about 5–20 s each.
+
+macOS / Linux:
+
+```bash
+curl -s -X POST https://ai201-project2-fitfindr-starter-v2026-7uyk.onrender.com/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "vintage graphic tee under $30"}'
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-RestMethod -Method Post -Uri https://ai201-project2-fitfindr-starter-v2026-7uyk.onrender.com/ask -ContentType 'application/json' -Body '{"query": "vintage graphic tee under $30"}'
+```
+
+Opening the bare URL in a browser shows "Not Found". That's expected: the
+only routes are `POST /ask` and `GET /health`.
+
+### On your own machine (about 3 minutes)
+
+You need **Python 3.11, 3.12 or 3.13** (not 3.14), git, and a free Gemini API
+key from **https://aistudio.google.com** (sign in → Get API key → Create API
+key).
+
+macOS / Linux:
+
+```bash
+git clone https://github.com/shishirbishwokarma/ai201-project2-fitfindr-starter-v2026.git fitfindr
+cd fitfindr
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-lock.txt
+cp .env.example .env
+# open .env and change the line to:  GEMINI_API_KEY=YOUR_API_KEY   (your real key, never commit it)
+AI201_CACHE=0 PORT=5055 .venv/bin/python serve.py
+```
+
+Windows (PowerShell):
+
+```powershell
+git clone https://github.com/shishirbishwokarma/ai201-project2-fitfindr-starter-v2026.git fitfindr
+cd fitfindr
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements-lock.txt
+copy .env.example .env
+# open .env and change the line to:  GEMINI_API_KEY=YOUR_API_KEY
+$env:AI201_CACHE="0"; $env:PORT="5055"; .venv\Scripts\python serve.py
+```
+
+It's running when it prints `FitFindr is listening on http://localhost:5055`.
+Leave that window open, and send requests from a second terminal: the same
+commands as above with `http://localhost:5055/ask` as the URL.
+
+### Things to try
+
+Send each one as `{"query": "..."}`:
+
+| Query | What should happen |
+|---|---|
+| `vintage graphic tee under $30` | 200: a $18 butterfly tee, an outfit and a caption |
+| `90s track jacket in size M` | 200: a track jacket |
+| `size medium hoodie` | 200: "medium" isn't read as M, so it retries without the size and says so (`dropped`) |
+| `designer ballgown size XXS under $5` | 200 with `error` saying which filter to loosen, and no outfit |
+| `{"query": ""}` | 400: missing query |
+| `{"query": "tee", "wardrobe": {"items": "x"}}` | 400: bad wardrobe (this used to be a 500) |
+| a query over 500 characters | 400: too long |
+
+Every request, including the 400s, adds one line to `logs/requests.jsonl`.
+Read the last few with `.venv/bin/python log_summary.py --tail 3`
+(Windows: `.venv\Scripts\python log_summary.py --tail 3`).
+
+| If you see | It means |
+|---|---|
+| `No GEMINI_API_KEY found` / `rejected your API key` | `.env` is missing or the key is wrong |
+| `[rate limit] … Waiting Ns` | Normal: the free tier allows 15 model calls a minute |
+| A response with `"error_kind": "model_unavailable"` and status 503 | The model couldn't be reached: check the key or the internet |
+
+---
+
 ## Also hosted — Render (Path A)
 
 **URL:** https://ai201-project2-fitfindr-starter-v2026-7uyk.onrender.com
@@ -84,7 +172,7 @@ else (the capstone trials do this, one file per trial, under `results/capstone/`
 empty folder and following exactly these lines):
 
 ```bash
-git clone <this repo> fitfindr && cd fitfindr
+git clone https://github.com/shishirbishwokarma/ai201-project2-fitfindr-starter-v2026.git fitfindr && cd fitfindr
 python3.13 -m venv .venv
 .venv/bin/python -m pip install -r requirements-lock.txt
 cp .env.example .env            # then paste your GEMINI_API_KEY into .env
