@@ -58,15 +58,18 @@ def summarise(rows):
         print(f"  per full run, cache off:  {mean('model_calls'):.2f} model calls, "
               f"{mean('prompt_tokens'):.0f} prompt + {mean('output_tokens'):.0f} output "
               f"= {mean('total_tokens'):.0f} tokens, {mean('duration_ms')/1000:.2f} s")
-        stages = {}
+        # A stage a run didn't reach (e.g. the size retry) counts as 0 ms for
+        # that run, so every stage is averaged over the same set of runs.
+        names = []
         for r in real:
-            for k, v in (r["stages_ms"] or {}).items():
-                stages.setdefault(k, []).append(v)
+            names += [k for k in (r["stages_ms"] or {}) if k not in names]
+        stages = {k: [(r["stages_ms"] or {}).get(k, 0.0) for r in real] for k in names}
         total = sum(statistics.mean(v) for v in stages.values())
-        print("  where the time goes (mean ms, share of stage time):")
+        print(f"  where the time goes, over {len(real)} runs:")
+        print(f"    {'stage':<20}{'mean ms':>8}{'median':>8}{'share':>7}")
         for k, v in stages.items():
             m = statistics.mean(v)
-            print(f"    {k:<20}{m:>8.0f}  {m/total:>5.0%}")
+            print(f"    {k:<20}{m:>8.0f}{statistics.median(v):>8.0f}{m/total:>7.0%}")
         waits = [r["wait_ms"] or 0 for r in real]
         print(f"    {'(queued for lock)':<20}{statistics.mean(waits):>8.0f}")
 
