@@ -1,5 +1,66 @@
 # Running FitFindr
 
+## Capstone run path — Path B, local with logs
+
+FitFindr runs as a local HTTP server. **One command starts it** (from the repo
+root, after the one-time setup below):
+
+```bash
+AI201_CACHE=0 PORT=5055 .venv/bin/python serve.py
+```
+
+- `AI201_CACHE=0` turns the response cache off, so every request makes real
+  model calls and the tokens and times in the log are real ones.
+- `PORT=5055` because on macOS port 5000 is taken by the AirPlay Receiver,
+  which answers with a 403 that looks exactly like a broken app.
+
+Ask it something from a second terminal:
+
+```bash
+curl -s -X POST http://localhost:5055/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "vintage graphic tee under $30"}'
+curl -s http://localhost:5055/health
+```
+
+Every `/ask` request appends one JSON line to **`logs/requests.jsonl`**,
+including 400s, empty searches, model failures and crashes. The fields are
+listed at the top of `runlog.py`. Read it back:
+
+```bash
+.venv/bin/python log_summary.py            # outcomes, latency, tokens, stage times
+.venv/bin/python log_summary.py --tail 12  # the last 12 records as JSON
+```
+
+Set `AI201_LOG=some/other/file.jsonl` to send a session's records somewhere
+else (the capstone trials do this, one file per trial, under `results/capstone/`).
+
+**What the environment needs**
+
+| Thing | Value |
+|---|---|
+| Python | 3.11–3.13 (runs were made on 3.13.16, macOS). Not 3.14 |
+| Dependencies | `requirements-lock.txt`: exact versions from `pip freeze`. `requirements.txt` has the course's ranges |
+| Model files | None. The model is `gemini-3.5-flash-lite` over the Gemini API, nothing is loaded locally |
+| Secrets | `GEMINI_API_KEY` in `.env` (copy `.env.example`). Free-tier key is enough |
+| Network | Needed for the model calls. The search runs locally (`mcp_server.py`, started per request as a subprocess) |
+| Memory | About 60–80 MB for the server, plus a second Python process during each search |
+
+**One-time setup from a clean checkout** (tested by cloning this repo into an
+empty folder and following exactly these lines):
+
+```bash
+git clone <this repo> fitfindr && cd fitfindr
+python3.13 -m venv .venv
+.venv/bin/python -m pip install -r requirements-lock.txt
+cp .env.example .env            # then paste your GEMINI_API_KEY into .env
+.venv/bin/python test.py        # should end "10 passed"
+AI201_CACHE=0 PORT=5055 .venv/bin/python serve.py
+```
+
+---
+
+
 Everything about how the starter works and how to use it.
 
 ---
