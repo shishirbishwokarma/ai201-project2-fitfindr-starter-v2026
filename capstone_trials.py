@@ -218,6 +218,7 @@ def report(label: str, scores: list[dict], outdir: Path) -> str:
         lines.append(f"- 2: slow: {s[2]['slow'] or 'none'}")
         lines.append(f"- 3: {len(s[3]['detail'])} slow requests")
         for rid, q, d, best, ok in s[3]["detail"]:
+            q = q if len(q) <= 40 else q[:37] + "..."
             lines.append(f"    - {rid} {q!r} {d:.0f} ms, best cause field {best[0]}={best[1]} → {'PASS' if ok else 'FAIL'}")
         lines.append("- 4: " + "; ".join(f"{st} key-named={k}" for _, st, k, _ in s[4]["detail"]))
         lines.append("- 5: " + "; ".join(f"{n}: {st}, {d} ms, {o}" for n, st, d, o, _ in s[5]["detail"]))
@@ -231,9 +232,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--label", required=True)
     ap.add_argument("--trials", type=int, default=3)
+    ap.add_argument("--rescore", action="store_true",
+                    help="don't run anything: score the saved trialN files again")
     args = ap.parse_args()
     outdir = ROOT / "results" / "capstone" / args.label
     outdir.mkdir(parents=True, exist_ok=True)
+
+    if args.rescore:
+        scores = []
+        for n in range(1, args.trials + 1):
+            sent = [(x["group"], x["label"], x) for x in
+                    json.loads((outdir / f"trial{n}_responses.json").read_text())]
+            records = [json.loads(l) for l in (outdir / f"trial{n}.jsonl").read_text().splitlines() if l.strip()]
+            scores.append(score({"sent": sent, "records": records}))
+        print(report(args.label, scores, outdir))
+        return
 
     scores = []
     for n in range(1, args.trials + 1):

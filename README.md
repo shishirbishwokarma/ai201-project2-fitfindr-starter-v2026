@@ -691,3 +691,70 @@ In money: my key is on the free tier, so the **actual spend was $0**. At the pai
 **A hundred people a day**, one full run each: 100 × $0.00057 = **$0.057 a day**, about $1.70 a month. Money isn't the limit, time is. The free tier allows 15 requests a minute, which is 7.5 runs a minute. My log shows it: the 8th run in a row (`93bd80dc`) waited 43 s in `generate.py::_wait_for_slot` before its fit card call (`[rate limit] 15 requests used this minute. Waiting 43s` in the server output), so its `fit_card` stage took 44,847 ms. That one run pushes the mean to 6.4 s while the median is 2.4 s. A hundred people spread over a day never hit that. A hundred people in the same ten minutes would.
 
 **Where the time goes (stretch: latency breakdown).** From `stages_ms` over the same 12 runs: `search` (MCP subprocess plus keyword scoring) has a median of 253 ms, almost all of it starting a second Python process. `outfit` has a median of 866 ms and `fit_card` 966 ms; those are the two model calls. Parsing is under 1 ms. So about 88% of a typical run (by medians: 866 + 966 out of 2,085 ms) is waiting on the model, and the one slow run was waiting on the rate limiter, not the model.
+
+**Run Log and Verdicts**
+
+Criteria: `criteria.md`, under *Capstone criteria*, committed in `4adfaf7` before any trial ran. Each run is one trial of `capstone_trials.py` (`run_trial` sends the requests, `score` checks them): a fresh `serve.py` with the cache off, 12 matching queries (the first 10 back to back are criterion 2's), 2 impossible queries, criterion 5's 5 malformed bodies, then a restart on a broken key and 5 more queries. That's 24 requests per run. Nothing changed between runs. Raw records are in `results/capstone/before/trialN.jsonl`, the HTTP responses in `trialN_responses.json`, the server's terminal output in `trialN_server.txt`, and the scored report in `results/capstone/before.md`.
+
+*Run log — before*
+
+| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Every request leaves exactly one record | 20 of 20 | 20/20 | 20/20 | 20/20 | MET |
+| 2. Ten in a row stay under 5 s | 9 of 10 under 5 s | 4/10 | 6/10 | 4/10 | MISSED |
+| 3. A slow request explains itself in the log | all slow requests | 0/7 | 0/6 | 0/9 | MISSED |
+| 4. Broken key returns 503 | 5 of 5 | 0/5 | 0/5 | 0/5 | MISSED |
+| 5. Bad input: 4xx under 200 ms, never a 500 | 5 of 5 | 3/5 | 3/5 | 3/5 | MISSED |
+
+Real output, all from run 1 (`results/capstone/before/trial1.jsonl`, written by `serve.py::ask` through `runlog.py::write`):
+
+*Criterion 1.* 24 records for 24 requests in every run. The response headers (`trial1_responses.json`, recorded by `capstone_trials.py::post`) against the log's `request_id`s, for the five least ordinary requests:
+
+```
+impossible  'sequin tuxedo size XXXL under $3'  200  X-Request-Id: 657f9b30
+malformed   'blank query'                       400  X-Request-Id: 6e432fb0
+malformed   'wardrobe items not a list'         500  X-Request-Id: bd5653cb
+malformed   '5,000-character query'             200  X-Request-Id: 3b4f0475
+broken_key  'vintage graphic tee under $30'     200  X-Request-Id: 68e318e7
+log request_ids, same requests: ['657f9b30', '6e432fb0', 'bd5653cb', '3b4f0475', '68e318e7']
+```
+
+*Criterion 2.* `duration_ms` of the ten back-to-back requests:
+
+```
+f0a7e786    8275.4  vintage graphic tee under $30
+adff79cc    6734.9  90s track jacket in size M
+e17e349c    7192.7  silk slip dress in midi length under $40
+2fdfe5ea    2291.7  platform sneakers size 8
+245207a7    1869.2  denim jacket under $50
+c47aef0b    1792.0  flannel shirt under $25
+dda63d5d    2103.6  jacket $50
+91b22ac6   31683.4  something cute for a date under $40
+2cf430e7    7495.9  black boots
+a18fb989    6978.3  size medium hoodie
+```
+
+*Criterion 3.* The slowest record, whole. It says the 30.5 s went to `fit_card`, and the only field that names a wait, `wait_ms`, is 0:
+
+```
+{"ts": "2026-11-18T05:32:33.283+00:00", "request_id": "91b22ac6", "route": "/ask", "status": 200, "outcome": "fit_card", "query": "something cute for a date under $40", "parsed": {"description": "cute date", "size": null, "max_price": 40.0}, "wardrobe_items": 10, "selected_id": "lst_002", "selected_price": 18.0, "dropped": null, "fit_card": "Found this little butterfly tee on depop for $18 and I am so obsessed with the early 2000s pastel print. I love balancing out the super feminine top by styling it with baggy dark wash jeans and a chunky black denim jacket for that ultimate nostalgic streetwear vibe. It honestly fits like a dream and is going to be my go-to piece all season.", "error": null, "duration_ms": 31683.4, "wait_ms": 0.0, "stages_ms": {"parse": 0.0, "search": 244.9, "outfit": 887.1, "fit_card": 30550.8}, "model_calls": 2, "cache_hits": 0, "prompt_tokens": 523, "output_tokens": 184, "total_tokens": 707, "model": "gemini-3.5-flash-lite"}
+```
+
+The reason is only in the terminal (`trial1_server.txt`), not the record: `[rate limit] 15 requests used this minute. Waiting 29s. This is normal.`
+
+*Criterion 4.* What the caller got back with the broken key (`trial1_responses.json`):
+
+```
+status 200, X-Request-Id 68e318e7
+{"error": "The search worked and found Y2K Baby Tee — Butterfly Print ($18 on depop), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.", "error_kind": "model_unavailable", "fit_card": null}
+```
+
+*Criterion 5.* The five malformed bodies' records (fields trimmed to the ones the criterion scores; the long query is cut here, not in the file):
+
+```
+{"request_id": "6e432fb0", "status": 400, "outcome": "bad_request", "query": "   ", "duration_ms": 0.1, "error": "missing or empty 'query'"}
+{"request_id": "44705f00", "status": 400, "outcome": "bad_request", "query": null, "duration_ms": 0.0, "error": "missing or empty 'query'"}
+{"request_id": "852f8cdd", "status": 400, "outcome": "bad_request", "query": "{'query': 42}", "duration_ms": 0.0, "error": "missing or empty 'query'"}
+{"request_id": "bd5653cb", "status": 500, "outcome": "crash", "query": "denim jacket", "duration_ms": 221.0, "total_tokens": 0, "error": "TypeError: string indices must be integers, not 'str'"}
+{"request_id": "3b4f0475", "status": 200, "outcome": "fit_card", "query": "vintage tee vintage tee vintage tee vintage tee[... 5,000 characters]", "duration_ms": 2269.6, "stages_ms": {"parse": 0.4, "search": 223.3, "outfit": 1036.8, "fit_card": 1008.9}, "total_tokens": 699}
+```
