@@ -27,15 +27,18 @@ web server has to be. The reason is worth reading before you deploy: see the
 note above `_one_at_a_time` below — it also decides which gunicorn worker you
 can use.
 
-⚠️ There is deliberately NO logging, NO timing and NO request counting in this
-file. That is unit 9's follow-along: you instrument this yourself, first, and
-then deploy it. A structured log you were handed teaches you nothing about
-what belongs in one — and the timing field is the one everybody skips.
+Capstone: every /ask request, including 400s and 500s, writes one JSON record
+to logs/requests.jsonl through runlog.py: what came in, what came out, how
+long it took (end to end, queued, and per stage), and the model calls and
+tokens it used. Field list: runlog.py. Read it back: python log_summary.py.
 """
 
 import os
 import sys
 import threading
+import time
+import uuid
+from datetime import datetime, timezone
 
 # config first, and before anything that talks to the model: it loads your .env
 # and fixes the Windows console encoding for every module that imports it.
@@ -43,6 +46,8 @@ import config  # noqa: F401
 
 from flask import Flask, jsonify, request
 
+import generate
+import runlog
 from agent import run_agent
 from utils.data_loader import get_example_wardrobe
 
@@ -107,27 +112,46 @@ def ask():
                                                 example wardrobe the CLI uses.
     Out:  the session dict from run_agent(), as JSON.
     """
-    payload = request.get_json(silent=True) or {}
-    query = (payload.get("query") or "").strip()
+    t_arrived = time.perf_counter()
+    record = {
+        "ts": datetime.now(timezone.utc).isoformat(timespec="milliseconds"),
+        "request_id": uuid.uuid4().hex[:8],
+        "route": "/ask",
+        "model": config.MODEL,
+    }
+
+    def finish(body, status):
+        """Every way out of this route goes through here, so every one is logged."""
+        record["status"] = status
+        record["duration_ms"] = round((time.perf_counter() - t_arrived) * 1000, 1)
+        runlog.write(record)
+        response = jsonify(body)
+        response.status_code = status
+        response.headers["X-Request-Id"] = record["request_id"]
+        return response
+
+    payload = request.get_json(silent=True)
+    query = payload.get("query") if isinstance(payload, dict) else None
+    record["query"] = query if isinstance(query, str) else (
+        None if payload is None else repr(payload)[:200]
+    )
+    query = query.strip() if isinstance(query, str) else ""
     if not query:
         # 400 rather than a stack trace: the caller can act on this one.
-        return jsonify({"error": "Send JSON with a 'query' field, e.g. "
-                                 '{"query": "vintage graphic tee under $30"}'}), 400
+        record["outcome"] = "bad_request"
+        record["error"] = "missing or empty 'query'"
+        return finish({"error": "Send JSON with a 'query' field, e.g. "
+                                '{"query": "vintage graphic tee under $30"}'}, 400)
 
     wardrobe = payload.get("wardrobe")
     if not isinstance(wardrobe, dict):
         wardrobe = get_example_wardrobe()
+    items = wardrobe.get("items")
+    record["wardrobe_items"] = len(items) if isinstance(items, list) else None
 
     # A queued request should look like a queued request. Without this the
     # second caller just sits there, and "slow" and "waiting its turn" are
-    # indistinguishable from the outside — which is how people conclude the
-    # deployment is broken when it is behaving exactly as designed.
-    #
-    # This is NOT the logging you add in the follow-along. It prints nothing
-    # on the normal path, carries no timing and counts nothing; it says only
-    # that this request had to wait. `locked()` can be a moment out of date,
-    # so the note is occasionally missed — which costs nothing, because
-    # nothing depends on it.
+    # indistinguishable from the outside.
     if _one_at_a_time.locked():
         print(
             "  [serve] another request is still running. This one is waiting "
@@ -138,18 +162,43 @@ def ask():
 
     failure = None
     session = None
+    t_queued = time.perf_counter()
     with _one_at_a_time:
+        record["wait_ms"] = round((time.perf_counter() - t_queued) * 1000, 1)
+        # generate.py's counters are module globals; inside the lock nobody
+        # else moves them, so before/after is exactly this request's usage.
+        calls0, hits0 = generate.call_count(), generate.cache_hit_count()
+        tokens0 = generate.token_counts()
         try:
             session = run_agent(query, wardrobe)
         except Exception as exc:  # noqa: BLE001 — a 500 with a sentence beats a hang
             failure = f"{type(exc).__name__}: {exc}"
+        tokens1 = generate.token_counts()
+        record["model_calls"] = generate.call_count() - calls0
+        record["cache_hits"] = generate.cache_hit_count() - hits0
+        record["prompt_tokens"] = tokens1["prompt"] - tokens0["prompt"]
+        record["output_tokens"] = tokens1["output"] - tokens0["output"]
+        record["total_tokens"] = tokens1["total"] - tokens0["total"]
 
     # Outside the lock: building a response is not work the next caller should
     # be waiting on.
     if failure is not None:
-        return jsonify({"error": failure}), 500
+        record["outcome"] = "crash"
+        record["error"] = failure
+        return finish({"error": failure}, 500)
 
-    return jsonify(session)
+    item = session.get("selected_item") or {}
+    record.update({
+        "outcome": session.get("error_kind") or "fit_card",
+        "parsed": session.get("parsed"),
+        "selected_id": item.get("id"),
+        "selected_price": item.get("price"),
+        "dropped": session.get("dropped"),
+        "fit_card": session.get("fit_card"),
+        "error": session.get("error"),
+        "stages_ms": session.get("timings_ms"),
+    })
+    return finish(session, 200)
 
 
 if __name__ == "__main__":
