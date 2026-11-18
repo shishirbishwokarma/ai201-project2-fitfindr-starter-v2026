@@ -592,3 +592,22 @@ After the fix, none of my five criteria are missed. But that's partly because fo
 ---
 
 📖 **How to run this project: [RUNNING.md](RUNNING.md)**
+
+---
+
+## Capstone
+
+**What This Extends**
+
+FitFindr, my Unit 3/4 agent (`agent.py::run_agent`: parse the query, `search_listings` over MCP, then `suggest_outfit` and `create_fit_card` on the model). Until now it only ran as a one-shot command (`python app.py ask '...'`) and left no record behind once the terminal scrolled away. What's new is the operational layer: `serve.py` runs the same `run_agent()` behind HTTP, and every request it handles, good or bad, writes one structured record to `logs/requests.jsonl` saying what came in, what came out, how long it took, and what it cost in model calls and tokens.
+
+**The Shape**
+
+**A — Deploy and instrument**, on **Path B (local with logs)**. The extension is the run path (one documented command that starts the server), the structured log around every request, and the numbers I can get out of that log: latency, tokens per run, and how failures show up.
+
+Out of scope, on purpose:
+- **No change to the agent's behaviour.** I'm not touching `parse_query`, the search scoring, or the prompts, even though `notes_for_unit4.md` lists real search bugs (`medium` isn't read as `M`, `black boots` finds a flannel). Fixing those is Shape C, and it would mix "the system got better" into numbers that are meant to describe the system as it is.
+- **No hosting (Path A).** FitFindr starts `mcp_server.py` as a second Python process on every search, and I'd rather spend the unit on testing than on a host signup.
+- **No concurrency.** `serve.py` handles one request at a time behind a lock, because the MCP subprocess and `generate.py`'s rate limiter both assume one caller. I'm keeping that and measuring it, not replacing it with a queue.
+
+**Stretch (declared before building): latency breakdown.** Each log record will also carry how long each stage took (`parse`, `search` over MCP, `suggest_outfit`, `create_fit_card`), so I can say where the time in one run actually goes, measured rather than guessed.
