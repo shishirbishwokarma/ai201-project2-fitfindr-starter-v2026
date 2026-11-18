@@ -53,6 +53,32 @@ from utils.data_loader import get_example_wardrobe
 
 app = Flask(__name__)
 
+# Capstone second improvement: the request/response contract. Criterion 4 and 5
+# missed for one reason: /ask answered 200 whenever run_agent() didn't raise,
+# and only checked that `query` was a non-empty string.
+MAX_QUERY_CHARS = 500   # the longest real query in my logs is 40; this is generous
+# outcomes where the service, not the caller, is what failed
+UNAVAILABLE_OUTCOMES = {"model_unavailable", "mcp_error"}
+
+
+def _wardrobe_problem(wardrobe) -> str | None:
+    """Why this wardrobe can't be used, or None if it can (shape suggest_outfit reads)."""
+    if not isinstance(wardrobe, dict):
+        return "'wardrobe' must be an object like {\"items\": [...]}"
+    items = wardrobe.get("items")
+    if items is None:
+        return None
+    if not isinstance(items, list):
+        return "'wardrobe.items' must be a list"
+    for i, w in enumerate(items):
+        if not (isinstance(w, dict) and isinstance(w.get("name"), str)
+                and isinstance(w.get("category"), str)
+                and isinstance(w.get("colors"), list)
+                and all(isinstance(c, str) for c in w["colors"])):
+            return (f"'wardrobe.items[{i}]' needs a text 'name', a text 'category' "
+                    "and a list of 'colors'")
+    return None
+
 
 # ── one request at a time ─────────────────────────────────────────────────────
 # Here's why this exists.
@@ -143,9 +169,20 @@ def ask():
         return finish({"error": "Send JSON with a 'query' field, e.g. "
                                 '{"query": "vintage graphic tee under $30"}'}, 400)
 
+    if len(query) > MAX_QUERY_CHARS:
+        record["outcome"] = "bad_request"
+        record["error"] = f"query is {len(query)} characters, over {MAX_QUERY_CHARS}"
+        return finish({"error": f"That query is {len(query)} characters long. Keep it under "
+                                f"{MAX_QUERY_CHARS}: what you're looking for, a size and a price."}, 400)
+
     wardrobe = payload.get("wardrobe")
-    if not isinstance(wardrobe, dict):
+    if wardrobe is None:
         wardrobe = get_example_wardrobe()
+    problem = _wardrobe_problem(wardrobe)
+    if problem:
+        record["outcome"] = "bad_request"
+        record["error"] = problem
+        return finish({"error": problem}, 400)
     items = wardrobe.get("items")
     record["wardrobe_items"] = len(items) if isinstance(items, list) else None
 
@@ -202,7 +239,10 @@ def ask():
         "error": session.get("error"),
         "stages_ms": session.get("timings_ms"),
     })
-    return finish(session, 200)
+    # A dead model or MCP server is the service failing, not an answer: 503,
+    # with the same session body (error message and all) as before.
+    status = 503 if record["outcome"] in UNAVAILABLE_OUTCOMES else 200
+    return finish(session, status)
 
 
 if __name__ == "__main__":
