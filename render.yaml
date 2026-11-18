@@ -1,0 +1,23 @@
+# Render blueprint for FitFindr (capstone, Path A).
+# Render → New → Blueprint → pick this repo. It reads this file.
+services:
+  - type: web
+    name: fitfindr
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-lock.txt
+    # Default SYNC worker only: mcp_client.call_tool uses asyncio.run(), which
+    # an async worker (gevent/eventlet/uvicorn) breaks on every call.
+    # One worker: serve.py's lock and generate.py's rate limiter are per process.
+    # --timeout 120: gunicorn's default is 30 s, but generate.py's rate limiter
+    # can legitimately wait up to ~65 s. At 30 s gunicorn would kill the worker
+    # mid-request, the caller gets a 502, and serve.py never writes a log record.
+    startCommand: gunicorn serve:app --workers 1 --timeout 120 --bind 0.0.0.0:$PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.16
+      - key: AI201_CACHE
+        value: "0"
+      - key: GEMINI_API_KEY
+        sync: false   # Render asks you to paste it; it never goes in the repo
