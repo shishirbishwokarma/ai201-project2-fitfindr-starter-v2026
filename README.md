@@ -629,6 +629,7 @@ Path B, local with logs. One command, from the repo root: `AI201_CACHE=0 PORT=50
 - what came in: `query`, `parsed`, `wardrobe_items`
 - what came out: `selected_id`, `selected_price`, `dropped` (the size the retry removed), `fit_card`, `error`
 - how long: `duration_ms` (arrival to response), `wait_ms` (queued behind another request), `stages_ms` (parse / search / retry / outfit / fit_card, timed inside `agent.py::run_agent`)
+- added by the improvement (commit `881c424`): `rate_limit_wait_ms` (time `generate.py` slept for the rate limiter) and `model_wait_ms` (time inside the model API call). The records pasted below were written before it, so they don't have these two fields; the after-run records under *The Improvement* do.
 - what it cost: `model_calls`, `cache_hits`, `prompt_tokens`, `output_tokens`, `total_tokens` (before/after differences of `generate.py`'s counters, taken inside the lock so no other request can move them), `model`
 
 `python log_summary.py` reads it back. The first real session, Nov 17, cache off: twelve real queries (the course examples plus the ones from `notes_for_unit4.md`), then deliberate failures: an impossible query, a whitespace-only query, a body that isn't JSON, and the server restarted with a broken `GEMINI_API_KEY`. All 16 records, exactly as written to `logs/requests.jsonl`:
