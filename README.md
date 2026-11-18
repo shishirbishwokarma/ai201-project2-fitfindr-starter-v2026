@@ -882,3 +882,67 @@ status 503, X-Request-Id 431ca92b
 **Did it help? Yes, for both criteria it was aimed at.** Criterion 4 went from 0/15 to 15/15 across the three runs, and criterion 5 from 9/15 to 15/15. The bad wardrobe now costs 0.0 ms and no search, against 216–256 ms and a crash before. The long query costs nothing, against 2.1–7.9 s and about 700 tokens before. Criteria 1 and 3 held.
 
 **What it cost, and the trade-off.** One behaviour change for callers: a `wardrobe` that isn't an object, like `"wardrobe": "abc"`, used to fall back silently to the example wardrobe, and is now a 400. I think that's right, since a silent substitute is worse than a clear "no", but a caller that relied on it would break. **Criterion 2 got worse, 0, 0, 1 of 10, but not because of this change.** The new fields show it directly: 34 of the 35 slow requests across the three runs had `model_wait_ms` at least half of `duration_ms`, and the median time per model call was 5.4, 4.6 and 3.5 s, against under 1 s in my first session. This change only touches what happens before and after `run_agent()`, so the model service itself was slower in this run.
+
+**Stretch — Load Observation**
+
+Normal use is one request at a time, each sent when the last one answers. At ten times that rate, all ten requests arrive at once. `load_test.py` runs the same 10 matching queries both ways against a fresh `serve.py` with the cache off, 60 s apart. Records are in `results/capstone/load/normal.jsonl` and `10x.jsonl`, the report in `results/capstone/load.md`:
+
+| Measure | Normal (1 at a time) | 10x (10 at once) |
+|---|---|---|
+| requests sent / records logged | 10 / 10 | 10 / 10 |
+| fit cards returned | 10 | 10 |
+| non-200 responses | 0 | 0 |
+| wall clock for all 10 | 78.6 s | 78.3 s |
+| median duration_ms | 7,319 | 40,836 |
+| max duration_ms | 20,059 | 78,300 |
+| mean wait_ms (queued for the lock) | 0 | 35,142 |
+| max wait_ms | 0 | 72,874 |
+| mean rate_limit_wait_ms | 1,718 | 481 |
+| mean model_wait_ms | 5,776 | 6,997 |
+| tokens per full run | 680 | 673 |
+
+The 10x requests, in the order the lock let them through:
+
+```
+request_id  duration   wait_ms  rate_lim    model  query
+463cf471        8829         0         0     8095  jacket $50
+70719054       15560      8828         0     6468  silk slip dress in midi length under $40
+01a37866       21968     15559         0     6153  denim jacket under $50
+0fe0fa29       31077     21967         0     8643  size medium hoodie
+b7c4d983       37167     31077         0     5772  vintage graphic tee under $30
+9d5173e2       44505     37166         0     7079  90s track jacket in size M
+fdcb3b05       51913     44505         0     7052  black boots
+56bf4279       67536     51913      4325    11038  flannel shirt under $25
+f28844f8       72875     67536         0     4995  something cute for a date under $40
+b4a3597d       78300     72874       490     4678  platform sneakers size 8
+```
+
+**What changed: latency, nothing else.** No errors, no lost records, the same tokens per run, and the same total throughput: all ten took 78 s either way. `serve.py`'s lock runs one agent at a time, so sending ten at once doesn't do the work faster. It moves each person's wait from *between* requests to *inside* theirs. The median request went from 7.3 s to 40.8 s, and the tenth person waited 73 s in the queue before their run even started. `wait_ms` went from 0 to a 35 s average, which is exactly what that field was added to show.
+
+One thing went *down*: rate-limiter waiting (1.7 s to 0.5 s on average). With the lock already spacing runs out, fewer calls landed inside the same minute.
+
+**What this means if it were hosted.** The Render config I wrote (`render.yaml`) gives gunicorn a 120 s timeout. At ten at once, the last request finished at 78 s, inside that. At about fifteen at once it wouldn't be: gunicorn would kill the worker, the caller would get a 502, and `serve.py` would never write that request's record, because the record is written when the response is built. That's the same gap I named under criterion 1.
+
+**What's Still Broken**
+
+**Criterion 2 is still missed (0, 0, 1 of 10 in the last run), and I'm not changing its target.** The improvements gave me a log that says why, and it says the model. In the final run, 34 of 35 slow requests were mostly `model_wait_ms`, with each model call taking a median of 3.5–5.4 s, against under 1 s in my first session. The rate limiter is the second cause, and it only shows up when the model is fast enough to make 15 calls inside a minute. 5 s still seems like the right limit for someone waiting on a shopping answer. What was wrong was my assumption that model time was steady.
+
+What I'd do about it:
+- **Make one model call per run instead of two.** `suggest_outfit` and `create_fit_card` each make a separate round trip, but the fit card is written from the outfit and the same item. One prompt that returns both would cut the model time per run roughly in half, and it would halve the rate-limiter pressure too (15 calls a minute becomes 15 *runs* a minute).
+- **Put a timeout on the model call** (around 8 s) and return the search result with a "styling is taking a while" message, so a slow API can't hold a request for 25 s.
+
+Why I stopped: both of those change how the agent works, and my scope for this unit (*The Shape*) was the operational layer around an agent I wasn't going to change. I also had one improvement plus one stretch improvement, and I spent them on the two misses that were my own server's fault (criteria 3, then 4 and 5). The model's speed wasn't something I could change in serve.py.
+
+**Criterion 1 is met but weaker than it looks.** Every response goes through `finish()`, so the record is written when the response is built. If the process is killed mid-request (a gunicorn timeout on a host, or Ctrl-C), that request leaves no record. I'd write a "started" record when the request arrives and an "ended" record when it finishes, so a request with only a start record is a request that died. I'd tighten the criterion to require that too. I stopped because nothing in my trials killed a request, so I couldn't have measured it.
+
+**The first thing I'd do with another unit: merge the two model calls into one.** It's the only change that attacks both causes of my one remaining miss at once (round trips to a slow model, and calls counted by the limiter). The load test says it matters more than it looks, because with one agent at a time, every second saved per run is saved again for every person waiting in the queue.
+
+**How I Used AI**
+
+I used Claude (in VS Code, through Claude Code) for most of the building and testing in this unit, and I'm being specific about where the judgment came from.
+
+**Moment 1: the criteria.** I asked Claude to suggest criteria and said I'd choose. That isn't what the brief recommends; it says to write them yourself and only ask a model whether they're testable. Claude flagged that first, then built the server and the log, and gave me eight candidates based on what my first logged session actually showed (the 43 s rate-limit stall, the 200 on a broken key). I picked five: every request logged, ten in a row under 5 s, a slow request explains itself, broken key returns 503, bad input gets a 4xx and never a 500. Claude drafted the wording in my criteria.md style, and I read and approved them before they were committed in `4adfaf7`, before anything ran. The part I'd own most is the choice: I took the set where three of five were likely to miss rather than the safe ones, because the brief says five safe criteria make a unit with nothing to learn.
+
+**Moment 2: pushing for more passes, and what I didn't change.** After the before run, four of five were missed, and I asked Claude to fix criterion 3 and then criterion 5 so I'd have more than one pass. Claude said the honest way to do that was to fix the system, not the targets: lowering criterion 2's 5 s to whatever I got would be the kind of revision the brief says doesn't count. It pointed out that 4 and 5 had the same cause in my diagnosis (`serve.py` only deciding the status by whether the agent raised), so one change could address both. So I made the first improvement for criterion 3 and the second for 4 and 5, and left criterion 2 missed. The first improvement also corrected Claude's first diagnosis: it had blamed the rate limiter for criterion 2 based on the terminal output, and once the log recorded model time separately, 23 of 27 slow requests turned out to be the model. I kept both diagnoses in this README instead of rewriting the first one, because the change is the evidence that the log works.
+
+**What I checked myself:** that criteria.md was committed before any results (`git log` shows `4adfaf7` before `d814f19`), that the pasted log lines are real lines from the files named, and that the verdicts follow from my own targets.

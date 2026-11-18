@@ -1,0 +1,173 @@
+
+FitFindr is listening on http://localhost:5057
+It runs one request at a time — a second one waits for the first.
+Ask it something (single quotes, as always):
+
+  curl -X POST http://localhost:5057/ask \
+    -H 'Content-Type: application/json' \
+    -d '{"query": "vintage graphic tee under $30"}'
+
+Ctrl-C to stop.
+
+ * Serving Flask app 'serve'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5057
+ * Running on http://192.168.1.209:5057
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [18/Nov/2026 00:11:03] "GET /health HTTP/1.1" 200 -
+[1] parse_query
+      in:  'jacket $50'
+      out: {'description': 'jacket', 'size': None, 'max_price': 50.0}
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+  [serve] another request is still running. This one is waiting its turn — serve.py handles one at a time, on purpose.
+[2] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'jacket', 'size': None, 'max_price': 50.0})
+      out: 3 items: 90s Track Jacket — Navy/White Stripe, Denim Jacket — Light Wash, Cropped, Shacket — Olive Canvas
+      →    branch: 3 found, selected_item = first (lst_004)
+[3] suggest_outfit
+      in:  new_item=lst_004 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the navy and white track jacket with the white ribbed tank top layered underneath, and add the …
+[4] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_004
+      out: scored this vintage Champion track jacket on Poshmark for only $45 and I'm so obsessed with the 90s streetwear…
+[5] parse_query
+      in:  'silk slip dress in midi length under $40'
+      out: {'description': 'silk slip dress midi length', 'size': None, 'max_price': 40.0}
+127.0.0.1 - - [18/Nov/2026 00:11:12] "POST /ask HTTP/1.1" 200 -
+[6] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'silk slip dress midi length', 'size': None, 'max_price': 40.0})
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    branch: 5 found, selected_item = first (lst_013)
+[7] suggest_outfit
+      in:  new_item=lst_013 (session['selected_item']), wardrobe=10 items
+      out: Outfit One: Layer the 90s Silk Slip Dress over the white ribbed tank top, and pair it with the chunky white sn…
+[8] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_013
+      out: Found this absolute gem on depop for only $30 and I’m obsessed with how versatile it is. I'm leaning all the w…
+[9] parse_query
+      in:  'denim jacket under $50'
+      out: {'description': 'denim jacket', 'size': None, 'max_price': 50.0}
+127.0.0.1 - - [18/Nov/2026 00:11:19] "POST /ask HTTP/1.1" 200 -
+[10] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'denim jacket', 'size': None, 'max_price': 50.0})
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+      →    branch: 7 found, selected_item = first (lst_007)
+[11] suggest_outfit
+      in:  new_item=lst_007 (session['selected_item']), wardrobe=10 items
+      out: Outfit one pairs the light wash denim jacket with the white ribbed tank top tucked into the baggy straight-leg…
+[12] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_007
+      out: Still can't believe I snagged this vintage Wrangler denim jacket on poshmark for only $42. It has the best lig…
+[13] parse_query
+      in:  'size medium hoodie'
+      out: {'description': 'hoodie', 'size': 'MEDIUM', 'max_price': None}
+127.0.0.1 - - [18/Nov/2026 00:11:25] "POST /ask HTTP/1.1" 200 -
+[14] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'hoodie', 'size': 'MEDIUM', 'max_price': None})
+      out: [] (empty)
+      →    branch: empty, but size MEDIUM was set, retrying once without it
+[15] search_listings (via MCP, retry)
+      in:  call_tool('search_listings', {'description': 'hoodie', 'size': None, 'max_price': None})
+      out: 1 items: Vintage Graphic Hoodie — Faded Black
+      →    retry dropped size MEDIUM: 1 found, selected_item = first (lst_015, size L)
+[16] suggest_outfit
+      in:  new_item=lst_015 (session['selected_item']), wardrobe=10 items
+      out: Outfit One: Pair the vintage graphic hoodie with the baggy straight-leg jeans, black combat boots, and the bla…
+[17] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_015
+      out: scored this faded black graphic hoodie on depop for $26 and it's already my favorite piece for putting togethe…
+[18] parse_query
+      in:  'vintage graphic tee under $30'
+      out: {'description': 'vintage graphic tee', 'size': None, 'max_price': 30.0}
+127.0.0.1 - - [18/Nov/2026 00:11:35] "POST /ask HTTP/1.1" 200 -
+[19] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'vintage graphic tee', 'size': None, 'max_price': 30.0})
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+      →    branch: 10 found, selected_item = first (lst_002)
+[20] suggest_outfit
+      in:  new_item=lst_002 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the Y2K Baby Tee with the baggy straight-leg jeans, black combat boots, and the black crossbody…
+[21] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_002
+      out: scored this butterfly baby tee on depop for only $18 and I am completely obsessed with the 2000s street-style …
+[22] parse_query
+      in:  '90s track jacket in size M'
+      out: {'description': '90s track jacket', 'size': 'M', 'max_price': None}
+127.0.0.1 - - [18/Nov/2026 00:11:41] "POST /ask HTTP/1.1" 200 -
+[23] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': '90s track jacket', 'size': 'M', 'max_price': None})
+      out: 5 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +2 more
+      →    branch: 5 found, selected_item = first (lst_004)
+[24] suggest_outfit
+      in:  new_item=lst_004 (session['selected_item']), wardrobe=10 items
+      out: Outfit one: Pair the 90s track jacket with the white ribbed tank top, baggy straight-leg jeans, and chunky whi…
+[25] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_004
+      out: Scored this vintage Champion track jacket on poshmark for only $45 and I'm obsessed with how easy it is to sty…
+[26] parse_query
+      in:  'black boots'
+      out: {'description': 'black boots', 'size': None, 'max_price': None}
+127.0.0.1 - - [18/Nov/2026 00:11:48] "POST /ask HTTP/1.1" 200 -
+[27] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'black boots', 'size': None, 'max_price': None})
+      out: 10 items: Oversized Flannel Shirt — Plaid Red/Black, Graphic Tee — 2003 Tour Bootleg Style, Platform Mary Janes — Black Patent … +7 more
+      →    branch: 10 found, selected_item = first (lst_003)
+[28] suggest_outfit
+      in:  new_item=lst_003 (session['selected_item']), wardrobe=10 items
+      out: Outfit one: Layer the Oversized Flannel Shirt — Plaid Red/Black over the White ribbed tank top, paired with th…
+[29] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_003
+      out: Scored this vintage Woolrich flannel on thredUp for only $22 and I’m officially obsessed with how cozy it is. …
+[30] parse_query
+      in:  'flannel shirt under $25'
+      out: {'description': 'flannel shirt', 'size': None, 'max_price': 25.0}
+127.0.0.1 - - [18/Nov/2026 00:11:55] "POST /ask HTTP/1.1" 200 -
+[31] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'flannel shirt', 'size': None, 'max_price': 25.0})
+      out: 2 items: Oversized Flannel Shirt — Plaid Red/Black, Vintage Polo Shirt — Forest Green
+      →    branch: 2 found, selected_item = first (lst_003)
+[32] suggest_outfit
+      in:  new_item=lst_003 (session['selected_item']), wardrobe=10 items
+      out: Outfit one: Layer the Oversized Flannel Shirt — Plaid Red/Black over the White ribbed tank top, paired with th…
+  [rate limit] 15 requests used this minute. Waiting 4s. This is normal.
+[33] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_003
+      out: Score this vintage Woolrich flannel on thredUp for just $22 and I’m obsessed with how heavy and cozy it is. I …
+[34] parse_query
+      in:  'something cute for a date under $40'
+      out: {'description': 'cute date', 'size': None, 'max_price': 40.0}
+127.0.0.1 - - [18/Nov/2026 00:12:11] "POST /ask HTTP/1.1" 200 -
+[35] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'cute date', 'size': None, 'max_price': 40.0})
+      out: 1 items: Y2K Baby Tee — Butterfly Print
+      →    branch: 1 found, selected_item = first (lst_002)
+[36] suggest_outfit
+      in:  new_item=lst_002 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the Y2K Baby Tee with Baggy straight-leg jeans, dark wash. Add the Chunky white sneakers for a …
+[37] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_002
+      out: Scored this butterfly baby tee on depop for only $18 and I am obsessed with the whole y2k cottagecore vibe. I …
+[38] parse_query
+      in:  'platform sneakers size 8'
+      out: {'description': 'platform sneakers', 'size': '8', 'max_price': None}
+127.0.0.1 - - [18/Nov/2026 00:12:16] "POST /ask HTTP/1.1" 200 -
+[39] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'platform sneakers', 'size': '8', 'max_price': None})
+      out: 1 items: Platform Sneakers — White Chunky Sole
+      →    branch: 1 found, selected_item = first (lst_019)
+[40] suggest_outfit
+      in:  new_item=lst_019 (session['selected_item']), wardrobe=10 items
+      out: Outfit one: Pair the platform sneakers with your baggy straight-leg jeans, dark wash and the white ribbed tank…
+[41] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_019
+      out: Score these chunky platform sneakers on Poshmark for just $48 and I’m already obsessed with how they pull toge…
+127.0.0.1 - - [18/Nov/2026 00:12:22] "POST /ask HTTP/1.1" 200 -
