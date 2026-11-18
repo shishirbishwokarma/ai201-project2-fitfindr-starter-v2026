@@ -778,3 +778,56 @@ So 3 of trial 1's 6 slow requests were the limiter and 3 were the model. **I cou
 - 5,000-character query → **200 with a fit card, 2.3–7.9 s.** *Stage: `serve.py::ask`, which has no length limit, then `agent.py::parse_query`, which keeps all 1,000 words as the description.* The search still finds the tee and both model calls run. It cost 699 tokens, the same as a normal run, because the prompts are built from the listing, not the query. So the damage is time and a wasted search, not money, but it should have been turned away.
 
 **The pattern.** Four misses, two root causes. Criteria 2 and 3 are the rate limiter in `generate.py` and a log that can't see it. Criteria 4 and 5 are `serve.py` treating "didn't raise" as "succeeded" and checking only the query's type. The one improvement follows the first pair, because I can't diagnose a slow request from the log alone, and that's the whole point of the extension.
+
+**The Improvement**
+
+**What I changed (commit `881c424`):** `generate.py` now keeps two running totals: seconds spent *asleep in the rate limiter* (its own pacing in `_wait_for_slot` plus any 429 backoff in `generate`) and seconds spent *inside the API call* (`client.models.generate_content`). `serve.py::ask` reads both before and after each request, inside the lock, and logs the difference as two new fields, `rate_limit_wait_ms` and `model_wait_ms`. Nothing about how the agent runs changed: same calls, same pacing, same prompts.
+
+**Why this one:** it follows the diagnosis of criteria 2 and 3. A slow request's time disappeared into `stages_ms.fit_card`, so the record couldn't say whether the limiter or the model caused it, and I had to line up timestamps against terminal output to find out. Of my four misses, this is the one that undermines the extension itself, because a log that can't explain a slow request can't be used to diagnose one.
+
+*Run log — after (same driver, same requests, three new trials; `results/capstone/after/`, report in `results/capstone/after.md`)*
+
+| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Every request leaves exactly one record | 20 of 20 | 20/20 | 20/20 | 20/20 | MET |
+| 2. Ten in a row stay under 5 s | 9 of 10 under 5 s | 3/10 | 3/10 | 4/10 | MISSED |
+| 3. A slow request explains itself in the log | all slow requests | 9/9 | 9/9 | 9/9 | **MET** |
+| 4. Broken key returns 503 | 5 of 5 | 0/5 | 0/5 | 0/5 | MISSED |
+| 5. Bad input: 4xx under 200 ms, never a 500 | 5 of 5 | 3/5 | 3/5 | 3/5 | MISSED |
+
+Before and after, side by side:
+
+| Criterion | Before (runs 1/2/3) | After (runs 1/2/3) |
+|---|---|---|
+| 1 | 20/20, 20/20, 20/20 MET | 20/20, 20/20, 20/20 MET |
+| 2 | 4/10, 6/10, 4/10 MISSED | 3/10, 3/10, 4/10 MISSED |
+| 3 | 0/7, 0/6, 0/9 MISSED | **9/9, 9/9, 9/9 MET** |
+| 4 | 0/5, 0/5, 0/5 MISSED | 0/5, 0/5, 0/5 MISSED |
+| 5 | 3/5, 3/5, 3/5 MISSED | 3/5, 3/5, 3/5 MISSED |
+
+The first ten records of after-run 1 (`results/capstone/after/trial1.jsonl`), showing the two new fields: `request_id`, `duration_ms`, `rate_limit_wait_ms`, `model_wait_ms`, query:
+
+```
+d8e17152  11081.6     0.0  10396.1  vintage graphic tee under $30
+c482ae75   4153.7     0.0   3826.0  90s track jacket in size M
+4be29899   7038.8     0.0   6761.9  silk slip dress in midi length
+9aa4ad92   1322.5     0.0   1078.8  platform sneakers size 8
+24945a98   1785.0     0.0   1542.2  denim jacket under $50
+8fe1b670   6382.9     0.0   6144.8  flannel shirt under $25
+3a75c1c3   9409.4     0.0   9159.4  jacket $50
+680e647d  25097.2     0.0  24804.8  something cute for a date unde
+8f9046cc   6814.1  4179.4   2269.1  black boots
+2574c8fc   6112.8     0.0   5581.4  size medium hoodie
+```
+
+And the slowest one whole. The 25 s that before would have been "slow `outfit` stage, cause unknown" now says it was the model (`model_wait_ms: 24804.8`), not the limiter (`rate_limit_wait_ms: 0.0`):
+
+```
+{"ts": "2026-11-18T05:48:54.786+00:00", "request_id": "680e647d", "route": "/ask", "status": 200, "outcome": "fit_card", "query": "something cute for a date under $40", "parsed": {"description": "cute date", "size": null, "max_price": 40.0}, "wardrobe_items": 10, "selected_id": "lst_002", "selected_price": 18.0, "dropped": null, "fit_card": "scored this butterfly baby tee on depop for only $18 and I am completely obsessed with the early-2000s streetwear vibe. I’m leaning into the nostalgia today by styling it with baggy dark wash jeans and chunky white sneakers, but it also looks so good dressed down with khaki trousers and combat boots.", "error": null, "duration_ms": 25097.2, "wait_ms": 0.0, "rate_limit_wait_ms": 0.0, "model_wait_ms": 24804.8, "stages_ms": {"parse": 0.1, "search": 289.3, "outfit": 19300.3, "fit_card": 5506.5}, "model_calls": 2, "cache_hits": 0, "prompt_tokens": 512, "output_tokens": 162, "total_tokens": 674, "model": "gemini-3.5-flash-lite"}
+```
+
+**Did it help? Yes, for the criterion it was aimed at.** Criterion 3 went from 0 of 22 slow requests explained to 27 of 27, and that comes straight from the new fields, which `capstone_trials.py::score` reads. The other four criteria didn't move, which is what I expected: the change makes slow requests visible but doesn't make anything faster.
+
+**What it told me that I didn't know.** My before diagnosis put the rate limiter first, because the terminal showed it clearly (29 s, 24 s, 20 s at run 8). With the new fields I can count instead of inferring. In the after run, **23 of the 27 slow requests were model time and only 4 were the limiter** (1, 2 and 1 per run). The model was slower in this run, so fewer calls fit into each minute and the limiter had less to do. The 25 s request above, at run 8 again, is the model, not the limiter. So criterion 2's main cause is the API's response time, which varied from about 1 s to 24 s per run tonight, and the limiter only comes second when the model happens to be fast. I couldn't have told that apart without this change. Criterion 2 also got slightly worse (3, 3, 4 against 4, 6, 4). The change adds two subtractions per request, so that's the model's variance, not the fix.
+
+**What it cost:** nothing measurable. Tokens per full run were 676, 680 and 681 across the after runs, against 674 before. Each record is two numbers longer.
