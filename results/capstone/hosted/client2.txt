@@ -1,0 +1,17 @@
+# Hosted session 2 (after redeploy) 2026-11-18T06:32:44Z against https://ai201-project2-fitfindr-starter-v2026-7uyk.onrender.com
+# status  client_seconds  X-Request-Id  request
+{"status":"ok"}
+  health 200 0.217370s
+200 40.907375  55defb67  {"query": "vintage graphic tee under $30"}
+200 19.180949  38032311  {"query": "90s track jacket in size M"}
+200 16.605230  19affa8c  {"query": "silk slip dress in midi length under $40"}
+200 13.987127  064c6843  {"query": "platform sneakers size 8"}
+200 17.138795  fbad8869  {"query": "denim jacket under $50"}
+200 18.975632  5ca37db8  {"query": "flannel shirt under $25"}
+200 5.069228  91bbb175  {"query": "jacket $50"}
+200 5.254225  dbfc11da  {"query": "something cute for a date under $40"}
+200 5.660891  aeaf9380  {"query": "black boots"}
+200 19.399875  5b706b40  {"query": "size medium hoodie"}
+200 10.552774  77887501  {"query": "designer ballgown size XXS under $5"}
+400 0.159764  e69c8432  {"query": "   "}
+400 0.136888  662fa969  {"query": "denim jacket", "wardrobe": {"items": "x"}}
