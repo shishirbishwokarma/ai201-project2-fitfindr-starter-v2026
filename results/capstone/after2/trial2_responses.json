@@ -1,0 +1,5423 @@
+[
+ {
+  "group": "matching",
+  "label": "vintage graphic tee under $30",
+  "status": 200,
+  "rid": "af6fccfa",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "I am so obsessed with this butterfly baby tee I just scored on depop for $18. I've been living in it lately, whether I'm dressing it down with baggy jeans and sneakers for a casual day out or styling it with wide-leg khakis and combat boots for a little mix of noughties and cottagecore energy. It's in the best condition and honestly might be my favorite vintage find of the season.",
+   "outfit_suggestion": "Outfit 1: Pair the Y2K Baby Tee with Baggy straight-leg jeans, dark wash for a classic noughties silhouette. Add the Chunky white sneakers for a casual daytime look, and layer the Vintage black denim jacket on top when it gets chilly. Accessorize with the Black crossbody bag.\n\nOutfit 2: Tuck the Y2K Baby Tee into the Wide-leg khaki trousers, cinched at the waist with the Brown leather belt for a subtle cottagecore blend. Slip on the Black combat boots to add a touch of contrast, and throw on the Black cropped zip hoodie for easy layering.",
+   "parsed": {
+    "description": "vintage graphic tee",
+    "max_price": 30.0,
+    "size": null
+   },
+   "query": "vintage graphic tee under $30",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "white",
+      "pink",
+      "purple"
+     ],
+     "condition": "excellent",
+     "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+     "id": "lst_002",
+     "platform": "depop",
+     "price": 18.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "vintage",
+      "graphic tee",
+      "cottagecore"
+     ],
+     "title": "Y2K Baby Tee — Butterfly Print"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black"
+     ],
+     "condition": "good",
+     "description": "Vintage-style bootleg tee with faded graphic. Slightly boxy fit. 100% cotton, soft and worn-in.",
+     "id": "lst_006",
+     "platform": "depop",
+     "price": 24.0,
+     "size": "L",
+     "style_tags": [
+      "graphic tee",
+      "vintage",
+      "grunge",
+      "streetwear",
+      "band tee"
+     ],
+     "title": "Graphic Tee — 2003 Tour Bootleg Style"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "grey",
+      "charcoal"
+     ],
+     "condition": "fair",
+     "description": "Faded grey band-style tee with distressed graphic. Crew neck. Fits boxy. Well-loved but no holes or major damage.",
+     "id": "lst_033",
+     "platform": "depop",
+     "price": 19.0,
+     "size": "L",
+     "style_tags": [
+      "vintage",
+      "grunge",
+      "band tee",
+      "graphic tee",
+      "streetwear"
+     ],
+     "title": "Vintage Band Tee — Faded Grey"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black",
+      "charcoal"
+     ],
+     "condition": "fair",
+     "description": "Faded black pullover hoodie with barely-visible vintage graphic on the chest. Cozy interior. Some pilling but adds to the worn-in look.",
+     "id": "lst_015",
+     "platform": "depop",
+     "price": 26.0,
+     "size": "L",
+     "style_tags": [
+      "vintage",
+      "grunge",
+      "graphic",
+      "streetwear"
+     ],
+     "title": "Vintage Graphic Hoodie — Faded Black"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black"
+     ],
+     "condition": "excellent",
+     "description": "Sheer black mesh long-sleeve. Great for layering under a graphic tee or over a bralette. Stretchy material, fits true to size.",
+     "id": "lst_017",
+     "platform": "depop",
+     "price": 15.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "grunge",
+      "goth",
+      "layering"
+     ],
+     "title": "Mesh Long-Sleeve Top — Black"
+    },
+    {
+     "brand": "Woolrich",
+     "category": "tops",
+     "colors": [
+      "red",
+      "black"
+     ],
+     "condition": "good",
+     "description": "Classic oversized flannel. Great layering piece. A few tiny pulls in the fabric but nothing visible when worn.",
+     "id": "lst_003",
+     "platform": "thredUp",
+     "price": 22.0,
+     "size": "XL (oversized)",
+     "style_tags": [
+      "grunge",
+      "vintage",
+      "flannel",
+      "streetwear",
+      "layering"
+     ],
+     "title": "Oversized Flannel Shirt — Plaid Red/Black"
+    },
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "khaki",
+      "tan"
+     ],
+     "condition": "fair",
+     "description": "Y2K era low-rise cargo pants. Lots of pockets. Khaki color, slightly distressed at the hems. Great for layering with a long tee.",
+     "id": "lst_011",
+     "platform": "poshmark",
+     "price": 27.0,
+     "size": "W29",
+     "style_tags": [
+      "y2k",
+      "cargo",
+      "2000s",
+      "streetwear"
+     ],
+     "title": "Low-Rise Cargo Pants — Khaki"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "navy"
+     ],
+     "condition": "good",
+     "description": "Perfectly faded navy crewneck. Genuinely vintage — not manufactured distressed. Ribbed cuffs and hem. No graphics, clean.",
+     "id": "lst_012",
+     "platform": "thredUp",
+     "price": 20.0,
+     "size": "XL (fits oversized)",
+     "style_tags": [
+      "vintage",
+      "basics",
+      "oversized",
+      "classic"
+     ],
+     "title": "Oversized Crewneck Sweatshirt — Vintage Navy"
+    },
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "ivory",
+      "dusty pink",
+      "green"
+     ],
+     "condition": "good",
+     "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+     "id": "lst_013",
+     "platform": "depop",
+     "price": 30.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "feminine",
+      "floral",
+      "cottagecore"
+     ],
+     "title": "90s Silk Slip Dress — Floral, Midi Length"
+    },
+    {
+     "brand": null,
+     "category": "accessories",
+     "colors": [
+      "brown"
+     ],
+     "condition": "excellent",
+     "description": "Genuine leather braided belt. Adjustable, multiple holes. Classic Western buckle. Can be dressed up or down.",
+     "id": "lst_014",
+     "platform": "thredUp",
+     "price": 12.0,
+     "size": "One Size (adjustable)",
+     "style_tags": [
+      "vintage",
+      "western",
+      "classic",
+      "earth tones"
+     ],
+     "title": "Leather Belt — Brown, Braided"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "tops",
+    "colors": [
+     "white",
+     "pink",
+     "purple"
+    ],
+    "condition": "excellent",
+    "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+    "id": "lst_002",
+    "platform": "depop",
+    "price": 18.0,
+    "size": "S/M",
+    "style_tags": [
+     "y2k",
+     "vintage",
+     "graphic tee",
+     "cottagecore"
+    ],
+    "title": "Y2K Baby Tee — Butterfly Print"
+   },
+   "timings_ms": {
+    "fit_card": 859.9,
+    "outfit": 5501.0,
+    "parse": 0.3,
+    "search": 417.8
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 6784.2
+ },
+ {
+  "group": "matching",
+  "label": "90s track jacket in size M",
+  "status": 200,
+  "rid": "59f87d9b",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Scored this vintage Champion track jacket on poshmark for only $45 and I'm obsessed with how easy it is to style. I love throwing it on with baggy jeans and chunky sneakers for that effortless 90s streetwear vibe, but it looks just as good dressed up with trousers. It’s definitely going to be on heavy rotation in my wardrobe.",
+   "outfit_suggestion": "Outfit one pairs the Champion 90s track jacket with the white ribbed tank top, baggy straight-leg jeans, and chunky white sneakers for a classic, effortless streetwear look. \n\nOutfit two layers the track jacket over the white ribbed tank top, combined with the wide-leg khaki trousers, chunky white sneakers, and the black crossbody bag for a sporty yet elevated everyday ensemble.",
+   "parsed": {
+    "description": "90s track jacket",
+    "max_price": null,
+    "size": "M"
+   },
+   "query": "90s track jacket in size M",
+   "search_results": [
+    {
+     "brand": "Champion",
+     "category": "outerwear",
+     "colors": [
+      "navy",
+      "white"
+     ],
+     "condition": "excellent",
+     "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+     "id": "lst_004",
+     "platform": "poshmark",
+     "price": 45.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "athletic",
+      "streetwear"
+     ],
+     "title": "90s Track Jacket — Navy/White Stripe"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "black"
+     ],
+     "condition": "good",
+     "description": "Genuine leather bomber jacket. Classic 90s silhouette, slightly boxy. Ribbed collar, cuffs, and hem. Some creasing from age — adds character.",
+     "id": "lst_022",
+     "platform": "depop",
+     "price": 75.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "leather",
+      "classic",
+      "grunge"
+     ],
+     "title": "90s Leather Bomber — Black"
+    },
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "ivory",
+      "dusty pink",
+      "green"
+     ],
+     "condition": "good",
+     "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+     "id": "lst_013",
+     "platform": "depop",
+     "price": 30.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "feminine",
+      "floral",
+      "cottagecore"
+     ],
+     "title": "90s Silk Slip Dress — Floral, Midi Length"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "olive",
+      "green"
+     ],
+     "condition": "excellent",
+     "description": "Olive canvas shacket — thicker than a shirt, lighter than a jacket. Chest pockets, button-front. Great transitional layer.",
+     "id": "lst_032",
+     "platform": "poshmark",
+     "price": 33.0,
+     "size": "M/L",
+     "style_tags": [
+      "earth tones",
+      "classic",
+      "layering",
+      "minimal"
+     ],
+     "title": "Shacket — Olive Canvas"
+    },
+    {
+     "brand": null,
+     "category": "accessories",
+     "colors": [
+      "brown",
+      "tan",
+      "plaid"
+     ],
+     "condition": "excellent",
+     "description": "Reversible bucket hat — plaid on one side, solid tan on the other. Unstructured brim. One size fits most.",
+     "id": "lst_034",
+     "platform": "thredUp",
+     "price": 14.0,
+     "size": "One Size",
+     "style_tags": [
+      "90s",
+      "streetwear",
+      "vintage",
+      "accessories"
+     ],
+     "title": "Bucket Hat — Reversible, Brown Plaid"
+    }
+   ],
+   "selected_item": {
+    "brand": "Champion",
+    "category": "outerwear",
+    "colors": [
+     "navy",
+     "white"
+    ],
+    "condition": "excellent",
+    "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+    "id": "lst_004",
+    "platform": "poshmark",
+    "price": 45.0,
+    "size": "M",
+    "style_tags": [
+     "90s",
+     "vintage",
+     "athletic",
+     "streetwear"
+    ],
+    "title": "90s Track Jacket — Navy/White Stripe"
+   },
+   "timings_ms": {
+    "fit_card": 4966.0,
+    "outfit": 895.2,
+    "parse": 0.3,
+    "search": 264.9
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 6133.8
+ },
+ {
+  "group": "matching",
+  "label": "silk slip dress in midi length under $40",
+  "status": 200,
+  "rid": "71896a28",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Finally scored this dreamy floral slip on depop for $30 and I am so obsessed with how versatile it is. I'm leaning into a moody, effortless vibe by layering it under my favorite black denim jacket and stomping around in combat boots. It's giving total 90s grunge and I never want to take it off.",
+   "outfit_suggestion": "For an effortless, grunge-inspired daytime look, layer the 90s Silk Slip Dress over the white ribbed tank top and pair it with the black combat boots and the vintage black denim jacket. \n\nFor a cozy, casual outfit that balances the feminine slip with menswear-inspired pieces, wear the 90s Silk Slip Dress underneath the oversized grey crewneck sweatshirt, finishing the look with the chunky white sneakers and the black crossbody bag.",
+   "parsed": {
+    "description": "silk slip dress midi length",
+    "max_price": 40.0,
+    "size": null
+   },
+   "query": "silk slip dress in midi length under $40",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "ivory",
+      "dusty pink",
+      "green"
+     ],
+     "condition": "good",
+     "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+     "id": "lst_013",
+     "platform": "depop",
+     "price": 30.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "feminine",
+      "floral",
+      "cottagecore"
+     ],
+     "title": "90s Silk Slip Dress — Floral, Midi Length"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "white",
+      "pink",
+      "purple"
+     ],
+     "condition": "excellent",
+     "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+     "id": "lst_002",
+     "platform": "depop",
+     "price": 18.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "vintage",
+      "graphic tee",
+      "cottagecore"
+     ],
+     "title": "Y2K Baby Tee — Butterfly Print"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "light blue",
+      "blue"
+     ],
+     "condition": "good",
+     "description": "DIY cutoff denim shorts from Levi's 501s. Raw hem, slightly frayed. High-waisted. Perfect summer length.",
+     "id": "lst_016",
+     "platform": "poshmark",
+     "price": 24.0,
+     "size": "W27",
+     "style_tags": [
+      "vintage",
+      "denim",
+      "summer",
+      "classic"
+     ],
+     "title": "High-Waisted Denim Shorts — Cutoff"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "sage",
+      "green"
+     ],
+     "condition": "excellent",
+     "description": "Loose silk (feel) button-down in sage green. Long sleeve, can be worn open as a layer or fully buttoned. Very flowy.",
+     "id": "lst_029",
+     "platform": "depop",
+     "price": 28.0,
+     "size": "M",
+     "style_tags": [
+      "vintage",
+      "minimal",
+      "earth tones",
+      "cottagecore"
+     ],
+     "title": "Silk Button-Down — Sage Green"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "black",
+      "faded black"
+     ],
+     "condition": "good",
+     "description": "Faded black straight-leg jeans. Sits at the hips, classic fit. Slightly cropped length. No rips, just natural fading.",
+     "id": "lst_037",
+     "platform": "thredUp",
+     "price": 30.0,
+     "size": "W28",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "grunge",
+      "denim"
+     ],
+     "title": "Straight Leg Black Jeans — Faded"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "bottoms",
+    "colors": [
+     "ivory",
+     "dusty pink",
+     "green"
+    ],
+    "condition": "good",
+    "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+    "id": "lst_013",
+    "platform": "depop",
+    "price": 30.0,
+    "size": "M",
+    "style_tags": [
+     "90s",
+     "vintage",
+     "feminine",
+     "floral",
+     "cottagecore"
+    ],
+    "title": "90s Silk Slip Dress — Floral, Midi Length"
+   },
+   "timings_ms": {
+    "fit_card": 5641.4,
+    "outfit": 5864.0,
+    "parse": 0.1,
+    "search": 271.9
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 11784.7
+ },
+ {
+  "group": "matching",
+  "label": "platform sneakers size 8",
+  "status": 200,
+  "rid": "7ef56392",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Score these chunky white platform sneakers on Poshmark for just $48 and I am never taking them off. They add the absolute best 90s streetwear energy to baggy denim and a simple tank top. Such a good score for finishing off those effortless, retro-heavy daily fits.",
+   "outfit_suggestion": "Outfit 1: Pair the Platform Sneakers with your baggy straight-leg jeans, dark wash, white ribbed tank top, and vintage black denim jacket. Complete the look with your black crossbody bag for an effortless, street-style Y2K aesthetic. \n\nOutfit 2: Style the Platform Sneakers alongside your wide-leg khaki trousers and oversized grey crewneck sweatshirt. Add the black crossbody bag for a casual, comfortable fit that balances retro proportions with everyday wear.",
+   "parsed": {
+    "description": "platform sneakers",
+    "max_price": null,
+    "size": "8"
+   },
+   "query": "platform sneakers size 8",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "shoes",
+     "colors": [
+      "white"
+     ],
+     "condition": "good",
+     "description": "White chunky platform sneakers. Very late 90s / early 2000s energy. Velcro straps. True to size. Some sole yellowing.",
+     "id": "lst_019",
+     "platform": "poshmark",
+     "price": 48.0,
+     "size": "US 8",
+     "style_tags": [
+      "y2k",
+      "platform",
+      "90s",
+      "streetwear"
+     ],
+     "title": "Platform Sneakers — White Chunky Sole"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "shoes",
+    "colors": [
+     "white"
+    ],
+    "condition": "good",
+    "description": "White chunky platform sneakers. Very late 90s / early 2000s energy. Velcro straps. True to size. Some sole yellowing.",
+    "id": "lst_019",
+    "platform": "poshmark",
+    "price": 48.0,
+    "size": "US 8",
+    "style_tags": [
+     "y2k",
+     "platform",
+     "90s",
+     "streetwear"
+    ],
+    "title": "Platform Sneakers — White Chunky Sole"
+   },
+   "timings_ms": {
+    "fit_card": 1301.1,
+    "outfit": 6250.4,
+    "parse": 0.0,
+    "search": 353.2
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 7920.7
+ },
+ {
+  "group": "matching",
+  "label": "denim jacket under $50",
+  "status": 200,
+  "rid": "54bfb31a",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Score this vintage Wrangler denim jacket on poshmark for only $42 and I am already obsessed. I love how the cropped light wash looks paired with wide-leg khakis and chunky sneakers for the ultimate chill street style vibe. Double denim is definitely next on my list to try with this piece.",
+   "outfit_suggestion": "Outfit one: Pair the new denim jacket with the white ribbed tank top and wide-leg khaki trousers. Add the chunky white sneakers and the black crossbody bag for a casual, balanced look that contrasts the light wash denim with neutral tones.\n\nOutfit two: Combine the denim jacket with the baggy straight-leg jeans for a classic double-denim ensemble. Layer it over the white ribbed tank top, and accessorize with the brown leather belt and black combat boots to ground the bright, vintage top with darker, textured accents.",
+   "parsed": {
+    "description": "denim jacket",
+    "max_price": 50.0,
+    "size": null
+   },
+   "query": "denim jacket under $50",
+   "search_results": [
+    {
+     "brand": "Wrangler",
+     "category": "outerwear",
+     "colors": [
+      "light blue"
+     ],
+     "condition": "excellent",
+     "description": "Cropped denim jacket in a light wash. Great structured shoulders. Blank canvas — no patches or pins but would be perfect to customize.",
+     "id": "lst_007",
+     "platform": "poshmark",
+     "price": 42.0,
+     "size": "S",
+     "style_tags": [
+      "denim",
+      "vintage",
+      "classic",
+      "streetwear"
+     ],
+     "title": "Denim Jacket — Light Wash, Cropped"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "blue",
+      "indigo"
+     ],
+     "condition": "good",
+     "description": "Classic 501s in a perfect medium wash. Some light fading at the knees which adds to the vintage look. No rips or stains.",
+     "id": "lst_001",
+     "platform": "depop",
+     "price": 38.0,
+     "size": "W30 L30",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "denim",
+      "streetwear"
+     ],
+     "title": "Vintage Levi's 501 Jeans — Medium Wash"
+    },
+    {
+     "brand": "Champion",
+     "category": "outerwear",
+     "colors": [
+      "navy",
+      "white"
+     ],
+     "condition": "excellent",
+     "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+     "id": "lst_004",
+     "platform": "poshmark",
+     "price": 45.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "athletic",
+      "streetwear"
+     ],
+     "title": "90s Track Jacket — Navy/White Stripe"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "light blue",
+      "blue"
+     ],
+     "condition": "good",
+     "description": "DIY cutoff denim shorts from Levi's 501s. Raw hem, slightly frayed. High-waisted. Perfect summer length.",
+     "id": "lst_016",
+     "platform": "poshmark",
+     "price": 24.0,
+     "size": "W27",
+     "style_tags": [
+      "vintage",
+      "denim",
+      "summer",
+      "classic"
+     ],
+     "title": "High-Waisted Denim Shorts — Cutoff"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "olive",
+      "green"
+     ],
+     "condition": "excellent",
+     "description": "Olive canvas shacket — thicker than a shirt, lighter than a jacket. Chest pockets, button-front. Great transitional layer.",
+     "id": "lst_032",
+     "platform": "poshmark",
+     "price": 33.0,
+     "size": "M/L",
+     "style_tags": [
+      "earth tones",
+      "classic",
+      "layering",
+      "minimal"
+     ],
+     "title": "Shacket — Olive Canvas"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "black",
+      "faded black"
+     ],
+     "condition": "good",
+     "description": "Faded black straight-leg jeans. Sits at the hips, classic fit. Slightly cropped length. No rips, just natural fading.",
+     "id": "lst_037",
+     "platform": "thredUp",
+     "price": 30.0,
+     "size": "W28",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "grunge",
+      "denim"
+     ],
+     "title": "Straight Leg Black Jeans — Faded"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "medium blue"
+     ],
+     "condition": "good",
+     "description": "Denim vest with silver stud detailing along the collar and pockets. Classic rock-inspired customization. Fits like a medium.",
+     "id": "lst_038",
+     "platform": "depop",
+     "price": 27.0,
+     "size": "M",
+     "style_tags": [
+      "grunge",
+      "vintage",
+      "denim",
+      "customized",
+      "rock"
+     ],
+     "title": "Denim Vest — Medium Wash, Studded"
+    }
+   ],
+   "selected_item": {
+    "brand": "Wrangler",
+    "category": "outerwear",
+    "colors": [
+     "light blue"
+    ],
+    "condition": "excellent",
+    "description": "Cropped denim jacket in a light wash. Great structured shoulders. Blank canvas — no patches or pins but would be perfect to customize.",
+    "id": "lst_007",
+    "platform": "poshmark",
+    "price": 42.0,
+    "size": "S",
+    "style_tags": [
+     "denim",
+     "vintage",
+     "classic",
+     "streetwear"
+    ],
+    "title": "Denim Jacket — Light Wash, Cropped"
+   },
+   "timings_ms": {
+    "fit_card": 6563.5,
+    "outfit": 14849.9,
+    "parse": 0.0,
+    "search": 385.2
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 21810.2
+ },
+ {
+  "group": "matching",
+  "label": "flannel shirt under $25",
+  "status": 200,
+  "rid": "5750a8a3",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Scored this vintage Woolrich flannel on thredUp for only $22, and it's officially the ultimate grunge layer. I'm obsessed with how heavy and cozy it is for throwing over a simple tank and combat boots. It totally nails that effortless, lived-in streetwear vibe without even trying.",
+   "outfit_suggestion": "Outfit one leans into classic grunge. Pair the oversized red and black flannel shirt over the white ribbed tank top, combined with the baggy straight-leg jeans in dark blue and the black combat boots. Cinch it all together with the brown leather belt and add the black crossbody bag for an effortless, textured streetwear look. \n\nOutfit two is great for cooler days. Layer the oversized grey crewneck sweatshirt underneath the oversized red and black flannel shirt, matched with the wide-leg khaki trousers and the chunky white sneakers. Finish this relaxed, layered outfit by throwing on the black cropped zip hoodie for extra warmth and dimension.",
+   "parsed": {
+    "description": "flannel shirt",
+    "max_price": 25.0,
+    "size": null
+   },
+   "query": "flannel shirt under $25",
+   "search_results": [
+    {
+     "brand": "Woolrich",
+     "category": "tops",
+     "colors": [
+      "red",
+      "black"
+     ],
+     "condition": "good",
+     "description": "Classic oversized flannel. Great layering piece. A few tiny pulls in the fabric but nothing visible when worn.",
+     "id": "lst_003",
+     "platform": "thredUp",
+     "price": 22.0,
+     "size": "XL (oversized)",
+     "style_tags": [
+      "grunge",
+      "vintage",
+      "flannel",
+      "streetwear",
+      "layering"
+     ],
+     "title": "Oversized Flannel Shirt — Plaid Red/Black"
+    },
+    {
+     "brand": "Ralph Lauren",
+     "category": "tops",
+     "colors": [
+      "green",
+      "forest green"
+     ],
+     "condition": "good",
+     "description": "Classic polo in forest green. Short sleeve, ribbed collar. Slightly boxy. The kind of piece that goes with everything.",
+     "id": "lst_024",
+     "platform": "thredUp",
+     "price": 18.0,
+     "size": "M",
+     "style_tags": [
+      "vintage",
+      "preppy",
+      "classic",
+      "earth tones"
+     ],
+     "title": "Vintage Polo Shirt — Forest Green"
+    }
+   ],
+   "selected_item": {
+    "brand": "Woolrich",
+    "category": "tops",
+    "colors": [
+     "red",
+     "black"
+    ],
+    "condition": "good",
+    "description": "Classic oversized flannel. Great layering piece. A few tiny pulls in the fabric but nothing visible when worn.",
+    "id": "lst_003",
+    "platform": "thredUp",
+    "price": 22.0,
+    "size": "XL (oversized)",
+    "style_tags": [
+     "grunge",
+     "vintage",
+     "flannel",
+     "streetwear",
+     "layering"
+    ],
+    "title": "Oversized Flannel Shirt — Plaid Red/Black"
+   },
+   "timings_ms": {
+    "fit_card": 5119.7,
+    "outfit": 6536.1,
+    "parse": 0.0,
+    "search": 317.2
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 11981.3
+ },
+ {
+  "group": "matching",
+  "label": "jacket $50",
+  "status": 200,
+  "rid": "4b51a5cf",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Scored this vintage Champion track jacket on poshmark for only $45 and I am so obsessed with the 90s streetwear vibe. I've already planned out two different looks with it, ranging from baggy jeans and chunky sneakers to khaki trousers and combat boots. It’s seriously the easiest piece to just throw on and instantly make the outfit look cool.",
+   "outfit_suggestion": "Outfit one pairs the track jacket with the white ribbed tank top and baggy straight-leg jeans, finished off with chunky white sneakers for a classic, sporty 90s streetwear look. \n\nOutfit two layers the track jacket over the white ribbed tank top and wide-leg khaki trousers, styled with the black combat boots and the black crossbody bag for a sharp, retro-athletic mix.",
+   "parsed": {
+    "description": "jacket",
+    "max_price": 50.0,
+    "size": null
+   },
+   "query": "jacket $50",
+   "search_results": [
+    {
+     "brand": "Champion",
+     "category": "outerwear",
+     "colors": [
+      "navy",
+      "white"
+     ],
+     "condition": "excellent",
+     "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+     "id": "lst_004",
+     "platform": "poshmark",
+     "price": 45.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "athletic",
+      "streetwear"
+     ],
+     "title": "90s Track Jacket — Navy/White Stripe"
+    },
+    {
+     "brand": "Wrangler",
+     "category": "outerwear",
+     "colors": [
+      "light blue"
+     ],
+     "condition": "excellent",
+     "description": "Cropped denim jacket in a light wash. Great structured shoulders. Blank canvas — no patches or pins but would be perfect to customize.",
+     "id": "lst_007",
+     "platform": "poshmark",
+     "price": 42.0,
+     "size": "S",
+     "style_tags": [
+      "denim",
+      "vintage",
+      "classic",
+      "streetwear"
+     ],
+     "title": "Denim Jacket — Light Wash, Cropped"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "olive",
+      "green"
+     ],
+     "condition": "excellent",
+     "description": "Olive canvas shacket — thicker than a shirt, lighter than a jacket. Chest pockets, button-front. Great transitional layer.",
+     "id": "lst_032",
+     "platform": "poshmark",
+     "price": 33.0,
+     "size": "M/L",
+     "style_tags": [
+      "earth tones",
+      "classic",
+      "layering",
+      "minimal"
+     ],
+     "title": "Shacket — Olive Canvas"
+    }
+   ],
+   "selected_item": {
+    "brand": "Champion",
+    "category": "outerwear",
+    "colors": [
+     "navy",
+     "white"
+    ],
+    "condition": "excellent",
+    "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+    "id": "lst_004",
+    "platform": "poshmark",
+    "price": 45.0,
+    "size": "M",
+    "style_tags": [
+     "90s",
+     "vintage",
+     "athletic",
+     "streetwear"
+    ],
+    "title": "90s Track Jacket — Navy/White Stripe"
+   },
+   "timings_ms": {
+    "fit_card": 10476.1,
+    "outfit": 6279.4,
+    "parse": 0.0,
+    "search": 368.1
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 17132.3
+ },
+ {
+  "group": "matching",
+  "label": "something cute for a date under $40",
+  "status": 200,
+  "rid": "b533d8e4",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "I am so obsessed with this little butterfly tee I found on depop for $18. The pink and purple graphic gives off the absolute best early 2000s energy, especially when I pair it with baggy jeans and chunky sneakers. It is seriously the easiest everyday fit ever.",
+   "outfit_suggestion": "Outfit one pairs the Y2K Baby Tee with the baggy straight-leg jeans for a classic early 2000s look. Add the chunky white sneakers and the black crossbody bag to complete the casual, everyday aesthetic. \n\nOutfit two styles the Y2K Baby Tee tucked into the wide-leg khaki trousers for a subtle mix of cottagecore and Y2K trends. Layer the vintage black denim jacket on top, and finish the outfit with the black combat boots and the brown leather belt.",
+   "parsed": {
+    "description": "cute date",
+    "max_price": 40.0,
+    "size": null
+   },
+   "query": "something cute for a date under $40",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "white",
+      "pink",
+      "purple"
+     ],
+     "condition": "excellent",
+     "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+     "id": "lst_002",
+     "platform": "depop",
+     "price": 18.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "vintage",
+      "graphic tee",
+      "cottagecore"
+     ],
+     "title": "Y2K Baby Tee — Butterfly Print"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "tops",
+    "colors": [
+     "white",
+     "pink",
+     "purple"
+    ],
+    "condition": "excellent",
+    "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+    "id": "lst_002",
+    "platform": "depop",
+    "price": 18.0,
+    "size": "S/M",
+    "style_tags": [
+     "y2k",
+     "vintage",
+     "graphic tee",
+     "cottagecore"
+    ],
+    "title": "Y2K Baby Tee — Butterfly Print"
+   },
+   "timings_ms": {
+    "fit_card": 5077.3,
+    "outfit": 18249.9,
+    "parse": 0.1,
+    "search": 329.4
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 23665.8
+ },
+ {
+  "group": "matching",
+  "label": "black boots",
+  "status": 200,
+  "rid": "1aa5d368",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Snagged this Woolrich flannel on thredUp for only $22 and I am so obsessed with the 90s grunge vibe. It looks amazing thrown open over a basic tank, but I'm also totally styling it buttoned up with wide-leg trousers for that effortless menswear-inspired look.",
+   "outfit_suggestion": "Outfit 1: Wear the Oversized Flannel Shirt open and layered over the White ribbed tank top, paired with the Baggy straight-leg jeans, dark wash, and the Chunky white sneakers. Add the Black crossbody bag to complete a casual, 90s-inspired streetwear look. \n\nOutfit 2: Wear the Oversized Flannel Shirt buttoned up with the Wide-leg khaki trousers, cinched at the waist using the Brown leather belt, and styled with the Black combat boots. Throw the Vintage black denim jacket over your shoulders for extra warmth and texture.",
+   "parsed": {
+    "description": "black boots",
+    "max_price": null,
+    "size": null
+   },
+   "query": "black boots",
+   "search_results": [
+    {
+     "brand": "Woolrich",
+     "category": "tops",
+     "colors": [
+      "red",
+      "black"
+     ],
+     "condition": "good",
+     "description": "Classic oversized flannel. Great layering piece. A few tiny pulls in the fabric but nothing visible when worn.",
+     "id": "lst_003",
+     "platform": "thredUp",
+     "price": 22.0,
+     "size": "XL (oversized)",
+     "style_tags": [
+      "grunge",
+      "vintage",
+      "flannel",
+      "streetwear",
+      "layering"
+     ],
+     "title": "Oversized Flannel Shirt — Plaid Red/Black"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black"
+     ],
+     "condition": "good",
+     "description": "Vintage-style bootleg tee with faded graphic. Slightly boxy fit. 100% cotton, soft and worn-in.",
+     "id": "lst_006",
+     "platform": "depop",
+     "price": 24.0,
+     "size": "L",
+     "style_tags": [
+      "graphic tee",
+      "vintage",
+      "grunge",
+      "streetwear",
+      "band tee"
+     ],
+     "title": "Graphic Tee — 2003 Tour Bootleg Style"
+    },
+    {
+     "brand": "Demonia",
+     "category": "shoes",
+     "colors": [
+      "black"
+     ],
+     "condition": "good",
+     "description": "Patent leather platform Mary Janes. 1.5 inch platform. Some light scuffing on the toe box but nothing major. UK size 5.",
+     "id": "lst_009",
+     "platform": "depop",
+     "price": 55.0,
+     "size": "US 7",
+     "style_tags": [
+      "y2k",
+      "goth",
+      "platform",
+      "90s"
+     ],
+     "title": "Platform Mary Janes — Black Patent"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "purple",
+      "teal",
+      "black"
+     ],
+     "condition": "good",
+     "description": "Color block windbreaker from the early 90s. Packable, lightweight. The kind your dad definitely owned. Full zip with elastic cuffs.",
+     "id": "lst_010",
+     "platform": "thredUp",
+     "price": 40.0,
+     "size": "L",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "athletic",
+      "color block",
+      "streetwear"
+     ],
+     "title": "Vintage Windbreaker — Color Block Purple/Teal"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black",
+      "charcoal"
+     ],
+     "condition": "fair",
+     "description": "Faded black pullover hoodie with barely-visible vintage graphic on the chest. Cozy interior. Some pilling but adds to the worn-in look.",
+     "id": "lst_015",
+     "platform": "depop",
+     "price": 26.0,
+     "size": "L",
+     "style_tags": [
+      "vintage",
+      "grunge",
+      "graphic",
+      "streetwear"
+     ],
+     "title": "Vintage Graphic Hoodie — Faded Black"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black"
+     ],
+     "condition": "excellent",
+     "description": "Sheer black mesh long-sleeve. Great for layering under a graphic tee or over a bralette. Stretchy material, fits true to size.",
+     "id": "lst_017",
+     "platform": "depop",
+     "price": 15.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "grunge",
+      "goth",
+      "layering"
+     ],
+     "title": "Mesh Long-Sleeve Top — Black"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "black"
+     ],
+     "condition": "good",
+     "description": "Genuine leather bomber jacket. Classic 90s silhouette, slightly boxy. Ribbed collar, cuffs, and hem. Some creasing from age — adds character.",
+     "id": "lst_022",
+     "platform": "depop",
+     "price": 75.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "leather",
+      "classic",
+      "grunge"
+     ],
+     "title": "90s Leather Bomber — Black"
+    },
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "black"
+     ],
+     "condition": "excellent",
+     "description": "Shiny black biker shorts in a slightly glossy material. High-waisted. Y2K-coded. Can be styled athletic or fashion.",
+     "id": "lst_026",
+     "platform": "depop",
+     "price": 14.0,
+     "size": "S",
+     "style_tags": [
+      "y2k",
+      "athletic",
+      "streetwear",
+      "2000s"
+     ],
+     "title": "Biker Shorts — Black, Shiny"
+    },
+    {
+     "brand": null,
+     "category": "shoes",
+     "colors": [
+      "tan",
+      "camel"
+     ],
+     "condition": "fair",
+     "description": "Tan suede Chelsea boots with elastic side panels. Stacked heel. Some scuffing on the toe — can be brushed out with suede cleaner.",
+     "id": "lst_028",
+     "platform": "poshmark",
+     "price": 44.0,
+     "size": "US 8.5",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "western",
+      "earth tones"
+     ],
+     "title": "Suede Chelsea Boots — Tan"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "black",
+      "faded black"
+     ],
+     "condition": "good",
+     "description": "Faded black straight-leg jeans. Sits at the hips, classic fit. Slightly cropped length. No rips, just natural fading.",
+     "id": "lst_037",
+     "platform": "thredUp",
+     "price": 30.0,
+     "size": "W28",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "grunge",
+      "denim"
+     ],
+     "title": "Straight Leg Black Jeans — Faded"
+    }
+   ],
+   "selected_item": {
+    "brand": "Woolrich",
+    "category": "tops",
+    "colors": [
+     "red",
+     "black"
+    ],
+    "condition": "good",
+    "description": "Classic oversized flannel. Great layering piece. A few tiny pulls in the fabric but nothing visible when worn.",
+    "id": "lst_003",
+    "platform": "thredUp",
+    "price": 22.0,
+    "size": "XL (oversized)",
+    "style_tags": [
+     "grunge",
+     "vintage",
+     "flannel",
+     "streetwear",
+     "layering"
+    ],
+    "title": "Oversized Flannel Shirt — Plaid Red/Black"
+   },
+   "timings_ms": {
+    "fit_card": 4387.9,
+    "outfit": 4697.4,
+    "parse": 0.0,
+    "search": 358.5
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 9474.7
+ },
+ {
+  "group": "matching",
+  "label": "size medium hoodie",
+  "status": 200,
+  "rid": "1cf28f86",
+  "body": {
+   "dropped": "size MEDIUM",
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Found this perfectly faded black graphic hoodie on depop for only $26 and I'm obsessed with how heavy and worn-in it feels. Threw it on with my baggy straight-leg jeans and black combat boots for the ultimate effortless streetwear fit. It's giving major grunge energy and I honestly might never take it off.",
+   "outfit_suggestion": "Outfit 1: Pair the vintage graphic hoodie with your baggy straight-leg jeans, black combat boots, and black crossbody bag for an effortless streetwear look. \n\nOutfit 2: Layer the vintage graphic hoodie over your white ribbed tank top, combined with wide-leg khaki trousers and chunky white sneakers, accented by the brown leather belt for a grunge-inspired contrast.",
+   "parsed": {
+    "description": "hoodie",
+    "max_price": null,
+    "size": "MEDIUM"
+   },
+   "query": "size medium hoodie",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black",
+      "charcoal"
+     ],
+     "condition": "fair",
+     "description": "Faded black pullover hoodie with barely-visible vintage graphic on the chest. Cozy interior. Some pilling but adds to the worn-in look.",
+     "id": "lst_015",
+     "platform": "depop",
+     "price": 26.0,
+     "size": "L",
+     "style_tags": [
+      "vintage",
+      "grunge",
+      "graphic",
+      "streetwear"
+     ],
+     "title": "Vintage Graphic Hoodie — Faded Black"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "tops",
+    "colors": [
+     "black",
+     "charcoal"
+    ],
+    "condition": "fair",
+    "description": "Faded black pullover hoodie with barely-visible vintage graphic on the chest. Cozy interior. Some pilling but adds to the worn-in look.",
+    "id": "lst_015",
+    "platform": "depop",
+    "price": 26.0,
+    "size": "L",
+    "style_tags": [
+     "vintage",
+     "grunge",
+     "graphic",
+     "streetwear"
+    ],
+    "title": "Vintage Graphic Hoodie — Faded Black"
+   },
+   "timings_ms": {
+    "fit_card": 5126.0,
+    "outfit": 681.4,
+    "parse": 0.1,
+    "retry_without_size": 211.8,
+    "search": 323.4
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 6348.1
+ },
+ {
+  "group": "matching",
+  "label": "cheap sneakers",
+  "status": 200,
+  "rid": "92574bbb",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "Score these chunky platform sneakers on poshmark for only $48 and I am never taking them off. They add the absolute best 90s streetwear edge to a simple white tank and baggy jeans. I'm so obsessed with how effortless this whole Y2K look turned out.",
+   "outfit_suggestion": "Outfit 1: Pair the Platform Sneakers with your Baggy straight-leg jeans, dark wash, White ribbed tank top, and Vintage black denim jacket. Complete the look with your Black crossbody bag for an effortless Y2K streetwear vibe.\n\nOutfit 2: Style the Platform Sneakers with your Wide-leg khaki trousers and Black cropped zip hoodie. Add your Brown leather belt and Black crossbody bag to tie the casual, retro-inspired outfit together seamlessly.",
+   "parsed": {
+    "description": "cheap sneakers",
+    "max_price": null,
+    "size": null
+   },
+   "query": "cheap sneakers",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "shoes",
+     "colors": [
+      "white"
+     ],
+     "condition": "good",
+     "description": "White chunky platform sneakers. Very late 90s / early 2000s energy. Velcro straps. True to size. Some sole yellowing.",
+     "id": "lst_019",
+     "platform": "poshmark",
+     "price": 48.0,
+     "size": "US 8",
+     "style_tags": [
+      "y2k",
+      "platform",
+      "90s",
+      "streetwear"
+     ],
+     "title": "Platform Sneakers — White Chunky Sole"
+    },
+    {
+     "brand": null,
+     "category": "shoes",
+     "colors": [
+      "off-white",
+      "cream"
+     ],
+     "condition": "good",
+     "description": "Classic low-top canvas sneakers in off-white. Very minimal. Some light yellowing on the sole edges from age. Size 9.",
+     "id": "lst_035",
+     "platform": "poshmark",
+     "price": 20.0,
+     "size": "US 9",
+     "style_tags": [
+      "classic",
+      "minimal",
+      "streetwear",
+      "basics"
+     ],
+     "title": "Low-Top Canvas Sneakers — Off-White"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "shoes",
+    "colors": [
+     "white"
+    ],
+    "condition": "good",
+    "description": "White chunky platform sneakers. Very late 90s / early 2000s energy. Velcro straps. True to size. Some sole yellowing.",
+    "id": "lst_019",
+    "platform": "poshmark",
+    "price": 48.0,
+    "size": "US 8",
+    "style_tags": [
+     "y2k",
+     "platform",
+     "90s",
+     "streetwear"
+    ],
+    "title": "Platform Sneakers — White Chunky Sole"
+   },
+   "timings_ms": {
+    "fit_card": 4668.4,
+    "outfit": 838.0,
+    "parse": 0.0,
+    "search": 271.1
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 5785.3
+ },
+ {
+  "group": "matching",
+  "label": "denim jaket",
+  "status": 200,
+  "rid": "07cb3223",
+  "body": {
+   "dropped": null,
+   "error": null,
+   "error_kind": null,
+   "fit_card": "scored these vintage Levi's on depop for only $38 and I am never taking them off. they give off such an effortless streetwear vibe whether I'm dressing them up with a cropped hoodie and chunky sneakers or keeping it cozy with an oversized crewneck and combat boots. finding a 30x30 that fits this well feels like hitting the thrift store jackpot.",
+   "outfit_suggestion": "Outfit One: Pair the Vintage Levi's 501 Jeans — Medium Wash with the White ribbed tank top, the Black cropped zip hoodie layered on top, and finish the look with the Chunky white sneakers and the Black crossbody bag. \n\nOutfit Two: Style the Vintage Levi's 501 Jeans — Medium Wash alongside the Oversized grey crewneck sweatshirt, the Brown leather belt worn at the waist, and the Black combat boots for an effortless, classic streetwear aesthetic.",
+   "parsed": {
+    "description": "denim jaket",
+    "max_price": null,
+    "size": null
+   },
+   "query": "denim jaket",
+   "search_results": [
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "blue",
+      "indigo"
+     ],
+     "condition": "good",
+     "description": "Classic 501s in a perfect medium wash. Some light fading at the knees which adds to the vintage look. No rips or stains.",
+     "id": "lst_001",
+     "platform": "depop",
+     "price": 38.0,
+     "size": "W30 L30",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "denim",
+      "streetwear"
+     ],
+     "title": "Vintage Levi's 501 Jeans — Medium Wash"
+    },
+    {
+     "brand": "Wrangler",
+     "category": "outerwear",
+     "colors": [
+      "light blue"
+     ],
+     "condition": "excellent",
+     "description": "Cropped denim jacket in a light wash. Great structured shoulders. Blank canvas — no patches or pins but would be perfect to customize.",
+     "id": "lst_007",
+     "platform": "poshmark",
+     "price": 42.0,
+     "size": "S",
+     "style_tags": [
+      "denim",
+      "vintage",
+      "classic",
+      "streetwear"
+     ],
+     "title": "Denim Jacket — Light Wash, Cropped"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "light blue",
+      "blue"
+     ],
+     "condition": "good",
+     "description": "DIY cutoff denim shorts from Levi's 501s. Raw hem, slightly frayed. High-waisted. Perfect summer length.",
+     "id": "lst_016",
+     "platform": "poshmark",
+     "price": 24.0,
+     "size": "W27",
+     "style_tags": [
+      "vintage",
+      "denim",
+      "summer",
+      "classic"
+     ],
+     "title": "High-Waisted Denim Shorts — Cutoff"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "black",
+      "faded black"
+     ],
+     "condition": "good",
+     "description": "Faded black straight-leg jeans. Sits at the hips, classic fit. Slightly cropped length. No rips, just natural fading.",
+     "id": "lst_037",
+     "platform": "thredUp",
+     "price": 30.0,
+     "size": "W28",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "grunge",
+      "denim"
+     ],
+     "title": "Straight Leg Black Jeans — Faded"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "medium blue"
+     ],
+     "condition": "good",
+     "description": "Denim vest with silver stud detailing along the collar and pockets. Classic rock-inspired customization. Fits like a medium.",
+     "id": "lst_038",
+     "platform": "depop",
+     "price": 27.0,
+     "size": "M",
+     "style_tags": [
+      "grunge",
+      "vintage",
+      "denim",
+      "customized",
+      "rock"
+     ],
+     "title": "Denim Vest — Medium Wash, Studded"
+    }
+   ],
+   "selected_item": {
+    "brand": "Levi's",
+    "category": "bottoms",
+    "colors": [
+     "blue",
+     "indigo"
+    ],
+    "condition": "good",
+    "description": "Classic 501s in a perfect medium wash. Some light fading at the knees which adds to the vintage look. No rips or stains.",
+    "id": "lst_001",
+    "platform": "depop",
+    "price": 38.0,
+    "size": "W30 L30",
+    "style_tags": [
+     "vintage",
+     "classic",
+     "denim",
+     "streetwear"
+    ],
+    "title": "Vintage Levi's 501 Jeans — Medium Wash"
+   },
+   "timings_ms": {
+    "fit_card": 5193.0,
+    "outfit": 4185.8,
+    "parse": 0.0,
+    "search": 242.2
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 9626.9
+ },
+ {
+  "group": "impossible",
+  "label": "designer ballgown size XXS under $5",
+  "status": 200,
+  "rid": "8c767299",
+  "body": {
+   "dropped": "size XXS",
+   "error": "No listings matched \"designer ballgown\", size XXS, under $5. Try one change at a time: drop the size XXS filter; or raise the $5 limit (listings start at $12); or use fewer or more common words, like a category (tee, jeans, jacket, dress, sneakers) or a style (vintage, y2k, 90s). (I also tried again without the size XXS filter and still found nothing.)",
+   "error_kind": "no_results",
+   "fit_card": null,
+   "outfit_suggestion": null,
+   "parsed": {
+    "description": "designer ballgown",
+    "max_price": 5.0,
+    "size": "XXS"
+   },
+   "query": "designer ballgown size XXS under $5",
+   "search_results": [],
+   "selected_item": null,
+   "timings_ms": {
+    "parse": 0.0,
+    "retry_without_size": 228.6,
+    "search": 337.3
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 570.2
+ },
+ {
+  "group": "impossible",
+  "label": "sequin tuxedo size XXXL under $3",
+  "status": 200,
+  "rid": "82927c92",
+  "body": {
+   "dropped": "size XXXL",
+   "error": "No listings matched \"sequin tuxedo\", size XXXL, under $3. Try one change at a time: drop the size XXXL filter; or raise the $3 limit (listings start at $12); or use fewer or more common words, like a category (tee, jeans, jacket, dress, sneakers) or a style (vintage, y2k, 90s). (I also tried again without the size XXXL filter and still found nothing.)",
+   "error_kind": "no_results",
+   "fit_card": null,
+   "outfit_suggestion": null,
+   "parsed": {
+    "description": "sequin tuxedo",
+    "max_price": 3.0,
+    "size": "XXXL"
+   },
+   "query": "sequin tuxedo size XXXL under $3",
+   "search_results": [],
+   "selected_item": null,
+   "timings_ms": {
+    "parse": 0.2,
+    "retry_without_size": 215.2,
+    "search": 210.8
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 428.2
+ },
+ {
+  "group": "malformed",
+  "label": "blank query",
+  "status": 400,
+  "rid": "e17ba9ee",
+  "body": {
+   "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+  },
+  "client_ms": 1.8
+ },
+ {
+  "group": "malformed",
+  "label": "not JSON",
+  "status": 400,
+  "rid": "abfad167",
+  "body": {
+   "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+  },
+  "client_ms": 1.0
+ },
+ {
+  "group": "malformed",
+  "label": "query is a number",
+  "status": 400,
+  "rid": "571ae51d",
+  "body": {
+   "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+  },
+  "client_ms": 0.9
+ },
+ {
+  "group": "malformed",
+  "label": "wardrobe items not a list",
+  "status": 400,
+  "rid": "f507c825",
+  "body": {
+   "error": "'wardrobe.items' must be a list"
+  },
+  "client_ms": 0.6
+ },
+ {
+  "group": "malformed",
+  "label": "5,000-character query",
+  "status": 400,
+  "rid": "8a223df5",
+  "body": {
+   "error": "That query is 4999 characters long. Keep it under 500: what you're looking for, a size and a price."
+  },
+  "client_ms": 1.2
+ },
+ {
+  "group": "broken_key",
+  "label": "vintage graphic tee under $30",
+  "status": 503,
+  "rid": "eae1159b",
+  "body": {
+   "dropped": null,
+   "error": "The search worked and found Y2K Baby Tee — Butterfly Print ($18 on depop), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.",
+   "error_kind": "model_unavailable",
+   "fit_card": null,
+   "outfit_suggestion": null,
+   "parsed": {
+    "description": "vintage graphic tee",
+    "max_price": 30.0,
+    "size": null
+   },
+   "query": "vintage graphic tee under $30",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "white",
+      "pink",
+      "purple"
+     ],
+     "condition": "excellent",
+     "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+     "id": "lst_002",
+     "platform": "depop",
+     "price": 18.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "vintage",
+      "graphic tee",
+      "cottagecore"
+     ],
+     "title": "Y2K Baby Tee — Butterfly Print"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black"
+     ],
+     "condition": "good",
+     "description": "Vintage-style bootleg tee with faded graphic. Slightly boxy fit. 100% cotton, soft and worn-in.",
+     "id": "lst_006",
+     "platform": "depop",
+     "price": 24.0,
+     "size": "L",
+     "style_tags": [
+      "graphic tee",
+      "vintage",
+      "grunge",
+      "streetwear",
+      "band tee"
+     ],
+     "title": "Graphic Tee — 2003 Tour Bootleg Style"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "grey",
+      "charcoal"
+     ],
+     "condition": "fair",
+     "description": "Faded grey band-style tee with distressed graphic. Crew neck. Fits boxy. Well-loved but no holes or major damage.",
+     "id": "lst_033",
+     "platform": "depop",
+     "price": 19.0,
+     "size": "L",
+     "style_tags": [
+      "vintage",
+      "grunge",
+      "band tee",
+      "graphic tee",
+      "streetwear"
+     ],
+     "title": "Vintage Band Tee — Faded Grey"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black",
+      "charcoal"
+     ],
+     "condition": "fair",
+     "description": "Faded black pullover hoodie with barely-visible vintage graphic on the chest. Cozy interior. Some pilling but adds to the worn-in look.",
+     "id": "lst_015",
+     "platform": "depop",
+     "price": 26.0,
+     "size": "L",
+     "style_tags": [
+      "vintage",
+      "grunge",
+      "graphic",
+      "streetwear"
+     ],
+     "title": "Vintage Graphic Hoodie — Faded Black"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "black"
+     ],
+     "condition": "excellent",
+     "description": "Sheer black mesh long-sleeve. Great for layering under a graphic tee or over a bralette. Stretchy material, fits true to size.",
+     "id": "lst_017",
+     "platform": "depop",
+     "price": 15.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "grunge",
+      "goth",
+      "layering"
+     ],
+     "title": "Mesh Long-Sleeve Top — Black"
+    },
+    {
+     "brand": "Woolrich",
+     "category": "tops",
+     "colors": [
+      "red",
+      "black"
+     ],
+     "condition": "good",
+     "description": "Classic oversized flannel. Great layering piece. A few tiny pulls in the fabric but nothing visible when worn.",
+     "id": "lst_003",
+     "platform": "thredUp",
+     "price": 22.0,
+     "size": "XL (oversized)",
+     "style_tags": [
+      "grunge",
+      "vintage",
+      "flannel",
+      "streetwear",
+      "layering"
+     ],
+     "title": "Oversized Flannel Shirt — Plaid Red/Black"
+    },
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "khaki",
+      "tan"
+     ],
+     "condition": "fair",
+     "description": "Y2K era low-rise cargo pants. Lots of pockets. Khaki color, slightly distressed at the hems. Great for layering with a long tee.",
+     "id": "lst_011",
+     "platform": "poshmark",
+     "price": 27.0,
+     "size": "W29",
+     "style_tags": [
+      "y2k",
+      "cargo",
+      "2000s",
+      "streetwear"
+     ],
+     "title": "Low-Rise Cargo Pants — Khaki"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "navy"
+     ],
+     "condition": "good",
+     "description": "Perfectly faded navy crewneck. Genuinely vintage — not manufactured distressed. Ribbed cuffs and hem. No graphics, clean.",
+     "id": "lst_012",
+     "platform": "thredUp",
+     "price": 20.0,
+     "size": "XL (fits oversized)",
+     "style_tags": [
+      "vintage",
+      "basics",
+      "oversized",
+      "classic"
+     ],
+     "title": "Oversized Crewneck Sweatshirt — Vintage Navy"
+    },
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "ivory",
+      "dusty pink",
+      "green"
+     ],
+     "condition": "good",
+     "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+     "id": "lst_013",
+     "platform": "depop",
+     "price": 30.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "feminine",
+      "floral",
+      "cottagecore"
+     ],
+     "title": "90s Silk Slip Dress — Floral, Midi Length"
+    },
+    {
+     "brand": null,
+     "category": "accessories",
+     "colors": [
+      "brown"
+     ],
+     "condition": "excellent",
+     "description": "Genuine leather braided belt. Adjustable, multiple holes. Classic Western buckle. Can be dressed up or down.",
+     "id": "lst_014",
+     "platform": "thredUp",
+     "price": 12.0,
+     "size": "One Size (adjustable)",
+     "style_tags": [
+      "vintage",
+      "western",
+      "classic",
+      "earth tones"
+     ],
+     "title": "Leather Belt — Brown, Braided"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "tops",
+    "colors": [
+     "white",
+     "pink",
+     "purple"
+    ],
+    "condition": "excellent",
+    "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+    "id": "lst_002",
+    "platform": "depop",
+    "price": 18.0,
+    "size": "S/M",
+    "style_tags": [
+     "y2k",
+     "vintage",
+     "graphic tee",
+     "cottagecore"
+    ],
+    "title": "Y2K Baby Tee — Butterfly Print"
+   },
+   "timings_ms": {
+    "outfit": 320.3,
+    "parse": 0.5,
+    "search": 365.2
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 689.1
+ },
+ {
+  "group": "broken_key",
+  "label": "90s track jacket in size M",
+  "status": 503,
+  "rid": "286d25c4",
+  "body": {
+   "dropped": null,
+   "error": "The search worked and found 90s Track Jacket — Navy/White Stripe ($45 on poshmark), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.",
+   "error_kind": "model_unavailable",
+   "fit_card": null,
+   "outfit_suggestion": null,
+   "parsed": {
+    "description": "90s track jacket",
+    "max_price": null,
+    "size": "M"
+   },
+   "query": "90s track jacket in size M",
+   "search_results": [
+    {
+     "brand": "Champion",
+     "category": "outerwear",
+     "colors": [
+      "navy",
+      "white"
+     ],
+     "condition": "excellent",
+     "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+     "id": "lst_004",
+     "platform": "poshmark",
+     "price": 45.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "athletic",
+      "streetwear"
+     ],
+     "title": "90s Track Jacket — Navy/White Stripe"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "black"
+     ],
+     "condition": "good",
+     "description": "Genuine leather bomber jacket. Classic 90s silhouette, slightly boxy. Ribbed collar, cuffs, and hem. Some creasing from age — adds character.",
+     "id": "lst_022",
+     "platform": "depop",
+     "price": 75.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "leather",
+      "classic",
+      "grunge"
+     ],
+     "title": "90s Leather Bomber — Black"
+    },
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "ivory",
+      "dusty pink",
+      "green"
+     ],
+     "condition": "good",
+     "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+     "id": "lst_013",
+     "platform": "depop",
+     "price": 30.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "feminine",
+      "floral",
+      "cottagecore"
+     ],
+     "title": "90s Silk Slip Dress — Floral, Midi Length"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "olive",
+      "green"
+     ],
+     "condition": "excellent",
+     "description": "Olive canvas shacket — thicker than a shirt, lighter than a jacket. Chest pockets, button-front. Great transitional layer.",
+     "id": "lst_032",
+     "platform": "poshmark",
+     "price": 33.0,
+     "size": "M/L",
+     "style_tags": [
+      "earth tones",
+      "classic",
+      "layering",
+      "minimal"
+     ],
+     "title": "Shacket — Olive Canvas"
+    },
+    {
+     "brand": null,
+     "category": "accessories",
+     "colors": [
+      "brown",
+      "tan",
+      "plaid"
+     ],
+     "condition": "excellent",
+     "description": "Reversible bucket hat — plaid on one side, solid tan on the other. Unstructured brim. One size fits most.",
+     "id": "lst_034",
+     "platform": "thredUp",
+     "price": 14.0,
+     "size": "One Size",
+     "style_tags": [
+      "90s",
+      "streetwear",
+      "vintage",
+      "accessories"
+     ],
+     "title": "Bucket Hat — Reversible, Brown Plaid"
+    }
+   ],
+   "selected_item": {
+    "brand": "Champion",
+    "category": "outerwear",
+    "colors": [
+     "navy",
+     "white"
+    ],
+    "condition": "excellent",
+    "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+    "id": "lst_004",
+    "platform": "poshmark",
+    "price": 45.0,
+    "size": "M",
+    "style_tags": [
+     "90s",
+     "vintage",
+     "athletic",
+     "streetwear"
+    ],
+    "title": "90s Track Jacket — Navy/White Stripe"
+   },
+   "timings_ms": {
+    "outfit": 29.3,
+    "parse": 0.1,
+    "search": 229.8
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 261.7
+ },
+ {
+  "group": "broken_key",
+  "label": "silk slip dress in midi length under $40",
+  "status": 503,
+  "rid": "cbfcbd6c",
+  "body": {
+   "dropped": null,
+   "error": "The search worked and found 90s Silk Slip Dress — Floral, Midi Length ($30 on depop), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.",
+   "error_kind": "model_unavailable",
+   "fit_card": null,
+   "outfit_suggestion": null,
+   "parsed": {
+    "description": "silk slip dress midi length",
+    "max_price": 40.0,
+    "size": null
+   },
+   "query": "silk slip dress in midi length under $40",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "bottoms",
+     "colors": [
+      "ivory",
+      "dusty pink",
+      "green"
+     ],
+     "condition": "good",
+     "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+     "id": "lst_013",
+     "platform": "depop",
+     "price": 30.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "feminine",
+      "floral",
+      "cottagecore"
+     ],
+     "title": "90s Silk Slip Dress — Floral, Midi Length"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "white",
+      "pink",
+      "purple"
+     ],
+     "condition": "excellent",
+     "description": "Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.",
+     "id": "lst_002",
+     "platform": "depop",
+     "price": 18.0,
+     "size": "S/M",
+     "style_tags": [
+      "y2k",
+      "vintage",
+      "graphic tee",
+      "cottagecore"
+     ],
+     "title": "Y2K Baby Tee — Butterfly Print"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "light blue",
+      "blue"
+     ],
+     "condition": "good",
+     "description": "DIY cutoff denim shorts from Levi's 501s. Raw hem, slightly frayed. High-waisted. Perfect summer length.",
+     "id": "lst_016",
+     "platform": "poshmark",
+     "price": 24.0,
+     "size": "W27",
+     "style_tags": [
+      "vintage",
+      "denim",
+      "summer",
+      "classic"
+     ],
+     "title": "High-Waisted Denim Shorts — Cutoff"
+    },
+    {
+     "brand": null,
+     "category": "tops",
+     "colors": [
+      "sage",
+      "green"
+     ],
+     "condition": "excellent",
+     "description": "Loose silk (feel) button-down in sage green. Long sleeve, can be worn open as a layer or fully buttoned. Very flowy.",
+     "id": "lst_029",
+     "platform": "depop",
+     "price": 28.0,
+     "size": "M",
+     "style_tags": [
+      "vintage",
+      "minimal",
+      "earth tones",
+      "cottagecore"
+     ],
+     "title": "Silk Button-Down — Sage Green"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "black",
+      "faded black"
+     ],
+     "condition": "good",
+     "description": "Faded black straight-leg jeans. Sits at the hips, classic fit. Slightly cropped length. No rips, just natural fading.",
+     "id": "lst_037",
+     "platform": "thredUp",
+     "price": 30.0,
+     "size": "W28",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "grunge",
+      "denim"
+     ],
+     "title": "Straight Leg Black Jeans — Faded"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "bottoms",
+    "colors": [
+     "ivory",
+     "dusty pink",
+     "green"
+    ],
+    "condition": "good",
+    "description": "Delicate 90s slip dress in a muted floral print. Midi length, adjustable straps. Light snag on the side seam — not visible when worn.",
+    "id": "lst_013",
+    "platform": "depop",
+    "price": 30.0,
+    "size": "M",
+    "style_tags": [
+     "90s",
+     "vintage",
+     "feminine",
+     "floral",
+     "cottagecore"
+    ],
+    "title": "90s Silk Slip Dress — Floral, Midi Length"
+   },
+   "timings_ms": {
+    "outfit": 26.1,
+    "parse": 0.0,
+    "search": 219.7
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 247.9
+ },
+ {
+  "group": "broken_key",
+  "label": "platform sneakers size 8",
+  "status": 503,
+  "rid": "62b1b6e6",
+  "body": {
+   "dropped": null,
+   "error": "The search worked and found Platform Sneakers — White Chunky Sole ($48 on poshmark), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.",
+   "error_kind": "model_unavailable",
+   "fit_card": null,
+   "outfit_suggestion": null,
+   "parsed": {
+    "description": "platform sneakers",
+    "max_price": null,
+    "size": "8"
+   },
+   "query": "platform sneakers size 8",
+   "search_results": [
+    {
+     "brand": null,
+     "category": "shoes",
+     "colors": [
+      "white"
+     ],
+     "condition": "good",
+     "description": "White chunky platform sneakers. Very late 90s / early 2000s energy. Velcro straps. True to size. Some sole yellowing.",
+     "id": "lst_019",
+     "platform": "poshmark",
+     "price": 48.0,
+     "size": "US 8",
+     "style_tags": [
+      "y2k",
+      "platform",
+      "90s",
+      "streetwear"
+     ],
+     "title": "Platform Sneakers — White Chunky Sole"
+    }
+   ],
+   "selected_item": {
+    "brand": null,
+    "category": "shoes",
+    "colors": [
+     "white"
+    ],
+    "condition": "good",
+    "description": "White chunky platform sneakers. Very late 90s / early 2000s energy. Velcro straps. True to size. Some sole yellowing.",
+    "id": "lst_019",
+    "platform": "poshmark",
+    "price": 48.0,
+    "size": "US 8",
+    "style_tags": [
+     "y2k",
+     "platform",
+     "90s",
+     "streetwear"
+    ],
+    "title": "Platform Sneakers — White Chunky Sole"
+   },
+   "timings_ms": {
+    "outfit": 26.6,
+    "parse": 0.0,
+    "search": 214.7
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 243.3
+ },
+ {
+  "group": "broken_key",
+  "label": "denim jacket under $50",
+  "status": 503,
+  "rid": "b276b262",
+  "body": {
+   "dropped": null,
+   "error": "The search worked and found Denim Jacket — Light Wash, Cropped ($42 on poshmark), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.",
+   "error_kind": "model_unavailable",
+   "fit_card": null,
+   "outfit_suggestion": null,
+   "parsed": {
+    "description": "denim jacket",
+    "max_price": 50.0,
+    "size": null
+   },
+   "query": "denim jacket under $50",
+   "search_results": [
+    {
+     "brand": "Wrangler",
+     "category": "outerwear",
+     "colors": [
+      "light blue"
+     ],
+     "condition": "excellent",
+     "description": "Cropped denim jacket in a light wash. Great structured shoulders. Blank canvas — no patches or pins but would be perfect to customize.",
+     "id": "lst_007",
+     "platform": "poshmark",
+     "price": 42.0,
+     "size": "S",
+     "style_tags": [
+      "denim",
+      "vintage",
+      "classic",
+      "streetwear"
+     ],
+     "title": "Denim Jacket — Light Wash, Cropped"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "blue",
+      "indigo"
+     ],
+     "condition": "good",
+     "description": "Classic 501s in a perfect medium wash. Some light fading at the knees which adds to the vintage look. No rips or stains.",
+     "id": "lst_001",
+     "platform": "depop",
+     "price": 38.0,
+     "size": "W30 L30",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "denim",
+      "streetwear"
+     ],
+     "title": "Vintage Levi's 501 Jeans — Medium Wash"
+    },
+    {
+     "brand": "Champion",
+     "category": "outerwear",
+     "colors": [
+      "navy",
+      "white"
+     ],
+     "condition": "excellent",
+     "description": "Authentic 90s track jacket with stripe detail down the sleeves. Full zip. Lightweight — great for layering.",
+     "id": "lst_004",
+     "platform": "poshmark",
+     "price": 45.0,
+     "size": "M",
+     "style_tags": [
+      "90s",
+      "vintage",
+      "athletic",
+      "streetwear"
+     ],
+     "title": "90s Track Jacket — Navy/White Stripe"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "light blue",
+      "blue"
+     ],
+     "condition": "good",
+     "description": "DIY cutoff denim shorts from Levi's 501s. Raw hem, slightly frayed. High-waisted. Perfect summer length.",
+     "id": "lst_016",
+     "platform": "poshmark",
+     "price": 24.0,
+     "size": "W27",
+     "style_tags": [
+      "vintage",
+      "denim",
+      "summer",
+      "classic"
+     ],
+     "title": "High-Waisted Denim Shorts — Cutoff"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "olive",
+      "green"
+     ],
+     "condition": "excellent",
+     "description": "Olive canvas shacket — thicker than a shirt, lighter than a jacket. Chest pockets, button-front. Great transitional layer.",
+     "id": "lst_032",
+     "platform": "poshmark",
+     "price": 33.0,
+     "size": "M/L",
+     "style_tags": [
+      "earth tones",
+      "classic",
+      "layering",
+      "minimal"
+     ],
+     "title": "Shacket — Olive Canvas"
+    },
+    {
+     "brand": "Levi's",
+     "category": "bottoms",
+     "colors": [
+      "black",
+      "faded black"
+     ],
+     "condition": "good",
+     "description": "Faded black straight-leg jeans. Sits at the hips, classic fit. Slightly cropped length. No rips, just natural fading.",
+     "id": "lst_037",
+     "platform": "thredUp",
+     "price": 30.0,
+     "size": "W28",
+     "style_tags": [
+      "vintage",
+      "classic",
+      "grunge",
+      "denim"
+     ],
+     "title": "Straight Leg Black Jeans — Faded"
+    },
+    {
+     "brand": null,
+     "category": "outerwear",
+     "colors": [
+      "medium blue"
+     ],
+     "condition": "good",
+     "description": "Denim vest with silver stud detailing along the collar and pockets. Classic rock-inspired customization. Fits like a medium.",
+     "id": "lst_038",
+     "platform": "depop",
+     "price": 27.0,
+     "size": "M",
+     "style_tags": [
+      "grunge",
+      "vintage",
+      "denim",
+      "customized",
+      "rock"
+     ],
+     "title": "Denim Vest — Medium Wash, Studded"
+    }
+   ],
+   "selected_item": {
+    "brand": "Wrangler",
+    "category": "outerwear",
+    "colors": [
+     "light blue"
+    ],
+    "condition": "excellent",
+    "description": "Cropped denim jacket in a light wash. Great structured shoulders. Blank canvas — no patches or pins but would be perfect to customize.",
+    "id": "lst_007",
+    "platform": "poshmark",
+    "price": 42.0,
+    "size": "S",
+    "style_tags": [
+     "denim",
+     "vintage",
+     "classic",
+     "streetwear"
+    ],
+    "title": "Denim Jacket — Light Wash, Cropped"
+   },
+   "timings_ms": {
+    "outfit": 26.0,
+    "parse": 0.0,
+    "search": 217.4
+   },
+   "wardrobe": {
+    "items": [
+     {
+      "category": "bottoms",
+      "colors": [
+       "dark blue",
+       "indigo"
+      ],
+      "id": "w_001",
+      "name": "Baggy straight-leg jeans, dark wash",
+      "notes": "High-waisted, sits above the hip",
+      "style_tags": [
+       "denim",
+       "streetwear",
+       "baggy"
+      ]
+     },
+     {
+      "category": "bottoms",
+      "colors": [
+       "khaki",
+       "tan"
+      ],
+      "id": "w_002",
+      "name": "Wide-leg khaki trousers",
+      "notes": null,
+      "style_tags": [
+       "earth tones",
+       "minimal",
+       "wide-leg"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "white"
+      ],
+      "id": "w_003",
+      "name": "White ribbed tank top",
+      "notes": "Goes with everything",
+      "style_tags": [
+       "basics",
+       "minimal",
+       "fitted"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "grey",
+       "charcoal"
+      ],
+      "id": "w_004",
+      "name": "Oversized grey crewneck sweatshirt",
+      "notes": "Really oversized — drops below the hip",
+      "style_tags": [
+       "oversized",
+       "basics",
+       "cozy"
+      ]
+     },
+     {
+      "category": "tops",
+      "colors": [
+       "black"
+      ],
+      "id": "w_005",
+      "name": "Black cropped zip hoodie",
+      "notes": null,
+      "style_tags": [
+       "athletic",
+       "streetwear",
+       "cropped"
+      ]
+     },
+     {
+      "category": "outerwear",
+      "colors": [
+       "black"
+      ],
+      "id": "w_006",
+      "name": "Vintage black denim jacket",
+      "notes": "Slightly cropped",
+      "style_tags": [
+       "denim",
+       "vintage",
+       "classic"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "white"
+      ],
+      "id": "w_007",
+      "name": "Chunky white sneakers",
+      "notes": null,
+      "style_tags": [
+       "sneakers",
+       "chunky",
+       "streetwear"
+      ]
+     },
+     {
+      "category": "shoes",
+      "colors": [
+       "black"
+      ],
+      "id": "w_008",
+      "name": "Black combat boots",
+      "notes": "Lace-up, mid-ankle height",
+      "style_tags": [
+       "boots",
+       "grunge",
+       "classic"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "brown"
+      ],
+      "id": "w_009",
+      "name": "Brown leather belt",
+      "notes": null,
+      "style_tags": [
+       "classic",
+       "earth tones",
+       "accessories"
+      ]
+     },
+     {
+      "category": "accessories",
+      "colors": [
+       "black"
+      ],
+      "id": "w_010",
+      "name": "Black crossbody bag",
+      "notes": null,
+      "style_tags": [
+       "minimal",
+       "accessories",
+       "everyday"
+      ]
+     }
+    ]
+   }
+  },
+  "client_ms": 245.2
+ }
+]

@@ -1,0 +1,292 @@
+
+FitFindr is listening on http://localhost:5057
+It runs one request at a time — a second one waits for the first.
+Ask it something (single quotes, as always):
+
+  curl -X POST http://localhost:5057/ask \
+    -H 'Content-Type: application/json' \
+    -d '{"query": "vintage graphic tee under $30"}'
+
+Ctrl-C to stop.
+
+ * Serving Flask app 'serve'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5057
+ * Running on http://192.168.1.209:5057
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [18/Nov/2026 00:06:28] "GET /health HTTP/1.1" 200 -
+[1] parse_query
+      in:  'vintage graphic tee under $30'
+      out: {'description': 'vintage graphic tee', 'size': None, 'max_price': 30.0}
+[2] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'vintage graphic tee', 'size': None, 'max_price': 30.0})
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+      →    branch: 10 found, selected_item = first (lst_002)
+[3] suggest_outfit
+      in:  new_item=lst_002 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the Y2K Baby Tee with Baggy straight-leg jeans, dark wash for a classic noughties silhouette. C…
+[4] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_002
+      out: Score this little butterfly tee on depop for only $18 and I am already obsessed with how it fits. I love balan…
+127.0.0.1 - - [18/Nov/2026 00:06:36] "POST /ask HTTP/1.1" 200 -
+[5] parse_query
+      in:  '90s track jacket in size M'
+      out: {'description': '90s track jacket', 'size': 'M', 'max_price': None}
+[6] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': '90s track jacket', 'size': 'M', 'max_price': None})
+      out: 5 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +2 more
+      →    branch: 5 found, selected_item = first (lst_004)
+[7] suggest_outfit
+      in:  new_item=lst_004 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the 90s track jacket with the white ribbed tank top as an inner layer, worn alongside the baggy…
+[8] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_004
+      out: Score this vintage Champion track jacket on Poshmark for only $45 and I'm obsessed with how versatile it is. I…
+127.0.0.1 - - [18/Nov/2026 00:06:48] "POST /ask HTTP/1.1" 200 -
+[9] parse_query
+      in:  'silk slip dress in midi length under $40'
+      out: {'description': 'silk slip dress midi length', 'size': None, 'max_price': 40.0}
+[10] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'silk slip dress midi length', 'size': None, 'max_price': 40.0})
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    branch: 5 found, selected_item = first (lst_013)
+[11] suggest_outfit
+      in:  new_item=lst_013 (session['selected_item']), wardrobe=10 items
+      out: Outfit one layers the 90s Silk Slip Dress over the white ribbed tank top, paired with the black combat boots a…
+[12] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_013
+      out: Score this floral silk slip on depop for just $30 and I am already obsessed with styling it. Outfit one leans …
+127.0.0.1 - - [18/Nov/2026 00:06:54] "POST /ask HTTP/1.1" 200 -
+[13] parse_query
+      in:  'platform sneakers size 8'
+      out: {'description': 'platform sneakers', 'size': '8', 'max_price': None}
+[14] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'platform sneakers', 'size': '8', 'max_price': None})
+      out: 1 items: Platform Sneakers — White Chunky Sole
+      →    branch: 1 found, selected_item = first (lst_019)
+[15] suggest_outfit
+      in:  new_item=lst_019 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the Platform Sneakers with your baggy straight-leg jeans, dark wash, white ribbed tank top, and…
+[16] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_019
+      out: Finally scored these chunky white platform sneakers on Poshmark for $48 and I am so obsessed with how they pul…
+127.0.0.1 - - [18/Nov/2026 00:07:00] "POST /ask HTTP/1.1" 200 -
+[17] parse_query
+      in:  'denim jacket under $50'
+      out: {'description': 'denim jacket', 'size': None, 'max_price': 50.0}
+[18] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'denim jacket', 'size': None, 'max_price': 50.0})
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+      →    branch: 7 found, selected_item = first (lst_007)
+[19] suggest_outfit
+      in:  new_item=lst_007 (session['selected_item']), wardrobe=10 items
+      out: Outfit one pairs the light wash denim jacket with the white ribbed tank top and baggy straight-leg jeans, fini…
+[20] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_007
+      out: Score this vintage Wrangler denim jacket on Poshmark for just $42 and I'm honestly obsessed. I love dressing i…
+127.0.0.1 - - [18/Nov/2026 00:07:06] "POST /ask HTTP/1.1" 200 -
+[21] parse_query
+      in:  'flannel shirt under $25'
+      out: {'description': 'flannel shirt', 'size': None, 'max_price': 25.0}
+[22] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'flannel shirt', 'size': None, 'max_price': 25.0})
+      out: 2 items: Oversized Flannel Shirt — Plaid Red/Black, Vintage Polo Shirt — Forest Green
+      →    branch: 2 found, selected_item = first (lst_003)
+[23] suggest_outfit
+      in:  new_item=lst_003 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Layer the Oversized Flannel Shirt — Plaid Red/Black over the White ribbed tank top, paired with the …
+[24] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_003
+      out: Scored this vintage Woolrich flannel on thredUp for only $22, and it's officially the ultimate 90s grunge laye…
+127.0.0.1 - - [18/Nov/2026 00:07:14] "POST /ask HTTP/1.1" 200 -
+[25] parse_query
+      in:  'jacket $50'
+      out: {'description': 'jacket', 'size': None, 'max_price': 50.0}
+[26] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'jacket', 'size': None, 'max_price': 50.0})
+      out: 3 items: 90s Track Jacket — Navy/White Stripe, Denim Jacket — Light Wash, Cropped, Shacket — Olive Canvas
+      →    branch: 3 found, selected_item = first (lst_004)
+[27] suggest_outfit
+      in:  new_item=lst_004 (session['selected_item']), wardrobe=10 items
+      out: Outfit one: Pair the 90s Track Jacket with the white ribbed tank top, baggy straight-leg jeans, and chunky whi…
+[28] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_004
+      out: Found this vintage Champion track jacket on Poshmark for only $45 and I'm honestly obsessed with it. I love st…
+127.0.0.1 - - [18/Nov/2026 00:07:18] "POST /ask HTTP/1.1" 200 -
+[29] parse_query
+      in:  'something cute for a date under $40'
+      out: {'description': 'cute date', 'size': None, 'max_price': 40.0}
+[30] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'cute date', 'size': None, 'max_price': 40.0})
+      out: 1 items: Y2K Baby Tee — Butterfly Print
+      →    branch: 1 found, selected_item = first (lst_002)
+[31] suggest_outfit
+      in:  new_item=lst_002 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash for a classic early 2000s silhoue…
+  [rate limit] 15 requests used this minute. Waiting 8s. This is normal.
+[32] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_002
+      out: Found this literal dream of a baby tee on depop for only $18 and I am obsessed with the butterfly print. I’ve …
+127.0.0.1 - - [18/Nov/2026 00:07:30] "POST /ask HTTP/1.1" 200 -
+[33] parse_query
+      in:  'black boots'
+      out: {'description': 'black boots', 'size': None, 'max_price': None}
+[34] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'black boots', 'size': None, 'max_price': None})
+      out: 10 items: Oversized Flannel Shirt — Plaid Red/Black, Graphic Tee — 2003 Tour Bootleg Style, Platform Mary Janes — Black Patent … +7 more
+      →    branch: 10 found, selected_item = first (lst_003)
+  [rate limit] 15 requests used this minute. Waiting 3s. This is normal.
+[35] suggest_outfit
+      in:  new_item=lst_003 (session['selected_item']), wardrobe=10 items
+      out: Outfit one: Layer the Oversized Flannel Shirt — Plaid Red/Black over the White ribbed tank top, paired with th…
+[36] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_003
+      out: Scored this vintage Woolrich flannel on thredUp for just $22 and it has instantly become my absolute favorite …
+127.0.0.1 - - [18/Nov/2026 00:07:43] "POST /ask HTTP/1.1" 200 -
+[37] parse_query
+      in:  'size medium hoodie'
+      out: {'description': 'hoodie', 'size': 'MEDIUM', 'max_price': None}
+[38] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'hoodie', 'size': 'MEDIUM', 'max_price': None})
+      out: [] (empty)
+      →    branch: empty, but size MEDIUM was set, retrying once without it
+[39] search_listings (via MCP, retry)
+      in:  call_tool('search_listings', {'description': 'hoodie', 'size': None, 'max_price': None})
+      out: 1 items: Vintage Graphic Hoodie — Faded Black
+      →    retry dropped size MEDIUM: 1 found, selected_item = first (lst_015, size L)
+[40] suggest_outfit
+      in:  new_item=lst_015 (session['selected_item']), wardrobe=10 items
+      out: Outfit 1: Pair the vintage graphic hoodie with your baggy straight-leg jeans, black combat boots, and the blac…
+  [rate limit] 15 requests used this minute. Waiting 1s. This is normal.
+[41] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_015
+      out: Still obsessed with how perfectly faded this vintage graphic hoodie is, especially for only $26 on depop. It's…
+127.0.0.1 - - [18/Nov/2026 00:07:53] "POST /ask HTTP/1.1" 200 -
+[42] parse_query
+      in:  'cheap sneakers'
+      out: {'description': 'cheap sneakers', 'size': None, 'max_price': None}
+[43] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'cheap sneakers', 'size': None, 'max_price': None})
+      out: 2 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White
+      →    branch: 2 found, selected_item = first (lst_019)
+[44] suggest_outfit
+      in:  new_item=lst_019 (session['selected_item']), wardrobe=10 items
+      out: Outfit One: Pair the Platform Sneakers with the baggy straight-leg jeans, dark wash and the white ribbed tank …
+[45] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_019
+      out: Score these chunky white platform sneakers on Poshmark for just $48 and I am never taking them off. They add t…
+127.0.0.1 - - [18/Nov/2026 00:08:00] "POST /ask HTTP/1.1" 200 -
+[46] parse_query
+      in:  'denim jaket'
+      out: {'description': 'denim jaket', 'size': None, 'max_price': None}
+[47] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'denim jaket', 'size': None, 'max_price': None})
+      out: 5 items: Vintage Levi's 501 Jeans — Medium Wash, Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    branch: 5 found, selected_item = first (lst_001)
+[48] suggest_outfit
+      in:  new_item=lst_001 (session['selected_item']), wardrobe=10 items
+      out: For a classic, casual look, wear the Vintage Levi's 501 Jeans — Medium Wash with the White ribbed tank top and…
+[49] create_fit_card
+      in:  outfit=session['outfit_suggestion'], new_item=lst_001
+      out: Score these vintage Levi's 501 jeans on depop for just $38 and I am obsessed. I've been styling them with a ri…
+127.0.0.1 - - [18/Nov/2026 00:08:07] "POST /ask HTTP/1.1" 200 -
+[50] parse_query
+      in:  'designer ballgown size XXS under $5'
+      out: {'description': 'designer ballgown', 'size': 'XXS', 'max_price': 5.0}
+[51] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'designer ballgown', 'size': 'XXS', 'max_price': 5.0})
+      out: [] (empty)
+      →    branch: empty, but size XXS was set, retrying once without it
+[52] search_listings (via MCP, retry)
+      in:  call_tool('search_listings', {'description': 'designer ballgown', 'size': None, 'max_price': 5.0})
+      out: [] (empty)
+      →    retry dropped size XXS: still empty, stopping before suggest_outfit
+127.0.0.1 - - [18/Nov/2026 00:08:08] "POST /ask HTTP/1.1" 200 -
+[53] parse_query
+      in:  'sequin tuxedo size XXXL under $3'
+      out: {'description': 'sequin tuxedo', 'size': 'XXXL', 'max_price': 3.0}
+[54] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'sequin tuxedo', 'size': 'XXXL', 'max_price': 3.0})
+      out: [] (empty)
+      →    branch: empty, but size XXXL was set, retrying once without it
+[55] search_listings (via MCP, retry)
+      in:  call_tool('search_listings', {'description': 'sequin tuxedo', 'size': None, 'max_price': 3.0})
+      out: [] (empty)
+      →    retry dropped size XXXL: still empty, stopping before suggest_outfit
+127.0.0.1 - - [18/Nov/2026 00:08:08] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 00:08:08] "[31m[1mPOST /ask HTTP/1.1[0m" 400 -
+127.0.0.1 - - [18/Nov/2026 00:08:08] "[31m[1mPOST /ask HTTP/1.1[0m" 400 -
+127.0.0.1 - - [18/Nov/2026 00:08:08] "[31m[1mPOST /ask HTTP/1.1[0m" 400 -
+127.0.0.1 - - [18/Nov/2026 00:08:08] "[31m[1mPOST /ask HTTP/1.1[0m" 400 -
+127.0.0.1 - - [18/Nov/2026 00:08:08] "[31m[1mPOST /ask HTTP/1.1[0m" 400 -
+
+FitFindr is listening on http://localhost:5057
+It runs one request at a time — a second one waits for the first.
+Ask it something (single quotes, as always):
+
+  curl -X POST http://localhost:5057/ask \
+    -H 'Content-Type: application/json' \
+    -d '{"query": "vintage graphic tee under $30"}'
+
+Ctrl-C to stop.
+
+ * Serving Flask app 'serve'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5057
+ * Running on http://192.168.1.209:5057
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [18/Nov/2026 00:08:08] "GET /health HTTP/1.1" 200 -
+[1] parse_query
+      in:  'vintage graphic tee under $30'
+      out: {'description': 'vintage graphic tee', 'size': None, 'max_price': 30.0}
+[2] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'vintage graphic tee', 'size': None, 'max_price': 30.0})
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+      →    branch: 10 found, selected_item = first (lst_002)
+[3] suggest_outfit
+      →    ModelUnavailable, stopping: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.
+127.0.0.1 - - [18/Nov/2026 00:08:09] "[35m[1mPOST /ask HTTP/1.1[0m" 503 -
+[4] parse_query
+      in:  '90s track jacket in size M'
+      out: {'description': '90s track jacket', 'size': 'M', 'max_price': None}
+[5] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': '90s track jacket', 'size': 'M', 'max_price': None})
+      out: 5 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +2 more
+      →    branch: 5 found, selected_item = first (lst_004)
+[6] suggest_outfit
+      →    ModelUnavailable, stopping: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.
+127.0.0.1 - - [18/Nov/2026 00:08:09] "[35m[1mPOST /ask HTTP/1.1[0m" 503 -
+[7] parse_query
+      in:  'silk slip dress in midi length under $40'
+      out: {'description': 'silk slip dress midi length', 'size': None, 'max_price': 40.0}
+[8] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'silk slip dress midi length', 'size': None, 'max_price': 40.0})
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    branch: 5 found, selected_item = first (lst_013)
+[9] suggest_outfit
+      →    ModelUnavailable, stopping: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.
+127.0.0.1 - - [18/Nov/2026 00:08:10] "[35m[1mPOST /ask HTTP/1.1[0m" 503 -
+[10] parse_query
+      in:  'platform sneakers size 8'
+      out: {'description': 'platform sneakers', 'size': '8', 'max_price': None}
+[11] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'platform sneakers', 'size': '8', 'max_price': None})
+      out: 1 items: Platform Sneakers — White Chunky Sole
+      →    branch: 1 found, selected_item = first (lst_019)
+[12] suggest_outfit
+      →    ModelUnavailable, stopping: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.
+127.0.0.1 - - [18/Nov/2026 00:08:10] "[35m[1mPOST /ask HTTP/1.1[0m" 503 -
+[13] parse_query
+      in:  'denim jacket under $50'
+      out: {'description': 'denim jacket', 'size': None, 'max_price': 50.0}
+[14] search_listings (via MCP)
+      in:  call_tool('search_listings', {'description': 'denim jacket', 'size': None, 'max_price': 50.0})
+      out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+      →    branch: 7 found, selected_item = first (lst_007)
+[15] suggest_outfit
+      →    ModelUnavailable, stopping: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.
+127.0.0.1 - - [18/Nov/2026 00:08:10] "[35m[1mPOST /ask HTTP/1.1[0m" 503 -

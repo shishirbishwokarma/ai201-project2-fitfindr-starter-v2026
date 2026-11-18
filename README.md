@@ -831,3 +831,54 @@ And the slowest one whole. The 25 s that before would have been "slow `outfit` s
 **What it told me that I didn't know.** My before diagnosis put the rate limiter first, because the terminal showed it clearly (29 s, 24 s, 20 s at run 8). With the new fields I can count instead of inferring. In the after run, **23 of the 27 slow requests were model time and only 4 were the limiter** (1, 2 and 1 per run). The model was slower in this run, so fewer calls fit into each minute and the limiter had less to do. The 25 s request above, at run 8 again, is the model, not the limiter. So criterion 2's main cause is the API's response time, which varied from about 1 s to 24 s per run tonight, and the limiter only comes second when the model happens to be fast. I couldn't have told that apart without this change. Criterion 2 also got slightly worse (3, 3, 4 against 4, 6, 4). The change adds two subtractions per request, so that's the model's variance, not the fix.
 
 **What it cost:** nothing measurable. Tokens per full run were 676, 680 and 681 across the after runs, against 674 before. Each record is two numbers longer.
+
+**Stretch — Second Improvement**
+
+**What I changed (commit `ffcacff`):** `serve.py::ask` stops treating "`run_agent()` didn't raise" as success. Three parts of one change:
+- A run that ended `model_unavailable` or `mcp_error` returns **503**, with the same session body as before, error message included.
+- A wardrobe whose `items` isn't a list of objects with a text `name`, a text `category` and a list of `colors` (exactly what `tools.py::suggest_outfit` reads) gets a **400** before the lock, the search or the model (`serve.py::_wardrobe_problem`).
+- A query over 500 characters gets a **400** (`MAX_QUERY_CHARS`). The longest real query in my logs is 40.
+
+**Why this one:** it follows the second pattern in the diagnosis. Criteria 4 and 5 missed for the same reason: `serve.py` chose 200 or 500 only by whether the agent raised, and it only checked that the query was a non-empty string. I declared this stretch expecting it to target criterion 4. Because 4 and 5 shared that one cause, the same change to `serve.py`'s contract covers both, and I'm reporting both.
+
+*Run log — after the second improvement (same driver, same requests; `results/capstone/after2/`, report in `results/capstone/after2.md`)*
+
+| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Every request leaves exactly one record | 20 of 20 | 20/20 | 20/20 | 20/20 | MET |
+| 2. Ten in a row stay under 5 s | 9 of 10 under 5 s | 0/10 | 0/10 | 1/10 | MISSED |
+| 3. A slow request explains itself in the log | all slow requests | 12/12 | 12/12 | 11/11 | MET |
+| 4. Broken key returns 503 | 5 of 5 | 5/5 | 5/5 | 5/5 | **MET** |
+| 5. Bad input: 4xx under 200 ms, never a 500 | 5 of 5 | 5/5 | 5/5 | 5/5 | **MET** |
+
+All three result sets side by side:
+
+| Criterion | Before | After improvement 1 | After improvement 2 |
+|---|---|---|---|
+| 1 | 20, 20, 20 /20 MET | 20, 20, 20 /20 MET | 20, 20, 20 /20 MET |
+| 2 | 4, 6, 4 /10 MISSED | 3, 3, 4 /10 MISSED | 0, 0, 1 /10 MISSED |
+| 3 | 0/7, 0/6, 0/9 MISSED | 9/9, 9/9, 9/9 MET | 12/12, 12/12, 11/11 MET |
+| 4 | 0, 0, 0 /5 MISSED | 0, 0, 0 /5 MISSED | **5, 5, 5 /5 MET** |
+| 5 | 3, 3, 3 /5 MISSED | 3, 3, 3 /5 MISSED | **5, 5, 5 /5 MET** |
+
+Real output, run 1 (`results/capstone/after2/trial1.jsonl` from `serve.py::ask`; response bodies from `trial1_responses.json`). Criterion 5's five records, then criterion 4's:
+
+```
+{"request_id": "6afa69c9", "status": 400, "outcome": "bad_request", "duration_ms": 0.1, "model_calls": null, "error": "missing or empty 'query'"}
+{"request_id": "adfe24ee", "status": 400, "outcome": "bad_request", "duration_ms": 0.2, "model_calls": null, "error": "missing or empty 'query'"}
+{"request_id": "56f7bf10", "status": 400, "outcome": "bad_request", "duration_ms": 0.0, "model_calls": null, "error": "missing or empty 'query'"}
+{"request_id": "34bc921b", "status": 400, "outcome": "bad_request", "duration_ms": 0.0, "model_calls": null, "error": "'wardrobe.items' must be a list"}
+{"request_id": "54ccf4d0", "status": 400, "outcome": "bad_request", "duration_ms": 0.0, "model_calls": null, "error": "query is 4999 characters, over 500"}
+{"request_id": "431ca92b", "status": 503, "outcome": "model_unavailable", "duration_ms": 747.5, "model_calls": 1, "error": "The search worked and found Y2K Baby Tee — Butterfly Print ($18 on depop), but the AI model couldn't be reached for suggest_outfit, so t[...]
+```
+
+```
+status 503, X-Request-Id 431ca92b
+{"error": "The search worked and found Y2K Baby Tee — Butterfly Print ($18 on depop), but the AI model couldn't be reached for suggest_outfit, so there's no outfit or fit card. The model said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com. Fix the key in .env (or check your internet), then ask again.", "error_kind": "model_unavailable", "fit_card": null}
+```
+
+(The query reads as 4,999 characters because `serve.py` strips whitespace before measuring, and the test string ends in a space.)
+
+**Did it help? Yes, for both criteria it was aimed at.** Criterion 4 went from 0/15 to 15/15 across the three runs, and criterion 5 from 9/15 to 15/15. The bad wardrobe now costs 0.0 ms and no search, against 216–256 ms and a crash before. The long query costs nothing, against 2.1–7.9 s and about 700 tokens before. Criteria 1 and 3 held.
+
+**What it cost, and the trade-off.** One behaviour change for callers: a `wardrobe` that isn't an object, like `"wardrobe": "abc"`, used to fall back silently to the example wardrobe, and is now a 400. I think that's right, since a silent substitute is worse than a clear "no", but a caller that relied on it would break. **Criterion 2 got worse, 0, 0, 1 of 10, but not because of this change.** The new fields show it directly: 34 of the 35 slow requests across the three runs had `model_wait_ms` at least half of `duration_ms`, and the median time per model call was 5.4, 4.6 and 3.5 s, against under 1 s in my first session. This change only touches what happens before and after `run_agent()`, so the model service itself was slower in this run.
