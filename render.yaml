@@ -19,5 +19,7 @@ services:
         value: 3.13.16
       - key: AI201_CACHE
         value: "0"
+      - key: AI201_LOG_STDOUT   # also print each record to Render's log stream
+        value: "1"
       - key: GEMINI_API_KEY
         sync: false   # Render asks you to paste it; it never goes in the repo

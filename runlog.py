@@ -59,6 +59,10 @@ FIELDS = (
 def write(record: dict) -> None:
     """Append one record. Never raises: a broken log must not break a request."""
     row = {key: record.get(key) for key in FIELDS}
+    if os.getenv("AI201_LOG_STDOUT") == "1":
+        # On a host the file is wiped when the instance sleeps; the platform's
+        # log stream (stdout) is where a record can still be read afterwards.
+        print("RUNLOG " + json.dumps(row, ensure_ascii=False), flush=True)
     try:
         LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
         with LOG_PATH.open("a", encoding="utf-8") as f:
